@@ -1,16 +1,10 @@
 <?php
 // Create connection
-$con=mysqli_connect("localhost","root","laciferi","eszkoz");
-
-// Check connection
-if (mysqli_connect_errno($con))
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+include 'connection.php';
   
-  $sql="INSERT INTO members (id, sp_code, name, jog)
+  $sql="INSERT INTO members (sp_code, name, password, jog)
 VALUES
-('$_POST[id]','$_POST[sp_code]','$_POST[name]', '$_POST[jog]')";
+('$_POST[sp_code]','$_POST[name]','$_POST[sp_code]', '$_POST[jog]')";
 
 if (!mysqli_query($con,$sql))
   {
