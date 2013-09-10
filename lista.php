@@ -15,13 +15,17 @@ echo "<table border='1'>
 <th>Dátum</th>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
+
+if($sor['closed']==0){
  echo "<tr>";
  echo "<td>" . $sor['a_szam'] . "</td>";
  echo "<td>" . $sor['serial1'] . "</td>";
  echo "<td>" . $sor['serial2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
+ echo "<td> Lezár </td>";
  echo "</tr>"; 
+}
 }
 echo "</table>";
   
