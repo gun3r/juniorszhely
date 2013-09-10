@@ -7,7 +7,13 @@
 <form action="insert.php" method="post">
 sp kód: <input type="text" name="sp_code">
 Név: <input type="text" name="name">
-Jog: <input type="text" name="jog">
+Jog: <select name="jog" size=”1”>
+      <option value="1" selected>alap</option>
+      <option value="2">eszközkezelő</option>
+      <option value="3">Isten</option>
+	 </select>
+
+
 <input type="submit">
 </form>
 

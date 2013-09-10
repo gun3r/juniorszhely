@@ -5,9 +5,25 @@ $sql = "SELECT * FROM data";
 
 
 $res = mysqli_query($con, $sql);
-while($sor = mysqli_fetch_array($res)) 
-{
- echo $sor['a_szam']." ".$sor['serial1']." ".$sor['serial2']." ".$sor['sp_code']." ".$sor['date'];
-}  
+
+echo "<table border='1'>
+<tr>
+<th>A szám</th>
+<th>Régi eszköz</th>
+<th>Új eszköz</th>
+<th>Név</th>
+<th>Dátum</th>
+</tr>";
+while($sor = mysqli_fetch_array($res)) {
+ echo "<tr>";
+ echo "<td>" . $sor['a_szam'] . "</td>";
+ echo "<td>" . $sor['serial1'] . "</td>";
+ echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['sp_code'] . "</td>";
+ echo "<td>" . $sor['date'] . "</td>";
+ echo "</tr>"; 
+}
+echo "</table>";
+  
 mysqli_close($con);
 ?>
