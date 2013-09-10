@@ -23,7 +23,11 @@ if($sor['closed']==0){
  echo "<td>" . $sor['serial2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
- echo "<td> Lezár </td>";
+ echo "<td>
+ <form action=\"mod.php\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"submit\" value=\"OK\">
+ </form> </td>";
  echo "</tr>"; 
 }
 }
