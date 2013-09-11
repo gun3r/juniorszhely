@@ -26,7 +26,7 @@ $sp = $_POST[sp_code];
     header ("Location: $URL");
 	}else{
 
- $URL="eszkozcsere.html"; 
+ $URL="eszkozcsere.php"; 
  header ("Location: $URL");
    }
 	}else{

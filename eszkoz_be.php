@@ -16,7 +16,7 @@
 <html>
 <body bgcolor="#D8D8D8">
 <br />
-<a href="eszkozcsere.html">Vissza az előző oldalra.</a>
+<a href="eszkozcsere.php">Vissza az előző oldalra.</a>
 
 </body>
 </html>
