@@ -11,13 +11,27 @@
   <body bgcolor="#D8D8D8">
   <h1>Eszközcsere login</h1>
   <br>
-  <form>
-  Eventus kód: <input type="text" name="sp_code"><br>
-  Jelszó: <input type="password" name="password">
-  <br>
-  <input type="submit">
+  
+  <form action="belep.php" method="post">
+  <table border="0">
+  <tr>
+  <td>
+  Eventus kód: 
+  </td> 
+  <td>
+  <input type="text" name="sp_code">
+  </td>
+  </tr>
+  <tr>
+  <td>
+  Jelszó:
+  </td>
+  <td><input type="password" name="password">
+  </td>
+  </tr>
+  </table>
+  <input type="submit" value="Belépés">
   </form>
     
-  
   </body>
 </html>
