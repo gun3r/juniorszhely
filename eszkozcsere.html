@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="hu">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -10,31 +9,15 @@
 <b>Eszközcsere program</b>
 
 <p></p>
-<b>A szám:</b>
-<FORM ACTION="">
- <INPUT TYPE="TEXT" NAME="demo">
-</FORM>
-<p></p>
-
-<b>Új eszköz gyári szám:</b>
-<FORM ACTION="">
- <INPUT TYPE="TEXT" NAME="demo">
-</FORM>
-<p></p>
-
-<b>Régi eszköz gyári szám:</b>
-<FORM ACTION="">
- <INPUT TYPE="TEXT" NAME="demo">
-</FORM>
-<p></p>
-
-<FORM>
- <INPUT TYPE  = "SUBMIT" 
-        VALUE = "A megadott adatok elküldése!"
- >
-</FORM>
-
-<p></p>
+<form action="eszkoz_be.php" method="post">
+	  A szám: <input type="text" name="a_szam" /><br />
+	  Régi eszköz gyári szám: <input type="text" name="serial1" /><br />
+	  Új eszköz gyári szám: <input type="text" name="serial2"><br />
+	  <!-- Dátum: <input type="text" name="date" /><br />
+	  -->
+	  <input type="submit" value="Adatok elküldése" name="submit" />	  
+	  
+</form>
 
 <b>Készitették: Junior kollégák</b>
 
