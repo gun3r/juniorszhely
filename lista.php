@@ -4,10 +4,11 @@
 include 'kuki.php';
 include 'connection.php';
 
-$sql = "SELECT * FROM data";
-
+$sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
+$sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1'";
 
 $res = mysqli_query($con, $sql);
+$res2 = mysqli_query($con, $sql2);
 
 echo "<table border='8'>
 <tr>
@@ -19,7 +20,6 @@ echo "<table border='8'>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
 
-if($sor['closed']==0){
  echo "<tr>";
  echo "<td>" . $sor['a_szam'] . "</td>";
  echo "<td>" . $sor['serial1'] . "</td>";
@@ -32,7 +32,29 @@ if($sor['closed']==0){
  <input type=\"submit\" value=\"OK\">
  </form> </td>";
  echo "</tr>"; 
+
 }
+echo "</table>";
+echo "</br></br>";
+echo "<table border='8'>
+<tr>
+<th>A szám</th>
+<th>Régi eszköz</th>
+<th>Új eszköz</th>
+<th>Név</th>
+<th>Dátum</th>
+</tr>";
+
+while($sor = mysqli_fetch_array($res2)) {
+
+ echo "<tr>";
+ echo "<td>" . $sor['a_szam'] . "</td>";
+ echo "<td>" . $sor['serial1'] . "</td>";
+ echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['sp_code'] . "</td>";
+ echo "<td>" . $sor['date'] . "</td>";
+ echo "</tr>"; 
+
 }
 echo "</table>";
   
