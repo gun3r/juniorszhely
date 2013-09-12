@@ -3,6 +3,9 @@
 <?php
 include 'kuki.php';
 include 'connection.php';
+$jog = intval($_COOKIE["sp_codej"]);
+$sp_code = strval($_COOKIE["sp_code"]);
+if($jog==2){
 
 $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
 $sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1'";
@@ -65,7 +68,39 @@ while($sor = mysqli_fetch_array($res2)) {
 
 }
 echo "</table>";
-  
+}
+else{
+
+$sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'";
+
+$res = mysqli_query($con, $sql);
+
+echo "<table border='8'>
+<tr>
+<th>A szám</th>
+<th>Régi eszköz</th>
+<th>Régi eszköz típusa</th>
+<th>Új eszköz</th>
+<th>Új eszköz típusa</th>
+<th>Név</th>
+<th>Dátum</th>
+</tr>";
+while($sor = mysqli_fetch_array($res)) {
+
+ echo "<tr>";
+ echo "<td>" . $sor['a_szam'] . "</td>";
+ echo "<td>" . $sor['serial1'] . "</td>";
+ echo "<td>" . $sor['eszkoz1'] . "</td>";
+ echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['eszkoz2'] . "</td>";
+ echo "<td>" . $sor['sp_code'] . "</td>";
+ echo "<td>" . $sor['date'] . "</td>";
+ echo "</tr>"; 
+
+}
+
+echo "</table>";
+}
 mysqli_close($con);
 ?>
 

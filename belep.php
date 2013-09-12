@@ -21,6 +21,7 @@ $sp = $_POST[sp_code];
  if ($pass == $pass1) {
  
 	setcookie("sp_code", $sp, time()+3600);
+	setcookie("sp_codej", $jog1, time()+3600);
 	if ($jog1 == 2){
 	$URL="lista.php"; 
     header ("Location: $URL");
