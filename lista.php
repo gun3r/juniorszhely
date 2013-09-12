@@ -14,7 +14,9 @@ echo "<table border='8'>
 <tr>
 <th>A szám</th>
 <th>Régi eszköz</th>
+<th>Régi eszköz típusa</th>
 <th>Új eszköz</th>
+<th>Új eszköz típusa</th>
 <th>Név</th>
 <th>Dátum</th>
 </tr>";
@@ -23,7 +25,9 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<tr>";
  echo "<td>" . $sor['a_szam'] . "</td>";
  echo "<td>" . $sor['serial1'] . "</td>";
+ echo "<td>" . $sor['eszkoz1'] . "</td>";
  echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['eszkoz2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
  echo "<td>
@@ -40,7 +44,9 @@ echo "<table border='8'>
 <tr>
 <th>A szám</th>
 <th>Régi eszköz</th>
+<th>Régi eszköz típusa</th>
 <th>Új eszköz</th>
+<th>Új eszköz típusa</th>
 <th>Név</th>
 <th>Dátum</th>
 </tr>";
@@ -50,7 +56,9 @@ while($sor = mysqli_fetch_array($res2)) {
  echo "<tr>";
  echo "<td>" . $sor['a_szam'] . "</td>";
  echo "<td>" . $sor['serial1'] . "</td>";
+ echo "<td>" . $sor['eszkoz1'] . "</td>";
  echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['eszkoz2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
  echo "</tr>"; 

@@ -2,8 +2,8 @@
 	 include 'kuki.php';
 	 include 'connection.php';
 	 $sp_code = $_COOKIE["sp_code"];	 	 
-	 $besz = "INSERT INTO data(a_szam, serial1, serial2, sp_code, date)
-	 	  VALUES('$_POST[a_szam]','$_POST[serial1]','$_POST[serial2]', '$sp_code',CURDATE() )";
+	 $besz = "INSERT INTO data(a_szam, serial1,eszkoz1, serial2,eszkoz2, sp_code, date)
+	 	  VALUES('$_POST[a_szam]','$_POST[serial1]','$_POST[nev1]','$_POST[serial2]','$_POST[nev2]', '$sp_code',CURDATE() )";
 		  
 	if (!mysqli_query($con,$besz))
 	   {
