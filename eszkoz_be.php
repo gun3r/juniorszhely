@@ -1,8 +1,9 @@
 <?php
+	 include 'kuki.php';
 	 include 'connection.php';
-	 	 	 
-	 $besz = "INSERT INTO data(a_szam, serial1, serial2, date)
-	 	  VALUES('$_POST[a_szam]','$_POST[serial1]','$_POST[serial2]',CURDATE() )";
+	 $sp_code = $_COOKIE["sp_code"];	 	 
+	 $besz = "INSERT INTO data(a_szam, serial1, serial2, sp_code, date)
+	 	  VALUES('$_POST[a_szam]','$_POST[serial1]','$_POST[serial2]', '$sp_code',CURDATE() )";
 		  
 	if (!mysqli_query($con,$besz))
 	   {
@@ -12,11 +13,7 @@
 	 
 	
 	mysqli_close($con);
+	
+	$URL="lista.php"; 
+    header ("Location: $URL");
 ?>
-<html>
-<body bgcolor="#D8D8D8">
-<br />
-<a href="eszkozcsere.php">Vissza az előző oldalra.</a>
-
-</body>
-</html>
