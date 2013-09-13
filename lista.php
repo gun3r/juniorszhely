@@ -23,6 +23,8 @@ echo "<table border='8'>
 <th>Új eszköz típusa</th>
 <th>Név</th>
 <th>Dátum</th>
+<th> </th>
+<th> </th>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
 
@@ -39,13 +41,13 @@ while($sor = mysqli_fetch_array($res)) {
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"data\" value=\"1\">
  <input type=\"submit\" value=\"OK\">
- </form> </td>";
+ </form></td>";
  echo "<td>
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"data\" value=\"2\">
  <input type=\"submit\" value=\"NEM\">
- </form> </td>";
+ </form></td>";
  echo "</tr>"; 
 
 }
