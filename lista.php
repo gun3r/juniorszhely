@@ -71,7 +71,7 @@ echo "</table>";
 }
 else{
 
-$sql = "SELECT * FROM  `data`,'eszkoz_nev' WHERE  `sp_code` =  '$sp_code' AND 'data.eszkoz1' = 'eszkoz_nev.id'";
+$sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'";
 
 $res = mysqli_query($con, $sql);
 
