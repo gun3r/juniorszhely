@@ -5,6 +5,7 @@ include 'kuki.php';
 include 'connection.php';
 $jog = intval($_COOKIE["sp_codej"]);
 $sp_code = strval($_COOKIE["sp_code"]);
+
 if($jog==2){
 
 $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
@@ -36,7 +37,14 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"data\" value=\"1\">
  <input type=\"submit\" value=\"OK\">
+ </form> </td>";
+ echo "<td>
+ <form action=\"mod.php\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"data\" value=\"2\">
+ <input type=\"submit\" value=\"NEM\">
  </form> </td>";
  echo "</tr>"; 
 
