@@ -1,6 +1,7 @@
 <?php
 // Create connection
 include 'connection.php';
+include 'kuki.php';
   
   $data=$_POST[data];
   
