@@ -121,6 +121,24 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>" . $sor['serial2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
+ 
+ if($sor['alert']==1){
+ 
+ echo "<td>
+ <form action=\"\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ 
+ <input type=\"hidden\" name=\"a_szam\" value=" . $sor['a_szam'].">
+ 
+ <input type=\"hidden\" name=\"nev1\" value=" . $sor['eszkoz1']. ">
+ <input type=\"hidden\" name=\"serial1\" value=" . $sor['serial1']. ">
+ 
+ <input type=\"hidden\" name=\"nev2\" value=" . $sor['eszkoz2']. ">
+ <input type=\"hidden\" name=\"serial2\" value=" . $sor['serial2']. ">
+ 
+ <input type=\"submit\" value=\"Módosít\">
+ </form></td>";
+ }
  echo "</tr>"; 
 
 }
