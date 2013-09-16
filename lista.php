@@ -19,10 +19,10 @@ $res2 = mysqli_query($con, $sql2);
 echo "<table border='8'>
 <tr>
 <th>A szám</th>
-<th>Régi eszköz</th>
 <th>Régi eszköz típusa</th>
-<th>Új eszköz</th>
+<th>Régi eszköz</th>
 <th>Új eszköz típusa</th>
+<th>Új eszköz</th>
 <th>Név</th>
 <th>Dátum</th>
 <th> </th>
@@ -35,10 +35,14 @@ while($sor = mysqli_fetch_array($res)) {
  
  echo "<tr>";
  echo "<td><font color=" . $szin . ">" . $sor['a_szam'] . "</td>";
- echo "<td><font color=" . $szin . ">" . $sor['serial1'] . "</td>";
+ 
  echo "<td><font color=" . $szin . ">" . $sor['eszkoz1'] . "</td>";
- echo "<td><font color=" . $szin . ">" . $sor['serial2'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['serial1'] . "</td>";
+ 
+ 
  echo "<td><font color=" . $szin . ">" . $sor['eszkoz2'] . "</td>";
+ 
+ echo "<td><font color=" . $szin . ">" . $sor['serial2'] . "</td>";
  echo "<td><font color=" . $szin . ">" . $sor['sp_code'] . "</td>";
  echo "<td><font color=" . $szin . ">" . $sor['date'] . "</td></font>";
  
@@ -62,10 +66,10 @@ echo "</br></br>";
 echo "<table border='8'>
 <tr>
 <th>A szám</th>
-<th>Régi eszköz</th>
 <th>Régi eszköz típusa</th>
-<th>Új eszköz</th>
+<th>Régi eszköz</th>
 <th>Új eszköz típusa</th>
+<th>Új eszköz</th>
 <th>Név</th>
 <th>Dátum</th>
 </tr>";
@@ -74,11 +78,15 @@ while($sor = mysqli_fetch_array($res2)) {
 
  echo "<tr>";
  echo "<td>" . $sor['a_szam'] . "</td>";
- echo "<td>" . $sor['serial1'] . "</td>";
+ 
  echo "<td>" . $sor['eszkoz1'] . "</td>";
- echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['serial1'] . "</td>";
+  
  echo "<td>" . $sor['eszkoz2'] . "</td>";
+ echo "<td>" . $sor['serial2'] . "</td>";
+ 
  echo "<td>" . $sor['sp_code'] . "</td>";
+ 
  echo "<td>" . $sor['date'] . "</td>";
  echo "</tr>"; 
 
@@ -94,10 +102,10 @@ $res = mysqli_query($con, $sql);
 echo "<table border='8'>
 <tr>
 <th>A szám</th>
-<th>Régi eszköz</th>
 <th>Régi eszköz típusa</th>
-<th>Új eszköz</th>
+<th>Régi eszköz</th>
 <th>Új eszköz típusa</th>
+<th>Új eszköz</th>
 <th>Név</th>
 <th>Dátum</th>
 </tr>";
@@ -105,10 +113,12 @@ while($sor = mysqli_fetch_array($res)) {
 
  echo "<tr>";
  echo "<td>" . $sor['a_szam'] . "</td>";
- echo "<td>" . $sor['serial1'] . "</td>";
+ 
  echo "<td>" . $sor['eszkoz1'] . "</td>";
- echo "<td>" . $sor['serial2'] . "</td>";
+ echo "<td>" . $sor['serial1'] . "</td>";
+  
  echo "<td>" . $sor['eszkoz2'] . "</td>";
+ echo "<td>" . $sor['serial2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
  echo "</tr>"; 
