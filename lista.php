@@ -11,7 +11,8 @@ if($jog==2){
 
 $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
 $sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1'";
-
+$szin1="\"#000000\"";
+$szin2="\"#FF0000\"";
 $res = mysqli_query($con, $sql);
 $res2 = mysqli_query($con, $sql2);
 
@@ -28,15 +29,19 @@ echo "<table border='8'>
 <th> </th>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
-
+ if($sor['alert']==1){
+ $szin= $szin2;
+ }
+ 
  echo "<tr>";
- echo "<td>" . $sor['a_szam'] . "</td>";
- echo "<td>" . $sor['serial1'] . "</td>";
- echo "<td>" . $sor['eszkoz1'] . "</td>";
- echo "<td>" . $sor['serial2'] . "</td>";
- echo "<td>" . $sor['eszkoz2'] . "</td>";
- echo "<td>" . $sor['sp_code'] . "</td>";
- echo "<td>" . $sor['date'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['a_szam'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['serial1'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['eszkoz1'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['serial2'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['eszkoz2'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['sp_code'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['date'] . "</td></font>";
+ 
  echo "<td align=\"baseline\">
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
@@ -50,7 +55,7 @@ while($sor = mysqli_fetch_array($res)) {
  <input type=\"submit\" value=\"NEM\">
  </form></td>";
  echo "</tr>"; 
-
+ $szin=$szin1;
 }
 echo "</table>";
 echo "</br></br>";
