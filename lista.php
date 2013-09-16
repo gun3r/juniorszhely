@@ -3,6 +3,7 @@
 <?php
 include 'kuki.php';
 include 'connection.php';
+include_once("analyticstracking.php");
 $jog = intval($_COOKIE["sp_codej"]);
 $sp_code = strval($_COOKIE["sp_code"]);
 
@@ -36,7 +37,7 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>" . $sor['eszkoz2'] . "</td>";
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
- echo "<td>
+ echo "<td align=\"baseline\">
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"data\" value=\"1\">
