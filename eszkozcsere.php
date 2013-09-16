@@ -1,7 +1,7 @@
 <?php
 include 'kuki.php';
 include 'connection.php';
-
+include_once("analyticstracking.php");
 
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 
@@ -65,6 +65,9 @@ echo "	</tr>\n";
 echo "	  \n"; 
 echo "</form>\n"; 
 echo "\n"; 
+
+echo "<br/>";
+//echo "<img src=\"http://szupersz.dyndns.tv/images/adsl_pirelli_v1.jpg\" />";
 echo "</body>\n"; 
 echo "</html>\n";
 ?>
