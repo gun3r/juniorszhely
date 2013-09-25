@@ -13,6 +13,8 @@ $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
 $sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1'";
 $szin1="\"#000000\"";
 $szin2="\"#FF0000\"";
+$num1="2";
+$num2="3";
 $res = mysqli_query($con, $sql);
 $res2 = mysqli_query($con, $sql2);
 
@@ -31,6 +33,7 @@ echo "<table border='8'>
 while($sor = mysqli_fetch_array($res)) {
  if($sor['alert']==1){
  $szin= $szin2;
+ $num=$num2;
  }
  
  echo "<tr>";
@@ -46,7 +49,7 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td><font color=" . $szin . ">" . $sor['sp_code'] . "</td>";
  echo "<td><font color=" . $szin . ">" . $sor['date'] . "</td></font>";
  
- echo "<td align=\"baseline\">
+ echo "<td>
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"data\" value=\"1\">
@@ -55,11 +58,12 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
- <input type=\"hidden\" name=\"data\" value=\"2\">
+ <input type=\"hidden\" name=\"data\" value=\"" . $num .".\">
  <input type=\"submit\" value=\"NEM\">
  </form></td>";
  echo "</tr>"; 
  $szin=$szin1;
+ $num=$num1;
 }
 echo "</table>";
 echo "</br></br>";
@@ -127,15 +131,6 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>
  <form action=\"\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
- 
- <input type=\"hidden\" name=\"a_szam\" value=" . $sor['a_szam'].">
- 
- <input type=\"hidden\" name=\"nev1\" value=" . $sor['eszkoz1']. ">
- <input type=\"hidden\" name=\"serial1\" value=" . $sor['serial1']. ">
- 
- <input type=\"hidden\" name=\"nev2\" value=" . $sor['eszkoz2']. ">
- <input type=\"hidden\" name=\"serial2\" value=" . $sor['serial2']. ">
- 
  <input type=\"submit\" value=\"Módosít\">
  </form></td>";
  }

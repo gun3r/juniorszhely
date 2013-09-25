@@ -13,8 +13,18 @@ if (!mysqli_query($con,$sql))
   {
   die('Error: ' . mysqli_error($con));
   }
-  }else{
+  }
+  if ($data==2){
+  
   $sql="UPDATE `eszkoz`.`data` SET `alert` = '1' WHERE `data`.`id` = '$_POST[id]'";
+
+if (!mysqli_query($con,$sql))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
+  }
+  else{
+  $sql="UPDATE `eszkoz`.`data` SET `alert` = '0' WHERE `data`.`id` = '$_POST[id]'";
 
 if (!mysqli_query($con,$sql))
   {
