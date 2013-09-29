@@ -31,6 +31,7 @@ echo "<table border='8'>
 <th> </th>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
+ $num=$num1;
  if($sor['alert']==1){
  $szin= $szin2;
  $num=$num2;
@@ -63,7 +64,6 @@ while($sor = mysqli_fetch_array($res)) {
  </form></td>";
  echo "</tr>"; 
  $szin=$szin1;
- $num=$num1;
 }
 echo "</table>";
 echo "</br></br>";
