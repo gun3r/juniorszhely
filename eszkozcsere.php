@@ -72,4 +72,5 @@ echo "<br/>";
 //echo "<img src=\"http://szupersz.dyndns.tv/images/adsl_pirelli_v1.jpg\" />";
 echo "</body>\n"; 
 echo "</html>\n";
+
 ?>
