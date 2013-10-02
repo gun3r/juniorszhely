@@ -6,7 +6,7 @@ include 'fejlec.php';
 include_once("analyticstracking.php");
 $jog = intval($_COOKIE["sp_codej"]);
 $sp_code = strval($_COOKIE["sp_code"]);
-
+//eszköztár jogú ember listája
 if($jog==2){
 
 $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
@@ -67,6 +67,8 @@ while($sor = mysqli_fetch_array($res)) {
 }
 echo "</table>";
 echo "</br></br>";
+
+//lezárt eszközök listája
 echo "<table border='8'>
 <tr>
 <th>A szám</th>
@@ -99,6 +101,8 @@ while($sor = mysqli_fetch_array($res2)) {
 }
 echo "</table>";
 }
+
+//felhasználó listája
 else{
 
 $sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'  ORDER BY `date` DESC";
