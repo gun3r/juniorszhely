@@ -1,8 +1,8 @@
 <html>
 <body bgcolor="#D8D8D8">
 <?php
-include 'kuki.php';
 include 'connection.php';
+include 'fejlec.php';
 include_once("analyticstracking.php");
 $jog = intval($_COOKIE["sp_codej"]);
 $sp_code = strval($_COOKIE["sp_code"]);
@@ -10,7 +10,7 @@ $sp_code = strval($_COOKIE["sp_code"]);
 if($jog==2){
 
 $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
-$sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1'";
+$sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1' ORDER BY `date` DESC";
 $szin1="\"#000000\"";
 $szin2="\"#FF0000\"";
 $num1="2";
@@ -99,7 +99,7 @@ echo "</table>";
 }
 else{
 
-$sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'";
+$sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'  ORDER BY `date` DESC";
 
 $res = mysqli_query($con, $sql);
 

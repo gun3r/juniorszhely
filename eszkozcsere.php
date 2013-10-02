@@ -9,6 +9,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n"
 echo "<title>MT Eszközcsere</title>\n"; 
 echo "</head>\n"; 
 echo "<body bgcolor=\"#D8D8D8\">\n"; 
+include 'fejlec.php';
 echo "<h1>Eszközcsere</h1>\n"; 
 echo "\n"; 
 echo "<p></p>\n"; 
@@ -67,6 +68,7 @@ echo "</form>\n";
 echo "\n"; 
 
 echo "<br/>";
+
 //echo "<img src=\"http://szupersz.dyndns.tv/images/adsl_pirelli_v1.jpg\" />";
 echo "</body>\n"; 
 echo "</html>\n";
