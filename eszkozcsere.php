@@ -67,10 +67,9 @@ echo "	  \n";
 echo "</form>\n"; 
 echo "\n"; 
 
-echo "<br/>";
 
 //echo "<img src=\"http://szupersz.dyndns.tv/images/adsl_pirelli_v1.jpg\" />";
+include 'lablec.php';
 echo "</body>\n"; 
 echo "</html>\n";
-
 ?>

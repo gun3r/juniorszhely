@@ -27,8 +27,11 @@
   </table>
   <input type="submit" value="Belépés">
   </form>
-<h4>Készítették: Junior kollégák</h4>   
-<h4><a href="mailto:molnar.gabor2@telekom.hu; vadasz.gergo@telekom.hu"</a>E-mail a fejlesztőknek</h4>    
-  
+<!--<h4>Készítették: Molnár Gábor, Vadász Gergő  </br>
+	<a href="mailto:molnar.gabor2@telekom.hu; vadasz.gergo@telekom.hu?Subject=Eszközcsere"</a>E-mail a fejlesztőknek</h4>    
+ -->
+<?php
+	include 'lablec.php';
+?> 
   </body>
 </html>
