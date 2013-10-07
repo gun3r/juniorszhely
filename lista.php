@@ -1,6 +1,7 @@
 <html>
 <body bgcolor="#D8D8D8">
 <?php
+include 'kuki.php';
 include 'connection.php';
 include 'fejlec.php';
 include_once("analyticstracking.php");
