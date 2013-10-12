@@ -127,10 +127,12 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
  
+//hiba esetén mod gomb és adatok küldése 
  if($sor['alert']==1){
- 
+
  echo "<td>
- <form action=\"\" method=\"post\">
+ <form action=\"eszkozcsere.php\" method=\"post\">
+ <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"submit\" value=\"Módosít\">
  </form></td>";

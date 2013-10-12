@@ -3,6 +3,33 @@ include 'kuki.php';
 include 'connection.php';
 include_once("analyticstracking.php");
 
+$mod=$_POST[mod];
+
+if($mod==1){
+
+$sql = "SELECT * FROM  `data` WHERE  `id` =  '$_POST[id]'";
+$res = mysqli_query($con, $sql);
+
+while($sor = mysqli_fetch_array($res)) {
+
+$a_szam=$sor['a_szam'];
+$eszkoz1=$sor['eszkoz1'];
+$serial1=$sor['serial1'];
+$eszkoz2=$sor['eszkoz2'];
+$serial2=$sor['serial2'];
+$e1=$eszkoz1;
+$e2=$eszkoz2;
+}
+}else{
+$e1="";
+$e2="";
+$eszkoz1="Válasz a listából";
+$eszkoz2="Válasz a listából";
+$a_szam="";
+$serial1="";
+$serial2="";
+$mod=0;
+}
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n"; 
@@ -17,16 +44,16 @@ echo "<form action=\"eszkoz_be.php\" method=\"post\">\n";
 echo "	<table border=8>\n"; 
 echo "	<tr>\n"; 
 echo "	<td>\n"; 
-echo "	  A szám: </td><td> <input type=\"text\" name=\"a_szam\" />\n"; 
+echo "	  A szám: </td><td> <input type=\"text\" name=\"a_szam\" value=\"" . $a_szam . "\"/>\n"; 
 echo "	</td>\n";
 echo "	</td>";
 echo "	</tr>\n"; 
 echo "	<tr>\n"; 
 echo "	<td>\n"; 
-echo "	  Régi eszköz gyári szám: </td><td> <input type=\"text\" name=\"serial1\" />\n"; 
+echo "	  Régi eszköz gyári szám: </td><td> <input type=\"text\" name=\"serial1\" value=\"" . $serial1 . "\"/>\n"; 
 echo "	</td>\n"; 
 echo "  <td> <select name=\"nev1\" size=\”1\”>\n";
-echo "  <option value=\" \" selected>Válasz a listából</option>\n";
+echo "  <option value=\"" . $e1 ."\" selected>" . $eszkoz1 ."</option>\n";
 
 $sql = "select nev from eszkoz_nev order by nev asc";
 
@@ -41,10 +68,10 @@ echo "	</td>\n";
 echo "	</tr>\n";
 echo "	<tr>\n";
 echo "	<td>\n"; 
-echo "	  Új eszköz gyári szám:  </td><td><input type=\"text\" name=\"serial2\">\n"; 
+echo "	  Új eszköz gyári szám:  </td><td><input type=\"text\" name=\"serial2\" value=\"" . $serial2 . "\">\n"; 
 echo "	</td>\n";
 echo "  <td> <select name=\"nev2\" size=\”1\”>\n";
-echo "  <option value=\" \" selected>Válasz a listából</option>\n";
+echo "  <option value=\"" . $e2 ."\" selected>" . $eszkoz2 ."</option>\n";
 
 $sql2 = "select nev from eszkoz_nev order by nev asc";
 
@@ -60,7 +87,9 @@ echo "	</tr>\n";
 echo "	</table>\n"; 
 echo "	<tr>\n"; 
 echo "	<td> \n"; 
-echo "	  <input type=\"submit\" value=\"Adatok elküldése\" name=\"submit\" />	  \n"; 
+echo "  <input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">";
+echo "  <input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">";
+echo "	<input type=\"submit\" value=\"Adatok elküldése\" name=\"submit\" />	  \n"; 
 echo "	</td>\n"; 
 echo "	</tr>\n"; 
 echo "	  \n"; 
