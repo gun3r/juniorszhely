@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 include 'connection.php';
   
 $sql="SELECT * FROM  `members` WHERE sp_code = \"$_POST[sp_code]\" ";

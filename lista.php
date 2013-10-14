@@ -77,6 +77,7 @@ echo "<table border='8'>
 <th>Új eszköz</th>
 <th>Név</th>
 <th>Dátum</th>
+<th>Lezárva</th>
 </tr>";
 
 while($sor = mysqli_fetch_array($res2)) {
@@ -93,6 +94,7 @@ while($sor = mysqli_fetch_array($res2)) {
  echo "<td>" . $sor['sp_code'] . "</td>";
  
  echo "<td>" . $sor['date'] . "</td>";
+ echo "<td>" . $sor['date2'] . "</td>";
  echo "</tr>"; 
 
 }

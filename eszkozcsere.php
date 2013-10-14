@@ -32,7 +32,7 @@ $mod=0;
 }
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n"; 
+echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"iso-8859-2\">\n"; 
 echo "<title>MT Eszközcsere</title>\n"; 
 echo "</head>\n"; 
 echo "<body bgcolor=\"#D8D8D8\">\n"; 
