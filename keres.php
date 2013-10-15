@@ -30,9 +30,9 @@ $search=intval($_POST[search]);
 if($search==1){
 
 if($mit==1){
-$sql="SELECT * FROM  `data` WHERE `a_szam` = \"$keres\" ";
+$sql="SELECT * FROM  `data` WHERE `a_szam` LIKE \"%$keres%\" ";
 }else{
-$sql="SELECT * FROM  `data` WHERE `serial1` = \"$keres\" or `serial2`= \"$keres\" ";
+$sql="SELECT * FROM  `data` WHERE `serial1` LIKE \"%$keres%\" or `serial2`LIKE \"%$keres%\" ";
 }
 
 $res = mysqli_query($con, $sql);
