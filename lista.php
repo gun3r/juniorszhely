@@ -11,7 +11,7 @@ $sp_code = strval($_COOKIE["sp_code"]);
 if($jog==2){
 
 $sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
-$sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1' ORDER BY `date` DESC";
+$sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1' ORDER BY `date` DESC LIMIT 30";
 $szin1="\"#000000\"";
 $szin2="\"#FF0000\"";
 $num1="2";
