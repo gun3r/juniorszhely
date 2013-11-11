@@ -14,15 +14,26 @@ include 'fejlec.php';
 ?>
 <h1>Keresés</h1>
 
+<table border=8>
+
 <form action="keres.php" method="post">
+<tr>
+<td>
 Keresés: <input type="text" name="keres">
-itt: <select name="mit" size=”1”>
+</td>
+<td>
+<select name="mit" size=”1”>
       <option value="1" selected>A szám</option>
       <option value="2">Eszközszám</option>
      </select>
 <input type="hidden" name="search" value="1">
-<input type="submit">
+<input type="submit" value="Küldés">
+</td>
+</tr>
 </form>
+</table>
+</br>
+
 <?php
 $keres=$_POST[keres];
 $mit=intval($_POST[mit]);
@@ -74,5 +85,6 @@ echo "</table>";
 }
 include 'lablec.php';
 ?>
+
 </body>
 </html>
