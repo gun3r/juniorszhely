@@ -2,7 +2,6 @@
 // Create connection
 include 'connection.php';
 include 'kuki.php';
-  
   $data=$_POST[data];
   
   if ($data==1){

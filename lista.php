@@ -10,8 +10,9 @@ $sp_code = strval($_COOKIE["sp_code"]);
 
 if($jog==2){
 
-$sql = "SELECT * FROM  `data` WHERE  `closed` =  '0'";
-$sql2 = "SELECT * FROM  `data` WHERE  `closed` =  '1' ORDER BY `date` DESC LIMIT 30";
+$sql = "Select members.name as name, members.email,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE  `closed` =  '0'";
+
+$sql2 = "Select members.name as name, data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE `closed` =  '1' ORDER BY `date` DESC LIMIT 30";
 $szin1="\"#000000\"";
 $szin2="\"#FF0000\"";
 $num1="2";
@@ -33,12 +34,15 @@ echo "<table border='8'>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
  $num=$num1;
- if($sor['alert']==1){
+ $email=$sor['email'];
+ $emailsend="<a href='mailto:". $email ."?Subject=Eszközcsere Hibás adatok!!'>";
+  if($sor['alert']==1){
  $szin= $szin2;
  $num=$num2;
+ $emailsend="";
  }
  
- echo "<tr>";
+ echo "<tr  height=\"12px\">";
  echo "<td><font color=" . $szin . ">" . $sor['a_szam'] . "</td>";
  
  echo "<td><font color=" . $szin . ">" . $sor['eszkoz1'] . "</td>";
@@ -48,7 +52,7 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td><font color=" . $szin . ">" . $sor['eszkoz2'] . "</td>";
  
  echo "<td><font color=" . $szin . ">" . $sor['serial2'] . "</td>";
- echo "<td><font color=" . $szin . ">" . $sor['sp_code'] . "</td>";
+ echo "<td><font color=" . $szin . ">" . $sor['name'] . "</td>";
  echo "<td><font color=" . $szin . ">" . $sor['date'] . "</td></font>";
  
  echo "<td>
@@ -61,8 +65,8 @@ while($sor = mysqli_fetch_array($res)) {
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"data\" value=\"" . $num .".\">
- <input type=\"submit\" value=\"NEM\">
- </form></td>";
+ ". $emailsend ."<input type=\"submit\" value=\"NEM\">
+ </form></a></td>";
  echo "</tr>"; 
  $szin=$szin1;
 }
@@ -91,7 +95,7 @@ while($sor = mysqli_fetch_array($res2)) {
  echo "<td>" . $sor['eszkoz2'] . "</td>";
  echo "<td>" . $sor['serial2'] . "</td>";
  
- echo "<td>" . $sor['sp_code'] . "</td>";
+ echo "<td>" . $sor['name'] . "</td>";
  
  echo "<td>" . $sor['date'] . "</td>";
  echo "<td>" . $sor['date2'] . "</td>";
@@ -113,7 +117,6 @@ echo "<table border='8'>
 <th>Régi eszköz</th>
 <th>Új eszköz típusa</th>
 <th>Új eszköz</th>
-<th>Név</th>
 <th>Dátum</th>
 </tr>";
 while($sor = mysqli_fetch_array($res)) {
@@ -126,7 +129,6 @@ while($sor = mysqli_fetch_array($res)) {
   
  echo "<td>" . $sor['eszkoz2'] . "</td>";
  echo "<td>" . $sor['serial2'] . "</td>";
- echo "<td>" . $sor['sp_code'] . "</td>";
  echo "<td>" . $sor['date'] . "</td>";
  
 //hiba esetén mod gomb és adatok küldése 

@@ -41,9 +41,9 @@ $search=intval($_POST[search]);
 if($search==1){
 
 if($mit==1){
-$sql="SELECT * FROM  `data` WHERE `a_szam` LIKE \"%$keres%\" ";
+$sql="Select members.name as name, members.email,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE `a_szam` LIKE \"%$keres%\" ";
 }else{
-$sql="SELECT * FROM  `data` WHERE `serial1` LIKE \"%$keres%\" or `serial2`LIKE \"%$keres%\" ";
+$sql="Select members.name as name, members.email,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE `serial1` LIKE \"%$keres%\" or `serial2`LIKE \"%$keres%\" ";
 }
 
 $res = mysqli_query($con, $sql);
@@ -74,7 +74,7 @@ while($sor = mysqli_fetch_array($res)) {
  echo "<td>" . $sor['eszkoz2'] . "</td>";
  echo "<td>" . $sor['serial2'] . "</td>";
  
- echo "<td>" . $sor['sp_code'] . "</td>";
+ echo "<td>" . $sor['name'] . "</td>";
  
  echo "<td>" . $sor['date'] . "</td>";
  echo "</tr>"; 
