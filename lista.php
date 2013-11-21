@@ -12,7 +12,7 @@ if($jog==2){
 
 $sql = "Select members.name as name, members.email,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE  `closed` =  '0'";
 
-$sql2 = "Select members.name as name, data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE `closed` =  '1' ORDER BY `date` DESC LIMIT 30";
+$sql2 = "Select members.name as name, data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE `closed` =  '1' ORDER BY `date` DESC LIMIT 10";
 $szin1="\"#000000\"";
 $szin2="\"#FF0000\"";
 $num1="2";
@@ -35,11 +35,29 @@ echo "<table border='8'>
 while($sor = mysqli_fetch_array($res)) {
  $num=$num1;
  $email=$sor['email'];
- $emailsend="<a href='mailto:". $email ."?Subject=Eszközcsere Hibás adatok!!'>";
+ $emailsend="";
+ $br="%0D%0A";//mailto sortörés!!
   if($sor['alert']==1){
  $szin= $szin2;
  $num=$num2;
- $emailsend="";
+ 
+ $emailsend=
+ "<td>
+ <form action=\"MAILTO:". $email ."?Subject=Eszközcsere Hibás adatok!!&Body=Hibás eszköz adatokat adtál meg az alábbi esetben:".$br.$br."
+ A szám: " . $sor['a_szam'] .$br. "
+ Régi eszköz: " . $sor['eszkoz1'] .$br. "
+ Régi eszköz: " . $sor['serial1'] . $br."
+ Új eszköz típusa: " . $sor['eszkoz2'] .$br. "
+ Új eszköz: " . $sor['serial2'] . $br."
+ \" method=\"post\" enctype=\"text/plain\">
+ <input type=\"submit\" value=\"Email küldés\">
+</form></td>
+<td>
+ <form action=\"eszkozcsere.php\" method=\"post\">
+ <input type=\"hidden\" name=\"mod\" value=\"1\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"submit\" value=\"Módosít\">
+ </form></td>";
  }
  
  echo "<tr  height=\"12px\">";
@@ -65,14 +83,15 @@ while($sor = mysqli_fetch_array($res)) {
  <form action=\"mod.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"data\" value=\"" . $num .".\">
- ". $emailsend ."<input type=\"submit\" value=\"NEM\">
- </form></a></td>";
+ <input type=\"submit\" value=\"NEM\">
+ </form></td>" . $emailsend ;
  echo "</tr>"; 
  $szin=$szin1;
 }
 echo "</table>";
 echo "</br></br>";
-echo "<table border='8'>
+echo "Jóváhagyott cserék (utolsó 10 darab):</br>
+	<table border='8'>
 <tr>
 <th>A szám</th>
 <th>Régi eszköz típusa</th>
@@ -106,7 +125,7 @@ echo "</table>";
 }
 else{
 
-$sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'  ORDER BY `date` DESC";
+$sql = "SELECT * FROM  `data` WHERE  `sp_code` =  '$sp_code'  ORDER BY `alert` DESC, `date` DESC";
 
 $res = mysqli_query($con, $sql);
 
