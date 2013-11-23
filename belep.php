@@ -18,6 +18,7 @@ $pass = $sor['password'];
 $pass1 = $_POST[password];
 $jog1 = intval($sor['jog']);
 $sp = $_POST[sp_code];
+mysqli_close($con);
 
  if ($pass == $pass1) {
  
@@ -38,6 +39,6 @@ $sp = $_POST[sp_code];
  
 }
   
-mysqli_close($con);
+
 
 ?>

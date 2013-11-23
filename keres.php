@@ -83,6 +83,7 @@ while($sor = mysqli_fetch_array($res)) {
 echo "</table>";
 }
 }
+mysqli_close($con);
 include 'lablec.php';
 ?>
 
