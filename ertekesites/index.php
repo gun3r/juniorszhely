@@ -1,5 +1,4 @@
 <html>
-<font size="2">
 <table border=2 >
 <tr>
 <th valign=top>
@@ -185,6 +184,5 @@ echo "</tr>
 </th>";
 
 ?>
-</font>
 </table>
 </html>
