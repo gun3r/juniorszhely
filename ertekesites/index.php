@@ -1,5 +1,5 @@
 <html>
-<table border=2 >
+<table>
 <tr>
 <th valign=top>
 <?php
@@ -34,11 +34,11 @@ WHERE name  LIKE \"%$nev%\"";
  $res2 = mysqli_query($con, $sql2);
  
  while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . $sor2['a'] ."</td>";
- echo "<td>" . $sor2['t'] ."</td>";
- echo "<td>" . $sor2['m'] ."</td>";
- echo "<td>" . $sor2['e'] ."</td>";
- echo "<td>" . $sor2['e2'] ."</td></tr>";
+ echo "<td>" . intval($sor2['a']) ."</td>";
+ echo "<td>" . intval($sor2['t']) ."</td>";
+ echo "<td>" . intval($sor2['m']) ."</td>";
+ echo "<td>" . intval($sor2['e']) ."</td>";
+ echo "<td>" . intval($sor2['e2']) ."</td></tr>";
 
 }
 }
@@ -81,11 +81,11 @@ WHERE name LIKE \"%$nev%\"";
  $res2 = mysqli_query($con, $sql2);
  
  while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . $sor2['a'] ."</td>";
- echo "<td>" . $sor2['t'] ."</td>";
- echo "<td>" . $sor2['m'] ."</td>";
- echo "<td>" . $sor2['e'] ."</td>";
- echo "<td>" . $sor2['e2'] ."</td></tr>";
+ echo "<td>" . intval($sor2['a']) ."</td>";
+ echo "<td>" . intval($sor2['t']) ."</td>";
+ echo "<td>" . intval($sor2['m']) ."</td>";
+ echo "<td>" . intval($sor2['e']) ."</td>";
+ echo "<td>" . intval($sor2['e2']) ."</td></tr>";
 
 }
 }
@@ -126,11 +126,11 @@ WHERE name LIKE \"%$nev%\"";
  $res2 = mysqli_query($con, $sql2);
  
  while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . $sor2['a'] ."</td>";
- echo "<td>" . $sor2['t'] ."</td>";
- echo "<td>" . $sor2['m'] ."</td>";
- echo "<td>" . $sor2['e'] ."</td>";
- echo "<td>" . $sor2['e2'] ."</td></tr>";
+ echo "<td>" . intval($sor2['a']) ."</td>";
+ echo "<td>" . intval($sor2['t']) ."</td>";
+ echo "<td>" . intval($sor2['m']) ."</td>";
+ echo "<td>" . intval($sor2['e']) ."</td>";
+ echo "<td>" . intval($sor2['e2']) ."</td></tr>";
 
 }
 }
@@ -171,11 +171,11 @@ WHERE name LIKE \"%$nev%\"";
  $res2 = mysqli_query($con, $sql2);
  
  while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . $sor2['a'] ."</td>";
- echo "<td>" . $sor2['t'] ."</td>";
- echo "<td>" . $sor2['m'] ."</td>";
- echo "<td>" . $sor2['e'] ."</td>";
- echo "<td>" . $sor2['e2'] ."</td></tr>";
+ echo "<td>" . intval($sor2['a']) ."</td>";
+ echo "<td>" . intval($sor2['t']) ."</td>";
+ echo "<td>" . intval($sor2['m']) ."</td>";
+ echo "<td>" . intval($sor2['e']) ."</td>";
+ echo "<td>" . intval($sor2['e2']) ."</td></tr>";
 
 }
 }
