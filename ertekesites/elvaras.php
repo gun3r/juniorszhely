@@ -15,7 +15,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 	<tr>
 		<td>Aktív</td>
 		<td>Név</td>
-		<td>T-home</td>
+		<td>Alap</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
 		<td>Eszköz portfóliós</td>

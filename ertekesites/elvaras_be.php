@@ -14,7 +14,7 @@ $m=intval($munkacsop);
 if($mod==1){
 	 
 	 $besz = "UPDATE `ertekesites`.`elvaras` 
-	 SET  name='$_POST[name]',alap='$_POST[alap]',tobblet='$_POST[tobblet]',munkadij='$_POST[munkadij]',eszkoz='$_POST[eszkoz1]',eszkoz2='$_POST[eszkoz2]',ev='$_POST[ev]'	 WHERE	 `elvaras`.`id` = '$_POST[id]' ";
+	 SET  aktiv='$_POST[aktiv]',name='$_POST[name]',alap='$_POST[alap]',tobblet='$_POST[tobblet]',munkadij='$_POST[munkadij]',eszkoz='$_POST[eszkoz1]',eszkoz2='$_POST[eszkoz2]',ev='$_POST[ev]'	 WHERE	 `elvaras`.`id` = '$_POST[id]' ";
 		  
 	 if (!mysqli_query($con,$besz))
 	   {
