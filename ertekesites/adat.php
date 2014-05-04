@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-
+include 'fejlec.php';
 $mod=$_POST[mod];
 
 if($mod==1){

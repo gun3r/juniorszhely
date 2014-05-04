@@ -1,9 +1,11 @@
 <html>
+<?php include 'fejlec.php';?>
 <table>
 <tr>
 <th valign=top>
 <?php
 include 'connection.php';
+
 //tapolca
 $sql = "SELECT name FROM `user` 
 WHERE munkacsoport=1 order by munkacsoport asc, iranyito desc, name asc
