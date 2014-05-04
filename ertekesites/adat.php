@@ -113,7 +113,7 @@ echo " 	</select></td>
 		<td></td>
 		<td></td>
 	</tr>";
-		$sql = "SELECT * FROM adat WHERE 1 Order by id desc";
+		$sql = "SELECT * FROM adat WHERE 1 Order by id desc , datum2 desc";
 		
 		$res = mysqli_query($con, $sql);
 

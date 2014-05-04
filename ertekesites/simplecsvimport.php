@@ -1,5 +1,5 @@
 <?php
-
+$ev=date("Y-m-01");
 /********************************/
 /* Code at http://legend.ws/blog/tips-tricks/csv-php-mysql-import/
 /* Edit the entries below to reflect the appropriate values
@@ -80,9 +80,9 @@ foreach(split($lineseparator,$csvcontent) as $line) {
 	$linemysql = implode("','",$linearray);
 	
 	if($addauto)
-		$query = "insert into $databasetable values('','$linemysql','');";
+		$query = "insert into $databasetable values('','$linemysql','$ev');";
 	else
-		$query = "insert into $databasetable values('','$linemysql','');";
+		$query = "insert into $databasetable values('','$linemysql','$ev');";
 	
 	$queries .= $query . "\n";
 
@@ -113,5 +113,7 @@ if($save) {
 
 echo "Found a total of $lines records in this csv file.\n";
 
-
+$URL="elvaras.php"; 
+header ("Location: $URL");
+exit();
 ?>
