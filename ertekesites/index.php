@@ -5,7 +5,9 @@
 <th valign=top>
 <?php
 include 'connection.php';
-
+$datum=date("Y-m-01");
+$datum2=date("Y-m-01");
+$datum3=date("Y-m-t");
 //tapolca
 $sql = "SELECT name FROM `user` 
 WHERE munkacsoport=1 order by munkacsoport asc, iranyito desc, name asc
@@ -29,19 +31,84 @@ while($sor = mysqli_fetch_array($res)) {
 $nev=$sor['name'];
 echo "<tr>";
  echo "<td>" . $sor['name'] ."</td>";
- $sql2 =
+$sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM adat
-WHERE name  LIKE \"%$nev%\"";
+WHERE name  LIKE \"%$nev%\" and
+datum >='$datum2' and datum <='$datum3'";
+
+
  $res2 = mysqli_query($con, $sql2);
  
  while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . intval($sor2['a']) ."</td>";
- echo "<td>" . intval($sor2['t']) ."</td>";
- echo "<td>" . intval($sor2['m']) ."</td>";
- echo "<td>" . intval($sor2['e']) ."</td>";
- echo "<td>" . intval($sor2['e2']) ."</td></tr>";
+  
+  $sql3 = 
+	"SELECT *
+	FROM  `elvaras` 
+	WHERE name LIKE  \"%$nev%\"
+	AND ev = '$datum'";
+	$res3 = mysqli_query($con, $sql3);
+ 
+ while($sor3 = mysqli_fetch_array($res3)) {
+ 
+ $color=red;
+ $nevezo=floatval($sor3['alap']);
+ $szamlalo=floatval($sor2['a']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['tobblet']);
+ $szamlalo=floatval($sor2['t']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['munkadij']);
+ $szamlalo=floatval($sor2['m']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['eszkoz']);
+ $szamlalo=floatval($sor2['e']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['e']) ."</td>";
+ echo "<td bgcolor=grey>" . intval($sor2['e2']) ."</td></tr>";
 
+}
 }
 }
 
@@ -79,16 +146,79 @@ echo "<tr>";
  $sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM adat
-WHERE name LIKE \"%$nev%\"";
+WHERE name LIKE \"%$nev%\"
+and
+datum >='$datum2' and datum <='$datum3'";
  $res2 = mysqli_query($con, $sql2);
  
- while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . intval($sor2['a']) ."</td>";
- echo "<td>" . intval($sor2['t']) ."</td>";
- echo "<td>" . intval($sor2['m']) ."</td>";
- echo "<td>" . intval($sor2['e']) ."</td>";
- echo "<td>" . intval($sor2['e2']) ."</td></tr>";
+ while($sor2 = mysqli_fetch_array($res2)) {  
+  $sql3 = 
+	"SELECT *
+	FROM  `elvaras` 
+	WHERE name LIKE  \"%$nev%\"
+	AND ev = '$datum'";
+	$res3 = mysqli_query($con, $sql3);
+ 
+ while($sor3 = mysqli_fetch_array($res3)) {
+ 
+ $color=red;
+ $nevezo=floatval($sor3['alap']);
+ $szamlalo=floatval($sor2['a']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['tobblet']);
+ $szamlalo=floatval($sor2['t']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['munkadij']);
+ $szamlalo=floatval($sor2['m']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['eszkoz']);
+ $szamlalo=floatval($sor2['e']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['e']) ."</td>";
+ echo "<td bgcolor=grey>" . intval($sor2['e2']) ."</td></tr>";
 
+}
 }
 }
 echo "</tr>
@@ -124,17 +254,78 @@ echo "<tr>";
  $sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM adat
-WHERE name LIKE \"%$nev%\"";
+WHERE name LIKE \"%$nev%\"and
+datum >='$datum2' and datum <='$datum3'";
  $res2 = mysqli_query($con, $sql2);
  
- while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . intval($sor2['a']) ."</td>";
- echo "<td>" . intval($sor2['t']) ."</td>";
- echo "<td>" . intval($sor2['m']) ."</td>";
- echo "<td>" . intval($sor2['e']) ."</td>";
- echo "<td>" . intval($sor2['e2']) ."</td></tr>";
+ while($sor2 = mysqli_fetch_array($res2)) {  
+  $sql3 = 
+	"SELECT *
+	FROM  `elvaras` 
+	WHERE name LIKE  \"%$nev%\"
+	AND ev = '$datum'";
+	$res3 = mysqli_query($con, $sql3);
+ 
+ while($sor3 = mysqli_fetch_array($res3)) {
+ 
+ $color=red;
+ $nevezo=floatval($sor3['alap']);
+ $szamlalo=floatval($sor2['a']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['tobblet']);
+ $szamlalo=floatval($sor2['t']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['munkadij']);
+ $szamlalo=floatval($sor2['m']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['eszkoz']);
+ $szamlalo=floatval($sor2['e']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['e']) ."</td>";
+ echo "<td bgcolor=grey>" . intval($sor2['e2']) ."</td></tr>";
 
-}
+}}
 }
 echo "</tr>
 </table>
@@ -169,16 +360,78 @@ echo "<tr>";
  $sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM adat
-WHERE name LIKE \"%$nev%\"";
+WHERE name LIKE \"%$nev%\"and
+datum >='$datum2' and datum <='$datum3'";
  $res2 = mysqli_query($con, $sql2);
  
- while($sor2 = mysqli_fetch_array($res2)) {
- echo "<td>" . intval($sor2['a']) ."</td>";
- echo "<td>" . intval($sor2['t']) ."</td>";
- echo "<td>" . intval($sor2['m']) ."</td>";
- echo "<td>" . intval($sor2['e']) ."</td>";
- echo "<td>" . intval($sor2['e2']) ."</td></tr>";
+ while($sor2 = mysqli_fetch_array($res2)) {  
+  $sql3 = 
+	"SELECT *
+	FROM  `elvaras` 
+	WHERE name LIKE  \"%$nev%\"
+	AND ev = '$datum'";
+	$res3 = mysqli_query($con, $sql3);
+ 
+ while($sor3 = mysqli_fetch_array($res3)) {
+ 
+ $color=red;
+ $nevezo=floatval($sor3['alap']);
+ $szamlalo=floatval($sor2['a']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['tobblet']);
+ $szamlalo=floatval($sor2['t']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['munkadij']);
+ $szamlalo=floatval($sor2['m']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
+ 
+ $color=red;
+ $nevezo=floatval($sor3['eszkoz']);
+ $szamlalo=floatval($sor2['e']);
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td bgcolor=".$color.">" . intval($sor2['e']) ."</td>";
+ echo "<td bgcolor=grey>" . intval($sor2['e2']) ."</td></tr>";
 
+}
 }
 }
 echo "</tr>

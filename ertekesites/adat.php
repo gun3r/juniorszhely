@@ -95,7 +95,7 @@ echo " 	</select></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
 		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz."\"></td>
 		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"></td>
-		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"8\"></td>
+		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
 		<td>
 		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
 		<input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">

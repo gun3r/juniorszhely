@@ -2,7 +2,7 @@
 include 'fejlec.php';
 include 'connection.php';
 $mod=1;
-$ev=date("2015-m-01");
+$ev=date("2014-m-01");
 
 
 echo "<html lang=\"hu\">\n"; 
