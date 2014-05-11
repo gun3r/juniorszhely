@@ -9,7 +9,7 @@ if (!mysqli_query($con,$sql))
   {
   die('Error: ' . mysqli_error($con));
   }
-$URL="ember.html"; header ("Location: $URL");
+$URL="ember.php"; header ("Location: $URL");
 
 mysqli_close($con);
 ?>
