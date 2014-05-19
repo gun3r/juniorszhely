@@ -63,7 +63,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 	<td><select name=\"name\" size=\”1\”>
 	<option value=\"".$namev."\" selected>".$name."</option>";
 	
-$sql = "SELECT name FROM user WHERE iranyito=0 Order by name";
+$sql = "SELECT name FROM user WHERE 1 Order by name";
 
 $res = mysqli_query($con, $sql);
 

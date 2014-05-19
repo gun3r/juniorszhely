@@ -1,8 +1,17 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META HTTP-EQUIV="refresh" CONTENT="60">
+  <link type="image/x-icon" rel="icon" href="favicon.ico" />
+  <link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />
+<title>Eredmények</title>
+</head>
+<body>
 <?php include 'fejlec.php';
 
-$datum=date("Y-m-01");
+//$datum=date("Y-m-01");
+
 $datum2=date("Y-m-01");
 $datum3=date("Y-m-t");
 
@@ -14,19 +23,19 @@ $datum3=$_COOKIE["dat3"];
 setcookie("dat2", $datum2, time()+360000);
 setcookie("dat3", $datum3, time()+360000);
 }
-
+$datum=$datum2;
 echo"
-<form name=\"input\" action=\"kuki.php\" method=\"post\">
-<input type=\"text\" name=\"dat2\" value=\"".$datum2."\" size=\"10\">
-<input type=\"text\" name=\"dat3\" value=\"".$datum3."\" size=\"10\">
-<input type=\"submit\" value=\"Elküld\">
-</form>
+<FORM name=\"input\" action=\"kuki.php\" method=\"post\">
+<INPUT type=\"text\" name=\"dat2\" value=\"".$datum2."\">
+<INPUT type=\"text\" name=\"dat3\" value=\"".$datum3."\">
+<INPUT type=\"submit\" value=\"Elküld\">
+</FORM>
 ";
 
 ?>
 <table>
 <tr>
-<th valign=top>
+<td valign=top>
 <?php
 include 'connection.php';
 //tapolca
@@ -81,7 +90,8 @@ datum >='$datum2' and datum <='$datum3'";
 	"SELECT *
 	FROM  `elvaras` 
 	WHERE name LIKE  \"%$nev%\"
-	AND ev = '$datum'";
+	AND ev = '$datum'
+	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
  
  while($sor3 = mysqli_fetch_array($res3)) {
@@ -157,7 +167,6 @@ datum >='$datum2' and datum <='$datum3'";
  }
  echo "<td bgcolor=".$color.">" . intval($sor2['e']) ."</td>";
  echo "<td bgcolor=grey>" . intval($sor2['e2']) ."</td></tr>";
-
 }
 }
 }
@@ -165,11 +174,11 @@ datum >='$datum2' and datum <='$datum3'";
 echo "
 <tr>
 <td>Összesen:</td>
-<td>".$oa."</td>
-<td>".$ot."</td>
-<td>".$om."</td>
-<td>".$oe."</td>
-<td>".$oe2."</td>
+<td>".number_format($oa, 0, '.', ' ')."</td>
+<td>".number_format($ot, 0, '.', ' ')."</td>
+<td>".number_format($om, 0, '.', ' ')."</td>
+<td>".number_format($oe, 0, '.', ' ')."</td>
+<td>".number_format($oe2, 0, '.', ' ')."</td>
 </tr>
 
 <tr>
@@ -197,7 +206,7 @@ echo "
 
 <th width=20>
 </th>
-<th valign=top>";
+<td valign=top>";
 
 //sopron
 
@@ -249,7 +258,8 @@ datum >='$datum2' and datum <='$datum3'";
 	"SELECT *
 	FROM  `elvaras` 
 	WHERE name LIKE  \"%$nev%\"
-	AND ev = '$datum'";
+	AND ev = '$datum'
+	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
  
  while($sor3 = mysqli_fetch_array($res3)) {
@@ -331,11 +341,11 @@ datum >='$datum2' and datum <='$datum3'";
 echo "
 <tr>
 <td>Összesen:</td>
-<td>".$oa."</td>
-<td>".$ot."</td>
-<td>".$om."</td>
-<td>".$oe."</td>
-<td>".$oe2."</td>
+<td>".number_format($oa, 0, '.', ' ')."</td>
+<td>".number_format($ot, 0, '.', ' ')."</td>
+<td>".number_format($om, 0, '.', ' ')."</td>
+<td>".number_format($oe, 0, '.', ' ')."</td>
+<td>".number_format($oe2, 0, '.', ' ')."</td>
 </tr>
 
 <tr>
@@ -358,11 +368,11 @@ echo "
 
 </tr>
 </table>
-</th>
+</td>
 </tr>
 
 <tr>
-<th valign=top>";
+<td valign=top>";
 //szombathely_se
 $oa=0;
  $ot=0;
@@ -411,7 +421,8 @@ datum >='$datum2' and datum <='$datum3'";
 	"SELECT *
 	FROM  `elvaras` 
 	WHERE name LIKE  \"%$nev%\"
-	AND ev = '$datum'";
+	AND ev = '$datum'
+	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
  
  while($sor3 = mysqli_fetch_array($res3)) {
@@ -492,11 +503,11 @@ datum >='$datum2' and datum <='$datum3'";
 echo "
 <tr>
 <td>Összesen:</td>
-<td>".$oa."</td>
-<td>".$ot."</td>
-<td>".$om."</td>
-<td>".$oe."</td>
-<td>".$oe2."</td>
+<td>".number_format($oa, 0, '.', ' ')."</td>
+<td>".number_format($ot, 0, '.', ' ')."</td>
+<td>".number_format($om, 0, '.', ' ')."</td>
+<td>".number_format($oe, 0, '.', ' ')."</td>
+<td>".number_format($oe2, 0, '.', ' ')."</td>
 </tr>
 
 <tr>
@@ -522,7 +533,7 @@ echo "
 
 <th width=20>
 </th>
-<th valign=top>";
+<td valign=top>";
 //szombathely_ma
 $oa=0;
  $ot=0;
@@ -571,7 +582,8 @@ datum >='$datum2' and datum <='$datum3'";
 	"SELECT *
 	FROM  `elvaras` 
 	WHERE name LIKE  \"%$nev%\"
-	AND ev = '$datum'";
+	AND ev = '$datum'
+	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
  
  while($sor3 = mysqli_fetch_array($res3)) {
@@ -653,11 +665,11 @@ datum >='$datum2' and datum <='$datum3'";
 echo "
 <tr>
 <td>Összesen:</td>
-<td>".$oa."</td>
-<td>".$ot."</td>
-<td>".$om."</td>
-<td>".$oe."</td>
-<td>".$oe2."</td>
+<td>".number_format($oa, 0, '.', ' ')."</td>
+<td>".number_format($ot, 0, '.', ' ')."</td>
+<td>".number_format($om, 0, '.', ' ')."</td>
+<td>".number_format($oe, 0, '.', ' ')."</td>
+<td>".number_format($oe2, 0, '.', ' ')."</td>
 </tr>
 
 <tr>
@@ -679,7 +691,7 @@ echo "
 </tr>
 </tr>
 </table>
-</th>
+</td>
 </table>";
 
 
