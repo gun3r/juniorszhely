@@ -8,7 +8,9 @@
 <title>Eredmények</title>
 </head>
 <body>
-<?php include 'fejlec.php';
+<?php
+include_once("analyticstracking.php");
+include 'fejlec.php';
 
 //$datum=date("Y-m-01");
 
