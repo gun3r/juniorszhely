@@ -25,7 +25,11 @@ $datum3=$_COOKIE["dat3"];
 setcookie("dat2", $datum2, time()+360000);
 setcookie("dat3", $datum3, time()+360000);
 }
+
 $datum=$datum2;
+$maxnap=date(t);
+$deltat = ((strtotime($datum3)-strtotime($datum2))/60/60/24+1)/$maxnap;
+//echo $deltat;
 echo"
 <FORM name=\"input\" action=\"kuki.php\" method=\"post\">
 <INPUT type=\"text\" name=\"dat2\" value=\"".$datum2."\">
@@ -95,7 +99,15 @@ datum >='$datum2' and datum <='$datum3'";
 	AND ev = '$datum'
 	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
- 
+  $row_cnt = intval(mysqli_num_rows($res3));
+if($row_cnt==0){
+echo " 
+ <td>".intval($sor2['a'])."</td>
+ <td>".intval($sor2['t'])."</td>
+ <td>".intval($sor2['m'])."</td>
+ <td>".intval($sor2['e'])."</td>
+ <td>".intval($sor2['e2'])."</td>";
+}
  while($sor3 = mysqli_fetch_array($res3)) {
  if($sor3[aktiv]=='Aktív'){
  $osszes=$osszes+1;
@@ -114,7 +126,7 @@ datum >='$datum2' and datum <='$datum3'";
  $ee2=$ee2+$sor3['eszkoz2'];
  
  $color=red;
- $nevezo=floatval($sor3['alap']);
+ $nevezo=floatval($sor3['alap'])*$deltat;
  $szamlalo=floatval($sor2['a']);
  
  if ($nevezo=='0'){
@@ -128,7 +140,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['tobblet']);
+ $nevezo=floatval($sor3['tobblet'])*$deltat;
  $szamlalo=floatval($sor2['t']);
  
  if ($nevezo=='0'){
@@ -142,7 +154,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['munkadij']);
+ $nevezo=floatval($sor3['munkadij'])*$deltat;
  $szamlalo=floatval($sor2['m']);
  
  if ($nevezo=='0'){
@@ -156,7 +168,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color."> " . intval($sor2['m']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['eszkoz']);
+ $nevezo=floatval($sor3['eszkoz'])*$deltat;
  $szamlalo=floatval($sor2['e']);
  
  if ($nevezo=='0'){
@@ -194,11 +206,11 @@ echo "
 
 <tr>
 <td>1 főre jutó elvárás:</td>
-<td>".number_format($ea/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($et/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($em/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee2/$osszes, 0, '.', ' ')."</td>
+<td>".number_format($ea/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($et/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
 
 
@@ -263,7 +275,15 @@ datum >='$datum2' and datum <='$datum3'";
 	AND ev = '$datum'
 	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
- 
+  $row_cnt = intval(mysqli_num_rows($res3));
+if($row_cnt==0){
+echo " 
+ <td>".intval($sor2['a'])."</td>
+ <td>".intval($sor2['t'])."</td>
+ <td>".intval($sor2['m'])."</td>
+ <td>".intval($sor2['e'])."</td>
+ <td>".intval($sor2['e2'])."</td>";
+}
  while($sor3 = mysqli_fetch_array($res3)) {
  if($sor3[aktiv]=='Aktív'){
  $osszes=$osszes+1;
@@ -281,7 +301,7 @@ datum >='$datum2' and datum <='$datum3'";
  $ee=$ee+$sor3['eszkoz'];
  $ee2=$ee2+$sor3['eszkoz2'];
  $color=red;
- $nevezo=floatval($sor3['alap']);
+ $nevezo=floatval($sor3['alap'])*$deltat;
  $szamlalo=floatval($sor2['a']);
  
  if ($nevezo=='0'){
@@ -295,7 +315,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['tobblet']);
+ $nevezo=floatval($sor3['tobblet'])*$deltat;
  $szamlalo=floatval($sor2['t']);
  
  if ($nevezo=='0'){
@@ -309,7 +329,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['munkadij']);
+ $nevezo=floatval($sor3['munkadij'])*$deltat;
  $szamlalo=floatval($sor2['m']);
  
  if ($nevezo=='0'){
@@ -323,7 +343,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['eszkoz']);
+ $nevezo=floatval($sor3['eszkoz'])*$deltat;
  $szamlalo=floatval($sor2['e']);
  
  if ($nevezo=='0'){
@@ -361,11 +381,11 @@ echo "
 
 <tr>
 <td>1 főre jutó elvárás:</td>
-<td>".number_format($ea/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($et/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($em/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee2/$osszes, 0, '.', ' ')."</td>
+<td>".number_format($ea/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($et/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
 
 </tr>
@@ -426,11 +446,19 @@ datum >='$datum2' and datum <='$datum3'";
 	AND ev = '$datum'
 	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
- 
+ $row_cnt = intval(mysqli_num_rows($res3));
+if($row_cnt==0){
+echo " 
+ <td>".intval($sor2['a'])."</td>
+ <td>".intval($sor2['t'])."</td>
+ <td>".intval($sor2['m'])."</td>
+ <td>".intval($sor2['e'])."</td>
+ <td>".intval($sor2['e2'])."</td>";
+}
  while($sor3 = mysqli_fetch_array($res3)) {
  
  $color=red;
- $nevezo=floatval($sor3['alap']);
+ $nevezo=floatval($sor3['alap'])*$deltat;
  $szamlalo=floatval($sor2['a']);
  
  if ($nevezo=='0'){
@@ -458,7 +486,7 @@ datum >='$datum2' and datum <='$datum3'";
  $ee=$ee+$sor3['eszkoz'];
  $ee2=$ee2+$sor3['eszkoz2'];
  $color=red;
- $nevezo=floatval($sor3['tobblet']);
+ $nevezo=floatval($sor3['tobblet'])*$deltat;
  $szamlalo=floatval($sor2['t']);
  
  if ($nevezo=='0'){
@@ -472,7 +500,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['munkadij']);
+ $nevezo=floatval($sor3['munkadij'])*$deltat;
  $szamlalo=floatval($sor2['m']);
  
  if ($nevezo=='0'){
@@ -486,7 +514,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['eszkoz']);
+ $nevezo=floatval($sor3['eszkoz'])*$deltat;
  $szamlalo=floatval($sor2['e']);
  
  if ($nevezo=='0'){
@@ -523,11 +551,11 @@ echo "
 
 <tr>
 <td>1 főre jutó elvárás:</td>
-<td>".number_format($ea/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($et/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($em/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee2/$osszes, 0, '.', ' ')."</td>
+<td>".number_format($ea/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($et/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
 </tr>
 </table>
@@ -587,7 +615,15 @@ datum >='$datum2' and datum <='$datum3'";
 	AND ev = '$datum'
 	LIMIT 0 , 1";
 	$res3 = mysqli_query($con, $sql3);
- 
+  $row_cnt = intval(mysqli_num_rows($res3));
+if($row_cnt==0){
+echo " 
+ <td>".intval($sor2['a'])."</td>
+ <td>".intval($sor2['t'])."</td>
+ <td>".intval($sor2['m'])."</td>
+ <td>".intval($sor2['e'])."</td>
+ <td>".intval($sor2['e2'])."</td>";
+}
  while($sor3 = mysqli_fetch_array($res3)) {
  if($sor3[aktiv]=='Aktív'){
  $osszes=$osszes+1;
@@ -605,7 +641,7 @@ datum >='$datum2' and datum <='$datum3'";
  $ee=$ee+$sor3['eszkoz'];
  $ee2=$ee2+$sor3['eszkoz2'];
  $color=red;
- $nevezo=floatval($sor3['alap']);
+ $nevezo=floatval($sor3['alap'])*$deltat;
  $szamlalo=floatval($sor2['a']);
  
  if ($nevezo=='0'){
@@ -619,7 +655,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['tobblet']);
+ $nevezo=floatval($sor3['tobblet'])*$deltat;
  $szamlalo=floatval($sor2['t']);
  
  if ($nevezo=='0'){
@@ -633,7 +669,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['munkadij']);
+ $nevezo=floatval($sor3['munkadij'])*$deltat;
  $szamlalo=floatval($sor2['m']);
  
  if ($nevezo=='0'){
@@ -647,7 +683,7 @@ datum >='$datum2' and datum <='$datum3'";
  echo "<td bgcolor=".$color.">" . intval($sor2['m']) ."</td>";
  
  $color=red;
- $nevezo=floatval($sor3['eszkoz']);
+ $nevezo=floatval($sor3['eszkoz'])*$deltat;
  $szamlalo=floatval($sor2['e']);
  
  if ($nevezo=='0'){
@@ -685,17 +721,43 @@ echo "
 
 <tr>
 <td>1 főre jutó elvárás:</td>
-<td>".number_format($ea/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($et/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($em/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($ee2/$osszes, 0, '.', ' ')."</td>
+<td>".number_format($ea/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($et/$osszes*$deltat, 1, '.', ' ')."</td>
+<td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
+<td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
 </tr>
 </table>
 </td>
 </table>";
+$bgcolor="white";
+$color="black";
+$szoveg="";
+$meret=32;
 
+$sql4 = 
+	"SELECT * 
+	FROM  `uzenet`
+	order by id desc
+	LIMIT 0 , 1";
+	$res4 = mysqli_query($con, $sql4);
+ 
+ while($sor4 = mysqli_fetch_array($res4)) {
+ $bgcolor=$sor4['colorh'];
+$color=$sor4['colorsz'];
+$szoveg=$sor4['szoveg'];
+$meret=$sor4['meret'];
+ }
+echo "
+<table width=100%>
+<tr>
+<td bgcolor=".$bgcolor.">
+<marquee scrollamount=8><font color=".$color." size=".$meret.">".$szoveg."</font><marquee>
+</td>
+</tr>
+</table>
 
-?>
 </html>
+";
+?>
