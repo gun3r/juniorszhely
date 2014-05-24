@@ -1,6 +1,7 @@
 <?php
 include 'connection.php';
 include 'fejlec.php';
+include 'feltoltp.html';
 $mod=$_POST[mod];
 
 if($mod==1){

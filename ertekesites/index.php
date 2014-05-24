@@ -213,6 +213,15 @@ echo "
 <td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
 
+<tr>
+<td>Teljesült?</td>";
+if(($oa/$osszes)>=($ea/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($ot/$osszes)>=($et/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($om/$osszes)>=($em/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>
+</tr>
+
 
 </tr>
 </table>
@@ -387,7 +396,14 @@ echo "
 <td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
 <td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
-
+<tr>
+<td>Teljesült?</td>";
+if(($oa/$osszes)>=($ea/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($ot/$osszes)>=($et/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($om/$osszes)>=($em/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>
+</tr>
 </tr>
 </table>
 </td>
@@ -556,6 +572,14 @@ echo "
 <td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
 <td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
 <td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
+</tr>
+<tr>
+<td>Teljesült?</td>";
+if(($oa/$osszes)>=($ea/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($ot/$osszes)>=($et/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($om/$osszes)>=($em/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>
 </tr>
 </tr>
 </table>
@@ -726,6 +750,14 @@ echo "
 <td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
 <td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
 <td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
+</tr>
+<tr>
+<td>Teljesült?</td>";
+if(($oa/$osszes)>=($ea/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($ot/$osszes)>=($et/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($om/$osszes)>=($em/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>";
+if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}else{echo"<td bgcolor=red>Nem</td>";}echo "</td>
 </tr>
 </tr>
 </table>
