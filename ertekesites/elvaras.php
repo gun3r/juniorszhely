@@ -55,7 +55,7 @@ echo "
 		<input type=\"hidden\" name=\"ev\" value=\"". $sor['ev'] ."\">
 		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
 		<input type=\"hidden\" name=\"id\" value=\"".  $sor['ide']. "\">
-		<input type=\"submit\"></form></td>
+		<input type=\"submit\" value=\"Módosít\"></form></td>
 	</tr></form>";
 	}
 echo"</table>

@@ -99,7 +99,7 @@ echo " 	</select></td>
 		<td>
 		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
 		<input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">
-		<input type=\"submit\"></form></td>
+		<input type=\"submit\" value=\"OK\"></form></td>
 	</tr>
 	<tr>
 		<td></td>

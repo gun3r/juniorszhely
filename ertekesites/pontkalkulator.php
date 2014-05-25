@@ -46,7 +46,7 @@ echo "<title>MT Értékesítés</title>\n";
 echo "</head>\n"; 
 echo "<body bgcolor=\"#D8D8D8\">\n"; 
 
-echo "<form action=\"adat_be.php\" method=\"post\">\n"; 
+
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
 		<td>Név</td>
@@ -61,48 +61,6 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td>Pontkalkulator</td>
 		<td>Név</td>
-	</tr>
-	<tr>
-	<td><select name=\"name\" size=\”1\”>
-	<option value=\"".$namev."\" selected>".$name."</option>";
-	
-$sql = "SELECT name FROM user WHERE 1 Order by name";
-
-$res = mysqli_query($con, $sql);
-
-while($sor = mysqli_fetch_array($res)) {
-
-echo "  <option value=\"" . $sor['name'] . "\">  " . $sor['name'] . "</option>\n";
-}	
-		
-echo " 	</select></td>
-			
-		<td><input type=\"text\" name=\"azonosito\" value=\"".$azonosito."\"size=\"10\"></td>
-		
-		<td><select name=\"termek\" size=\”1\”>
-	<option value=\"".$termekv."\" selected>".$termek."</option>";
-	
-$sql = "SELECT nev FROM termek WHERE 1 Order by nev";
-
-$res = mysqli_query($con, $sql);
-
-while($sor = mysqli_fetch_array($res)) {
-
-echo "  <option value=\"" . $sor['nev'] . "\">  " . $sor['nev'] . "</option>\n";
-}	
-		
-echo " 	</select></td>
-		
-		<td><input type=\"text\" name=\"alap\" value=\"".$alap."\"size=\"3\"></td>
-		<td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
-		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
-		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz."\"></td>
-		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"></td>
-		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
-		<td>
-		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
-		<input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">
-		<input type=\"submit\"></form></td>
 	</tr>
 	<tr>
 		<td></td>
