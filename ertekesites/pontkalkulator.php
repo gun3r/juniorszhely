@@ -154,10 +154,13 @@ if($row_cnt!=0){
 echo "<td>Rögzítve</td>";
 }else{echo "<td>Nincs rögzítve</td>";}
 while($sor2 = mysqli_fetch_array($res2)) {
-
-if (strpos($sor['name'],$sor2['l']) !== false) {
+$nevek=$sor2['l'];
+if($nevek=="Pájer Csaba"){
+$nevek="Pajer Csaba";
+}
+if (strpos($sor['name'],$nevek) !== false) {
     echo "<td>Rendben</td>";
-}else{echo "<td>Nem -". $sor2['l'] ."</td>";}
+}else{echo "<td>Nem -". $nevek ."</td>";}
 
 }
 echo"</tr>";

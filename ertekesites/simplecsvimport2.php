@@ -54,8 +54,9 @@ $csvcontent = fread($file,$size);
 fclose($file);
 
 $con = @mysql_connect($databasehost,$databaseusername,$databasepassword) or die(mysql_error());
-mysql_query("SET NAMES utf8");
+/*mysql_query("SET NAMES utf8");
                 mysql_query("SET collation_connection = 'utf8'");
+*/
 @mysql_select_db($databasename) or die(mysql_error());
 
 
