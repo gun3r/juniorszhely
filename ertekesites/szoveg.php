@@ -25,7 +25,7 @@ Szöveg szín: <select name="colorsz">
       <option value="orange">Narancs</option>
 	  <option value="red">Piros</option>
 	 </select>
-Betű méret:<input type="text" size="3" name="meret" value=32>
-<input type="submit" value="Submit">
+Betű méret(1-7):<input type="text" size="3" name="meret" value=7>
+<input type="submit" value="Küldés">
 </form>
 </html>
