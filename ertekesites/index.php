@@ -23,18 +23,26 @@ setcookie("dat3", $datum3, time()+360000);
 }
 
 $datum=$datum2;
-$maxnap=date(t);
+if($datum=='2014-01-01' or $datum=='2014-03-01' or $datum=='2014-05-01' or $datum=='2014-07-01' or $datum=='2014-08-01' or $datum=='2014-10-01' or $datum=='2014-12-01'){
+$maxnap=31;
+}
+if($datum=='2014-04-01' or $datum=='2014-06-01' or $datum=='2014-09-01'){
+$maxnap=30;
+}
+if($datum=='2014-02-01'){
+$maxnap=28;
+}
 $deltat = ((strtotime($datum3)-strtotime($datum2))/60/60/24+1)/$maxnap;
 
 include 'connection.php';
 include_once("analyticstracking.php");
 echo "<table border=0 width=100%>
-<tr><td width=360>";
+<tr><td width=390>";
 include 'fejlec.php';
 echo"
 <FORM name=\"input\" action=\"kuki.php\" method=\"post\">
-<INPUT type=\"text\" name=\"dat2\" value=\"".$datum2."\">
-<INPUT type=\"text\" name=\"dat3\" value=\"".$datum3."\">
+<INPUT type=\"text\" name=\"dat2\" size='10' value=\"".$datum2."\">
+<INPUT type=\"text\" name=\"dat3\" size='10' value=\"".$datum3."\">
 <INPUT type=\"submit\" value=\"Elküld\">
 </FORM>";
 echo "</td>";
@@ -64,7 +72,7 @@ echo "
 </tr>
 </table>";
 ?>
-<table>
+<table width=100%>
 <tr>
 <td valign=top>
 <?php
@@ -74,8 +82,8 @@ include 'tabla.php';
  
 echo"</td>
 
-<th width=20>
-</th>
+<td width=20>
+</td>
 <td valign=top>";
 
 //sopron
@@ -94,13 +102,21 @@ include 'tabla.php';
 echo "
 </td>
 
-<th width=20>
-</th>
+<td width=20>
+</td>
 <td valign=top>";
 //szombathely_ma
 $csop=4;
 include 'tabla.php';
 echo "</td>
+</tr>
+<tr><td height=10 ></td></tr>
+<tr><td>";
+
+$csop=5;
+include 'vallalkozo.php';
+
+echo "</td></tr>
 </table>
 </html>";
 ?>

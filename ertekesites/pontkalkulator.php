@@ -6,11 +6,11 @@ include 'feltoltp.html';
 $csop=$_POST[csop];
 
 if($csop==1)
-{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor'";}
+{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2'";}
 if($csop==2)
-{$csoport="munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila'";}
+{$csoport="munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4'";}
 if($csop==0)
-{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila'";}
+{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='1' or munkacsoport='2' or munkacsoport='3' or munkacsoport='4'";}
 
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 

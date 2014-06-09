@@ -20,15 +20,15 @@ echo "
 <table border=1>
 <tr>
 <th width=280>Név</th>
-<th width=80>T-HOME; T-MOBIL
+<th width=80>T-Home<br>T-Mobile
 </th>
-<th>SZSZSZK kártya; VOD bérlet; minicsomag; felvétel opció
+<th>Többlet szolgáltatás
 </th>
-<th>Munkadíj; SZSZSZK munkadíj bruttó 8.000 Ft felett
+<th>Munkadíj; SZSZSZK munkadíj
 </th>
 <th>Eszköz (portfóliós)
 </th>
-<th>TV; táblagép és egyéb portfóliós eszközök
+<th>TV; táblagép; egyéb <br> portfóliós eszközök
 </th>";
 while($sor = mysqli_fetch_array($res)) {
 $nev=$sor['name'];
@@ -56,11 +56,11 @@ datum >='$datum2' and datum <='$datum3'";
   $row_cnt = intval(mysqli_num_rows($res3));
 if($row_cnt==0){
 echo " 
- <td>".intval($sor2['a'])."</td>
- <td>".intval($sor2['t'])."</td>
- <td>".intval($sor2['m'])."</td>
- <td>".intval($sor2['e'])."</td>
- <td>".intval($sor2['e2'])."</td>";
+ <td align=right>".intval($sor2['a'])."</td>
+ <td align=right>".intval($sor2['t'])."</td>
+ <td align=right>".intval($sor2['m'])."</td>
+ <td align=right>".intval($sor2['e'])."</td>
+ <td align=right>".intval($sor2['e2'])."</td>";
 }
 
  $oa=$oa+$sor2['a'];
@@ -92,7 +92,7 @@ echo "
  if($szamlalo >= $nevezo){
  $color=green;}
  }
- echo "<td bgcolor=".$color.">" . intval($sor2['a']) ."</td>";
+ echo "<td bgcolor=".$color." align=right>" .number_format(intval($sor2['a']), 0, '.', ' ')."</td>";
  
  $color=red;
  $nevezo=floatval($sor3['tobblet'])*$deltat;
@@ -106,7 +106,7 @@ echo "
  if($szamlalo >= $nevezo){
  $color=green;}
  }
- echo "<td bgcolor=".$color.">" . intval($sor2['t']) ."</td>";
+ echo "<td bgcolor=".$color." align=right>" .number_format(intval($sor2['t']), 0, '.', ' ')."</td>";
  
  $color=red;
  $nevezo=floatval($sor3['munkadij'])*$deltat;
@@ -120,7 +120,7 @@ echo "
  if($szamlalo >= $nevezo){
  $color=green;}
  }
- echo "<td bgcolor=".$color."> " . intval($sor2['m']) ."</td>";
+ echo "<td bgcolor=".$color." align=right> " .number_format(intval($sor2['m']), 0, '.', ' ')."</td>";
  
  $color=red;
  $nevezo=floatval($sor3['eszkoz'])*$deltat;
@@ -134,8 +134,8 @@ echo "
  if($szamlalo >= $nevezo){
  $color=green;}
  }
- echo "<td bgcolor=".$color.">" . intval($sor2['e']) ."</td>";
- echo "<td bgcolor=grey>" . intval($sor2['e2']) ."</td></tr>";
+ echo "<td bgcolor=".$color." align=right>" .number_format(intval($sor2['e']), 0, '.', ' ')."</td>";
+ echo "<td bgcolor=grey align=right>" .number_format(intval($sor2['e2']), 0, '.', ' ')."</td></tr>";
 }
 }
 }
@@ -143,29 +143,29 @@ echo "
 echo "
 <tr>
 <td>Összesen:</td>
-<td>".number_format($oa, 0, '.', ' ')."</td>
-<td>".number_format($ot, 0, '.', ' ')."</td>
-<td>".number_format($om, 0, '.', ' ')."</td>
-<td>".number_format($oe, 0, '.', ' ')."</td>
-<td>".number_format($oe2, 0, '.', ' ')."</td>
+<td align=right>".number_format($oa, 0, '.', ' ')."</td>
+<td align=right>".number_format($ot, 0, '.', ' ')."</td>
+<td align=right>".number_format($om, 0, '.', ' ')."</td>
+<td align=right>".number_format($oe, 0, '.', ' ')."</td>
+<td align=right>".number_format($oe2, 0, '.', ' ')."</td>
 </tr>
 
 <tr>
 <td>1 főre jutó teljesítés:</td>
-<td>".number_format($oa/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($ot/$osszes, 1, '.', ' ')."</td>
-<td>".number_format($om/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($oe/$osszes, 0, '.', ' ')."</td>
-<td>".number_format($oe2/$osszes, 0, '.', ' ')."</td>
+<td align=right>".number_format($oa/$osszes, 1, '.', ' ')."</td>
+<td align=right>".number_format($ot/$osszes, 1, '.', ' ')."</td>
+<td align=right>".number_format($om/$osszes, 0, '.', ' ')."</td>
+<td align=right>".number_format($oe/$osszes, 0, '.', ' ')."</td>
+<td align=right>".number_format($oe2/$osszes, 0, '.', ' ')."</td>
 </tr>
 
 <tr>
 <td>1 főre jutó elvárás:</td>
-<td>".number_format($ea/$osszes*$deltat, 1, '.', ' ')."</td>
-<td>".number_format($et/$osszes*$deltat, 1, '.', ' ')."</td>
-<td>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
-<td>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
-<td>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
+<td align=right>".number_format($ea/$osszes*$deltat, 1, '.', ' ')."</td>
+<td align=right>".number_format($et/$osszes*$deltat, 1, '.', ' ')."</td>
+<td align=right>".number_format($em/$osszes*$deltat, 0, '.', ' ')."</td>
+<td align=right>".number_format($ee/$osszes*$deltat, 0, '.', ' ')."</td>
+<td align=right>".number_format($ee2/$osszes*$deltat, 0, '.', ' ')."</td>
 </tr>
 
 <tr>

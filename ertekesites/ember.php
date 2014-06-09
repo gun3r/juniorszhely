@@ -12,6 +12,7 @@ Munkacsoport: <select name="munkacsoport" size=”1”>
       <option value="2">Sopron</option>
       <option value="3">Szombathely_SE</option>
 	  <option value="4">Szombathely_MA</option>
+	  <option value="5">Vasi Full-táv KFT.</option>
 	 </select>
 
 
