@@ -1,6 +1,6 @@
 <?php
 // Create connection
-$con=mysqli_connect("localhost","junior","junior","ertekesites");
+$con=mysqli_connect("localhost","root","laciferi","ertekesites");
 // Check connection
 if (mysqli_connect_errno($con))
   {

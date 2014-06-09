@@ -1,18 +1,15 @@
 <?php
+echo "<html lang=\"hu\">\n"; 
+echo "<head>\n"; 
+echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
+echo "<title>Elvárás</title>\n"; 
+echo "</head>\n"; 
+echo "<body>\n";
 include 'fejlec.php';
 include 'feltolt.html';
 include 'connection.php';
 $mod=1;
 $ev=date("2014-m-01");
-
-
-echo "<html lang=\"hu\">\n"; 
-echo "<head>\n"; 
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
-echo "<title>MT Értékesítés Elvárás</title>\n"; 
-echo "</head>\n"; 
-echo "<body bgcolor=\"#D8D8D8\">\n";
-
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
 		<td>Aktív</td>
@@ -34,9 +31,9 @@ $sql = "SELECT *, elvaras.id as ide FROM elvaras
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
 
-
+/*elvaras_be*/
 echo "	
-		<form action=\"elvaras_be.php\" method=\"post\">
+		<form action=\"elvaras.php\" method=\"post\">
 	<tr>
 		<td><select name=\"aktiv\" size=\1”>
       <option value=\"".$sor['aktiv']."\" selected>".$sor['aktiv']."</option>

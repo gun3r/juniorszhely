@@ -1,4 +1,10 @@
 <?php
+echo "<html lang=\"hu\">\n"; 
+echo "<head>\n"; 
+echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
+echo "<title>Adatok</title>\n"; 
+echo "</head>\n"; 
+echo "<body>\n";
 include 'connection.php';
 include 'fejlec.php';
 $mod=$_POST[mod];
@@ -43,7 +49,7 @@ echo "<head>\n";
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
 echo "<title>MT Értékesítés</title>\n"; 
 echo "</head>\n"; 
-echo "<body bgcolor=\"#D8D8D8\">\n"; 
+echo "<body>\n"; 
 
 echo "<form action=\"adat_be.php\" method=\"post\">\n"; 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">

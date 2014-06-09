@@ -1,16 +1,13 @@
-<!DOCTYPE html>
 <html lang="hu">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <META HTTP-EQUIV="refresh" CONTENT="60">
   <link type="image/x-icon" rel="icon" href="favicon.ico" />
   <link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />
-<title>Eredmények</title>
+<title>Szombathely LHO</title>
 </head>
 <body>
-
 <?php
-
 //$datum=date("Y-m-01");
 
 $datum2=date("Y-m-01");
@@ -67,7 +64,6 @@ echo "
 </tr>
 </table>";
 ?>
-
 <table>
 <tr>
 <td valign=top>
