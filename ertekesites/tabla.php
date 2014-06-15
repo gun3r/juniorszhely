@@ -38,6 +38,7 @@ $sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM adat
 WHERE name  LIKE \"%$nev%\" and
+termek !='Törölve' and
 datum >='$datum2' and datum <='$datum3'";
 
 
@@ -180,4 +181,9 @@ if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td bgcolor=green>Igen</td>";}el
 
 </tr>
 </table>";
+ $koa=$koa+$oa;
+ $kot=$kot+$ot;
+ $kom=$kom+$om;
+ $koe=$koe+$oe;
+ $koe2=$koe2+$oe2;
 ?>

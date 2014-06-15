@@ -10,8 +10,13 @@
 <?php
 //$datum=date("Y-m-01");
 
-$datum2=date("Y-m-01");
-$datum3=date("Y-m-d");
+ $datum2=date("Y-m-01");
+ $datum3=date("Y-m-d");
+ $koa=0;
+ $kot=0;
+ $kom=0;
+ $koe=0;
+ $koe2=0;
 
 if (isset($_COOKIE["dat2"]))
 {

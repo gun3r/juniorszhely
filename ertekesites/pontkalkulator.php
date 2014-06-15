@@ -1,4 +1,11 @@
 <?php
+echo "<html lang=\"hu\">\n"; 
+echo "<head>\n"; 
+echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
+echo "<title>Korrekció</title>\n"; 
+echo "</head>\n"; 
+echo "<body>\n";
+
 include 'connection.php';
 include 'fejlec.php';
 include 'feltoltp.html';
@@ -11,14 +18,6 @@ if($csop==2)
 {$csoport="munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4'";}
 if($csop==0)
 {$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='1' or munkacsoport='2' or munkacsoport='3' or munkacsoport='4'";}
-
-echo "<html lang=\"hu\">\n"; 
-echo "<head>\n"; 
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
-echo "<title>MT Értékesítés</title>\n"; 
-echo "</head>\n"; 
-echo "<body bgcolor=\"#D8D8D8\">\n"; 
-
 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
@@ -47,7 +46,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td></td>
 	</tr>";
-		$sql = "SELECT * FROM adat WHERE $csoport and termek!='Törölve' Order by id asc , datum2 desc";
+		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and datum >='2014-05-01' and datum <='2014-05-31' Order by id asc";
 		
 		$res = mysqli_query($con, $sql);
 

@@ -5,7 +5,7 @@ $nev=$_POST[name];
 $mod=$_POST[mod];
 $termek=$_POST[termek];
 $datum=date("Y-m-d");
-
+if($termek!='Törölve'){
 $sql = "SELECT alap, tobblet FROM termek WHERE nev LIKE \"%$termek%\" ";
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
@@ -13,7 +13,7 @@ while($sor = mysqli_fetch_array($res)) {
 $alap=$sor['alap'];
 $tobblet=$sor['tobblet'];
 }
-
+}
 $sql = "SELECT munkacsoport FROM user WHERE name LIKE \"%$nev%\" ";
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
