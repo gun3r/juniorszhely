@@ -5,6 +5,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\
 echo "<title>Adatok</title>\n"; 
 echo "</head>\n"; 
 echo "<body>\n";
+include 'cookies.php';
 include 'connection.php';
 include 'fejlec.php';
 $mod=$_POST[mod];
@@ -69,7 +70,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 	<td><select name=\"name\" size=\”1\”>
 	<option value=\"".$namev."\" selected>".$name."</option>";
 	
-$sql = "SELECT name FROM user WHERE 1 Order by name";
+$sql = "SELECT name FROM user WHERE munkacsoport<=99 Order by name";
 
 $res = mysqli_query($con, $sql);
 
@@ -96,11 +97,11 @@ echo "  <option value=\"" . $sor['nev'] . "\">  " . $sor['nev'] . "</option>\n";
 		
 echo " 	</select></td>
 		
-		<td><input type=\"text\" name=\"alap\" value=\"".$alap."\"size=\"3\"></td>
-		<td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
+		<td></td>
+		<td></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
-		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz."\"></td>
-		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"></td>
+		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz."\"size=\"12\"></td>
+		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
 		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
 		<td>
 		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
@@ -119,7 +120,8 @@ echo " 	</select></td>
 		<td></td>
 		<td></td>
 	</tr>";
-		$sql = "SELECT * FROM adat WHERE 1 Order by id desc , datum2 desc";
+		$mitol=$_COOKIE["dat2"];
+		$sql = "SELECT * FROM adat WHERE datum >='$mitol' Order by id desc , datum desc";
 		
 		$res = mysqli_query($con, $sql);
 
@@ -136,7 +138,7 @@ echo	"
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>
- <form action=\"adat.php\" method=\"post\">
+ <form action=\"adat.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"submit\" value=\"Módosít\">

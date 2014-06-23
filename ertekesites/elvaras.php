@@ -5,6 +5,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\
 echo "<title>Elvárás</title>\n"; 
 echo "</head>\n"; 
 echo "<body>\n";
+include 'cookies.php';
 include 'fejlec.php';
 include 'feltolt.html';
 include 'connection.php';
@@ -33,7 +34,7 @@ while($sor = mysqli_fetch_array($res)) {
 
 /*elvaras_be*/
 echo "	
-		<form action=\"elvaras.php\" method=\"post\">
+		<form action=\"elvaras_be.php\" method=\"post\">
 	<tr>
 		<td><select name=\"aktiv\" size=\1”>
       <option value=\"".$sor['aktiv']."\" selected>".$sor['aktiv']."</option>

@@ -43,7 +43,7 @@ if (!mysqli_query($con,$sql))
   die('Error: ' . mysqli_error($con));
   }
 }
-  $URL="adat.php"; header ("Location: $URL");
+  $URL="adat.php?p=1"; header ("Location: $URL");
 
 mysqli_close($con);
 ?>

@@ -119,7 +119,7 @@ echo "Found a total of $lines records in this csv file.\n";
 $file = "pont.csv";
 unlink($file);
 
-$URL="pontkalkulator.php"; 
+$URL="pontkalkulator.php?p=4"; 
 header ("Location: $URL");
 exit();
 ?>

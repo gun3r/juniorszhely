@@ -7,6 +7,7 @@
 </head>
 <body>
 <?php
+include 'cookies.php';
 include 'fejlec.php';
 ?>
 <form name="input" action="szoveg_be.php" method="post">
