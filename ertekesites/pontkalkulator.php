@@ -6,12 +6,12 @@ echo "<title>Korrekció</title>\n";
 echo "</head>\n"; 
 echo "<body>\n";
 
+$csop=$_POST[csop];
+
 include 'cookies.php';
 include 'connection.php';
 include 'fejlec.php';
-include 'feltoltp.html';
-
-$csop=$_POST[csop];
+include 'feltoltp.php';
 
 if($csop==1)
 {$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT' or munkacsoport='5') and (alap='1' or tobblet='1')";}

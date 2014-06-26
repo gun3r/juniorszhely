@@ -1,22 +1,14 @@
-<?php
-if(isset($_POST['submit'])) { //ha megnyomtuk a feltöltés gombot
-$target= ""; //célmappa
-$file_name = $_FILES['file']['name']; //a célfájlt nevezze el a $_FILES superglobal változóban lévo fájlnévre (a fájl eredeti nevére)
-$tmp_dir = $_FILES['file']['tmp_name']; //az ideiglenes mappa helyét a $tmp_dir változóban tároljuk
- 
-if(!preg_match('/(csv)$/i', $file_name)) //ha a fájlnak ($file_name-nek) a kiterjesztése nem gif, jpg/jpeg, png, akkor...
-{
-echo "Rossz fajltipus!"; //... "dobjon el" egy hibát
-}
-else
-{
-move_uploaded_file($tmp_dir, $target . "pont.csv" ); //az ideiglenes mappából átteszi a fájlt a végleges mappába (a $target . $file_name összeilleszti a két stringet, így uploads/fajlnev-et kapunk)
-$feltoltve = true; //a feltoltve változó true értéket kap
-}
-}
-
-$URL="simplecsvimport2.php"; 
-header ("Location: $URL");
-exit();
-
-?>
+Pontkalkulátor feltöltés: <form action="feltoltp.php" enctype="multipart/form-data" method="post">
+<input id="file" name="file" type="file" />
+<input id="Submit" name="submit" type="submit" value="Feltölt" />
+</form>
+<form action="pontkalkulator.php?p=4" enctype="multipart/form-data" method="post">
+<input type="radio" name="csop" value="0"<?php if($csop==0){echo "checked";}?>>Összes
+<input type="radio" name="csop" value="1"<?php if($csop==1){echo "checked";}?>>Biczó Éva
+<input type="radio" name="csop" value="2"<?php if($csop==2){echo "checked";}?>>Edőcs János
+<input type="radio" name="csop" value="3"<?php if($csop==3){echo "checked";}?>>Háromi Gábor
+<input type="radio" name="csop" value="4"<?php if($csop==4){echo "checked";}?>>Grund Lajos
+<input type="radio" name="csop" value="5"<?php if($csop==5){echo "checked";}?>>Savanyó Ernő
+<input type="radio" name="csop" value="6"<?php if($csop==6){echo "checked";}?>>Márfy Attila
+<input id="Submit" name="submit" type="submit" size="3"value="OK" />
+</form>

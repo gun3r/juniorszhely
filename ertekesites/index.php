@@ -46,8 +46,8 @@ echo "<table style='border:0px; width:100%'>
 include 'fejlec.php';
 echo"
 <FORM name=\"input\" action=\"kuki.php\" method=\"post\">
-<INPUT type=\"text\" name=\"dat2\" size='10' value=\"".$datum2."\">
-<INPUT type=\"text\" name=\"dat3\" size='10' value=\"".$datum3."\">
+<INPUT type=\"text\" name=\"dat2\" size='12' value=\"".$datum2."\">
+<INPUT type=\"text\" name=\"dat3\" size='12' value=\"".$datum3."\">
 <INPUT type=\"submit\" value=\"Elküld\">
 </FORM>";
 echo "</td>";

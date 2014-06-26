@@ -42,17 +42,32 @@ datum >='$datum2' and datum <='$datum3'";
  
 }
 }
-
+$sql2 =
+"SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
+FROM elvaras
+WHERE name='LHO' and
+ev >='$datum2' and ev <='$datum3'";
+$res2 = mysqli_query($con, $sql2);
+ 
+ while($sor2 = mysqli_fetch_array($res2)) {
+  
+ $lhoa=$sor2['a'];
+ $lhot=$sor2['t'];
+ $lhom=$sor2['m'];
+ $lhoe=$sor2['e']+$sor2['e2'];
+ 
+ 
+}
 echo "
 <tr>
-<td>Kollégák</td>
+<td>Kollégák:</td>
 <td style='text-align: right'>".number_format($koa, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($kot, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($kom, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($koe, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($koe2, 0, '.', ' ')."</td>
 </tr><tr>
-<td>Vasi Full-TÁV KFT.</td>
+<td>Vasi Full-TÁV KFT.:</td>
 <td style='text-align: right'>".number_format($oa, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($ot, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($om, 0, '.', ' ')."</td>
@@ -60,12 +75,136 @@ echo "
 <td style='text-align: right'>".number_format($oe2, 0, '.', ' ')."</td>
 </tr>
 <tr>
-<td>Szombathely LHO</td>
-<td style='text-align: right'>".number_format($oa+$koa, 0, '.', ' ')."</td>
-<td style='text-align: right'>".number_format($ot+$kot, 0, '.', ' ')."</td>
-<td style='text-align: right'>".number_format($om+$kom, 0, '.', ' ')."</td>
-<td style='text-align: right'>".number_format($oe+$koe, 0, '.', ' ')."</td>
-<td style='text-align: right'>".number_format($oe2+$koe2, 0, '.', ' ')."</td>
+<td>Szombathely LHO:</td>";
+ 
+ $color=red;
+ $nevezo=$lhoa*$deltat;
+ $szamlalo=$oa+$koa;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td style='background-color:".$color."; text-align: right'>".number_format(($oa+$koa),0, '.', ' ')."</td>";
+ 
+ $color=red;
+ $nevezo=$lhot*$deltat;
+ $szamlalo=$ot+$kot;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td style='background-color:".$color."; text-align: right'>".number_format(($ot+$kot), 0, '.', ' ')."</td>";
+ 
+ $color=red;
+ $nevezo=$lhom*$deltat;
+ $szamlalo=$om+$kom;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td style='background-color:".$color."; text-align: right'>".number_format(($om+$kom),0, '.', ' ')."</td>";
+ 
+ $color=red;
+ $nevezo=$lhoe*$deltat;
+ $szamlalo=$oe+$koe+$oe2+$koe2;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "<td colspan='2' style='background-color:".$color."; text-align: center'>".number_format($oe+$koe+$oe2+$koe2, 0, '.', ' ')."</td>
+</tr>
+<tr>
+<td>LHO elvárás:</td>
+<td style='text-align: right'>".number_format($lhoa*$deltat, 0, '.', ' ')."</td>
+<td style='text-align: right'>".number_format($lhot*$deltat, 0, '.', ' ')."</td>
+<td style='text-align: right'>".number_format($lhom*$deltat, 0, '.', ' ')."</td>
+<td colspan='2' style='text-align: center'>".number_format($lhoe*$deltat, 0, '.', ' ')."</td>
+</tr>
+<tr>
+<td>Teljesült:</td>";
+ 
+ $color=red;
+ $nevezo=$lhoa*$deltat;
+ $szamlalo=$oa+$koa;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td style='background-color:".$color."; text-align: right'>".number_format(($oa+$koa)/($lhoa*$deltat)*100, 2, '.', ' ')." %"."</td>";
+ 
+ $color=red;
+ $nevezo=$lhot*$deltat;
+ $szamlalo=$ot+$kot;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td style='background-color:".$color."; text-align: right'>".number_format(($ot+$kot)/($lhot*$deltat)*100, 2, '.', ' ')." %"."</td>";
+ 
+ $color=red;
+ $nevezo=$lhom*$deltat;
+ $szamlalo=$om+$kom;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td style='background-color:".$color."; text-align: right'>".number_format(($om+$kom)/($lhom*$deltat)*100, 2, '.', ' ')." %"."</td>";
+ 
+ $color=red;
+ $nevezo=$lhoe*$deltat;
+ $szamlalo=$oe+$koe+$oe2+$koe2;
+ 
+ if ($nevezo=='0'){
+ $color=grey;
+ }else{
+ if(($szamlalo/$nevezo)*'100'>='90'){
+ $color=yellow;} 
+ if($szamlalo >= $nevezo){
+ $color=green;}
+ }
+ echo "
+<td colspan='2' style='background-color:".$color."; text-align: center'>".number_format(($oe+$koe+$oe2+$koe2)/($lhoe*$deltat)*100, 2, '.', ' ')." %"."</td>
 </tr>
 </table>";
 ?>
