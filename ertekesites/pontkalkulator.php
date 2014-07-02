@@ -7,6 +7,30 @@ echo "</head>\n";
 echo "<body>\n";
 
 $csop=$_POST[csop];
+$datum4=$_COOKIE[dat4];
+$datum5=$_COOKIE[dat5];
+
+$h=date("m")+1;
+$n=01;
+$d1=mktime(0, 0, 0, $h, $n, 2014);
+
+if (isset($_COOKIE["dat4"]))
+{
+if($_POST[s]==1){
+$datum4=$_POST[dat4];
+$datum5=$_POST[dat5];
+}
+setcookie("dat4", $datum4, $d1);
+setcookie("dat5", $datum5, $d1);
+} else {
+$h=date("m")-1;
+$n=01;
+$d=mktime(0, 0, 0, $h, $n, 2014);
+$datum4=date("Y-m-01", $d);
+$datum5=date("Y-m-t", $d);
+setcookie("dat4", $datum4, $d1);
+setcookie("dat5", $datum5, $d1);
+}
 
 include 'cookies.php';
 include 'connection.php';
@@ -14,9 +38,9 @@ include 'fejlec.php';
 include 'feltoltp.php';
 
 if($csop==1)
-{$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT' or munkacsoport='5') and (alap='1' or tobblet='1')";}
+{$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
 if($csop==2)
-{$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-táv KFT' or munkacsoport='5') and (alap='1' or tobblet='1')";}
+{$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
 if($csop==3)
 {$csoport="(munkacsoport='Háromi Gábor' or munkacsoport='1') and alap='0' and tobblet='0' ";}
 if($csop==4)
@@ -55,7 +79,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td></td>
 	</tr>";
-		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and datum >='2014-05-01' and datum <='2014-05-31' Order by id asc";
+		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and datum >='$datum4' and datum <='$datum5' Order by id asc";
 		
 		$res = mysqli_query($con, $sql);
 

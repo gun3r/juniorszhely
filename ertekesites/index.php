@@ -49,8 +49,7 @@ echo"
 <INPUT type=\"text\" name=\"dat2\" size='12' value=\"".$datum2."\">
 <INPUT type=\"text\" name=\"dat3\" size='12' value=\"".$datum3."\">
 <INPUT type=\"submit\" value=\"Elküld\">
-</FORM>";
-echo "</td>";
+</FORM></td>";
 
 $bgcolor="white";
 $color="black";

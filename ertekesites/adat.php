@@ -43,15 +43,6 @@ while($sor = mysqli_fetch_array($res)) {
 		$termekv="";
 $mod=0;
 }
-
- 
-echo "<html lang=\"hu\">\n"; 
-echo "<head>\n"; 
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
-echo "<title>MT Értékesítés</title>\n"; 
-echo "</head>\n"; 
-echo "<body>\n"; 
-
 echo "<form action=\"adat_be.php\" method=\"post\">\n"; 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
@@ -97,8 +88,8 @@ echo "  <option value=\"" . $sor['nev'] . "\">  " . $sor['nev'] . "</option>\n";
 		
 echo " 	</select></td>
 		
-		<td></td>
-		<td></td>
+		<td><input type=\"text\" name=\"alap\" value=\"".$alap."\"size=\"3\"></td>
+        <td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
 		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz."\"size=\"12\"></td>
 		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
@@ -121,7 +112,8 @@ echo " 	</select></td>
 		<td></td>
 	</tr>";
 		$mitol=$_COOKIE["dat2"];
-		$sql = "SELECT * FROM adat WHERE datum >='$mitol' Order by id desc , datum desc";
+		$meddig=$_COOKIE["dat3"];
+		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by id desc , datum desc";
 		
 		$res = mysqli_query($con, $sql);
 

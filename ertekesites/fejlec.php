@@ -2,6 +2,15 @@
 $p=intval($_GET[p]);
 if (isset($_COOKIE["sp_code"]))
 {
+include 'connection.php';
+$sp=$_COOKIE['sp_code'];
+$sql10 = "SELECT name from `user` 
+WHERE eventus='$sp'";
+$res10 = mysqli_query($con, $sql10);
+while($sor10 = mysqli_fetch_array($res10)) {
+$nev=$sor10['name'];
+}
+
 if($p==0){$colorf='magenta';}else{$colorf='black';}
 echo "<h4><a href=index.php?p=0 style='color:".$colorf."'>Összesítő</a>";
 echo "   ";
@@ -16,6 +25,18 @@ echo "<a href=szoveg.php?p=3 style='color:".$colorf."'>Üzenet</a>";
 echo "   ";
 if($p==4){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=pontkalkulator.php?p=4 style='color:".$colorf."'>Korrekció</a>";
+echo "   ";
+if($p==5){$colorf='magenta';}else{$colorf='black';}
+echo "<a href=jelszocsere.php?p=5 style='color:".$colorf."'>Jelszócsere</a>";
+if($nev=='Dancsecs András'){
+echo "   ";
+if($p==6){$colorf='magenta';}else{$colorf='black';}
+echo "<a href=ember.php?p=6 style='color:".$colorf."'>Kollégák</a>";
+}
+echo "<br>";
+
+echo "Beléptél mint: ".$nev."  ";
+
 echo "</h4>";
 }  
 else

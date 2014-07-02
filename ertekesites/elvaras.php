@@ -37,10 +37,9 @@ echo "
 		<form action=\"elvaras_be.php\" method=\"post\">
 	<tr>
 		<td><select name=\"aktiv\" size=\1”>
-      <option value=\"".$sor['aktiv']."\" selected>".$sor['aktiv']."</option>
-	  <option value=\"Aktív\">Aktív</option>
-	  <option value=\"Beteg\">Beteg</option>
-	  <option value=\"Kilépő\">Kilépő</option> </td>
+      <option value=\"Aktív\"";if($sor['aktiv']=='Aktív'){echo "selected";}echo ">Aktív</option>
+	  <option value=\"Beteg\"";if($sor['aktiv']=='Beteg'){echo "selected";}echo ">Beteg</option>
+	  <option value=\"Kilépő\"";if($sor['aktiv']=='Kilépő'){echo "selected";}echo ">Kilépő</option> </td>
 		<td>".$sor['name']."</td>
 		<td><input type=\"text\" name=\"alap\" value=\"".$sor['alap']."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"tobblet\" value=\"".$sor['tobblet']."\"size=\"3\"></td>

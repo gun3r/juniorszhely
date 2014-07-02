@@ -1,9 +1,13 @@
 <?php // Create connection
 
 include 'connection.php';
-
+if($_POST[meret]>==){
+$meret=7;
+}else{
+$meret=$_POST[meret];
+}
 $sql="INSERT INTO uzenet (szoveg, colorh, colorsz, meret) VALUES
-('$_POST[szoveg]','$_POST[colorh]','$_POST[colorsz]', '$_POST[meret]')";
+('$_POST[szoveg]','$_POST[colorh]','$_POST[colorsz]', '$meret')";
 
 if (!mysqli_query($con,$sql))
   {
