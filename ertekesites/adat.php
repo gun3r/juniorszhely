@@ -8,6 +8,7 @@ echo "<body>\n";
 include 'cookies.php';
 include 'connection.php';
 include 'fejlec.php';
+include 'szur.php';
 $mod=$_POST[mod];
 
 if($mod==1){
@@ -52,7 +53,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>T-home</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
-		<td>Eszköz portfóliós</td>
+		<td style='width:20'>Eszköz portfóliós</td>
 		<td>Eszköz nem portfóliós</td>
 		<td>Dátum </td>
 		<td></td>
@@ -91,7 +92,18 @@ echo " 	</select></td>
 		<td><input type=\"text\" name=\"alap\" value=\"".$alap."\"size=\"3\"></td>
         <td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
-		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz."\"size=\"12\"></td>
+		<td><select name=\"eszkoz1\" size=\"1\">
+		<option value=\"".$eszkoz."\" selected>".$eszkoz."</option>";
+	
+		$sql = "SELECT nev,osszeg FROM portfolio WHERE 1 Order by nev";
+
+		$res = mysqli_query($con, $sql);
+
+		while($sor = mysqli_fetch_array($res)) {
+
+		echo "  <option value=\"" . $sor['osszeg'] . "\" size=\"12\" >  " . $sor['nev'] . " - " . $sor['osszeg'] . "Ft</option>\n";
+		}		
+echo " 	</select></td>
 		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
 		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
 		<td>
@@ -113,7 +125,7 @@ echo " 	</select></td>
 	</tr>";
 		$mitol=$_COOKIE["dat2"];
 		$meddig=$_COOKIE["dat3"];
-		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by id desc , datum desc";
+		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by id desc";
 		
 		$res = mysqli_query($con, $sql);
 

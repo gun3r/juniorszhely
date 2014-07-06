@@ -17,22 +17,25 @@ Munkacsoport: <select name="munkacsoport" size=”1”>
 	  <option value="100"> </option>
 	 </select>
 <input type="submit">
-</form></br></br></br>
+</form></br></br>
+Kollégák:</br>
 <table border=1>
 <tr>
 <td>Név</td>
 <td>Eventus</td>
 <td>Munkacsoport</td>
+<td>Munkairányító</td>
+<td>Adat kezelő</td>
 <td></td>
 <td></td>
 <td></td>
+
 </tr>
 <tr>
 <?php
 include 'connection.php';
-$sql = "SELECT name, eventus,id,munkacsoport FROM `user` 
-WHERE 1 order by munkacsoport asc, iranyito desc, name asc
-limit 0, 50";
+$sql = "SELECT name, eventus,id,munkacsoport,iranyito,belep FROM `user` 
+WHERE 1 order by munkacsoport asc, iranyito desc, name asc";
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
 
@@ -48,6 +51,8 @@ echo "<form action='insert.php' enctype='multipart/form-data' method='post'>
 	  <option value='5'";if($sor['munkacsoport']==5){echo "selected";}echo ">Vasi Full-TÁV KFT.</option>
 	  <option value='100'";if($sor['munkacsoport']==100){echo "selected";}echo "> </option>
 	 </select></td>
+<td><input type='checkbox' name='iranyito' value='1'"; if($sor['iranyito']==1){echo " checked";}echo "></td>
+<td><input type='checkbox' name='belep' value='1'"; if($sor['belep']==1){echo " checked";}echo "></td>
 <input type='hidden' name='id' value='".$sor['id']."'>
 <input type='hidden' name='mod' value='1'>
 <td><input id='Submit' name='submit' type='submit' value='Módosít' /></form></td>
