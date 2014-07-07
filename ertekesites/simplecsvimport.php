@@ -116,10 +116,10 @@ if ($save)
     }
 
 echo "Found a total of $lines records in this csv file.\n";
-
+/*
 $file="a.csv";
 unlink ($file);
-
+*/
 $URL ="elvaras.php?p=2";
 header ("Location: $URL");
 exit();

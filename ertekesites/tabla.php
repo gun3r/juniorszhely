@@ -79,7 +79,7 @@ echo "
  $ee=$ee+$sor3['eszkoz'];
  $ee2=$ee2+$sor3['eszkoz2'];
  
- $color=red;
+ $color='FF3333';
  $nevezo=floatval($sor3['alap'])*$deltat;
  $szamlalo=floatval($sor2['a']);
  
@@ -89,11 +89,11 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "<td style='background-color:".$color."; text-align: right'>" .number_format(intval($sor2['a']), 0, '.', ' ')."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=floatval($sor3['tobblet'])*$deltat;
  $szamlalo=floatval($sor2['t']);
  
@@ -103,11 +103,11 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "<td style='background-color:".$color."; text-align: right'>" .number_format(intval($sor2['t']), 0, '.', ' ')."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=floatval($sor3['munkadij'])*$deltat;
  $szamlalo=floatval($sor2['m']);
  
@@ -117,11 +117,11 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "<td style='background-color:".$color."; text-align: right'> " .number_format(intval($sor2['m']), 0, '.', ' ')."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=floatval($sor3['eszkoz'])*$deltat;
  $szamlalo=floatval($sor2['e']);
  
@@ -131,7 +131,7 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "<td style='background-color:".$color."; text-align: right'>" .number_format(intval($sor2['e']), 0, '.', ' ')."</td>";
  $color=grey;
@@ -171,11 +171,11 @@ echo "
 
 <tr>
 <td>Teljesült?</td>";
-if(($oa/$osszes)>=($ea/$osszes*$deltat)){echo"<td style='background-color:green'>Igen</td>";}else{echo"<td style='background-color:red'>Nem</td>";};
-if(($ot/$osszes)>=($et/$osszes*$deltat)){echo"<td style='background-color:green'>Igen</td>";}else{echo"<td style='background-color:red'>Nem</td>";};
-if(($om/$osszes)>=($em/$osszes*$deltat)){echo"<td style='background-color:green'>Igen</td>";}else{echo"<td style='background-color:red'>Nem</td>";};
-if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td style='background-color:green'>Igen</td>";}else{echo"<td style='background-color:red'>Nem</td>";};
-if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td style='background-color:green'>Igen</td>";}else{echo"<td style='background-color:red'>Nem</td>";}
+if(($oa/$osszes)>=($ea/$osszes*$deltat)){echo"<td style='background-color:66C266'>Igen</td>";}else{echo"<td style='background-color:FF3333'>Nem</td>";};
+if(($ot/$osszes)>=($et/$osszes*$deltat)){echo"<td style='background-color:66C266'>Igen</td>";}else{echo"<td style='background-color:FF3333'>Nem</td>";};
+if(($om/$osszes)>=($em/$osszes*$deltat)){echo"<td style='background-color:66C266'>Igen</td>";}else{echo"<td style='background-color:FF3333'>Nem</td>";};
+if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td style='background-color:66C266'>Igen</td>";}else{echo"<td style='background-color:FF3333'>Nem</td>";};
+if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td style='background-color:66C266'>Igen</td>";}else{echo"<td style='background-color:FF3333'>Nem</td>";}
 echo "
 </tr>
 </table>";

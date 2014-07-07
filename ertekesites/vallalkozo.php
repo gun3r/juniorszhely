@@ -77,7 +77,7 @@ echo "
 <tr>
 <td>Szombathely LHO:</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhoa*$deltat;
  $szamlalo=$oa+$koa;
  
@@ -87,12 +87,12 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($oa+$koa),0, '.', ' ')."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhot*$deltat;
  $szamlalo=$ot+$kot;
  
@@ -102,12 +102,12 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($ot+$kot), 0, '.', ' ')."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhom*$deltat;
  $szamlalo=$om+$kom;
  
@@ -117,12 +117,12 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($om+$kom),0, '.', ' ')."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhoe*$deltat;
  $szamlalo=$oe+$koe+$oe2+$koe2;
  
@@ -132,7 +132,7 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "<td colspan='2' style='background-color:".$color."; text-align: center'>".number_format($oe+$koe+$oe2+$koe2, 0, '.', ' ')."</td>
 </tr>
@@ -146,7 +146,7 @@ echo "
 <tr>
 <td>Teljesült:</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhoa*$deltat;
  $szamlalo=$oa+$koa;
  
@@ -156,12 +156,12 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($oa+$koa)/($lhoa*$deltat)*100, 2, '.', ' ')." %"."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhot*$deltat;
  $szamlalo=$ot+$kot;
  
@@ -171,12 +171,12 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($ot+$kot)/($lhot*$deltat)*100, 2, '.', ' ')." %"."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhom*$deltat;
  $szamlalo=$om+$kom;
  
@@ -186,12 +186,12 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($om+$kom)/($lhom*$deltat)*100, 2, '.', ' ')." %"."</td>";
  
- $color=red;
+ $color='FF3333';
  $nevezo=$lhoe*$deltat;
  $szamlalo=$oe+$koe+$oe2+$koe2;
  
@@ -201,7 +201,7 @@ echo "
  if(($szamlalo/$nevezo)*'100'>='90'){
  $color=yellow;} 
  if($szamlalo >= $nevezo){
- $color=green;}
+ $color='66C266';}
  }
  echo "
 <td colspan='2' style='background-color:".$color."; text-align: center'>".number_format(($oe+$koe+$oe2+$koe2)/($lhoe*$deltat)*100, 2, '.', ' ')." %"."</td>

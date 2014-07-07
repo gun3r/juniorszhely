@@ -16,10 +16,10 @@ echo "  <option value=\"" . $sor['name'] . "\""; if($sor[name]==$_POST[name]){ec
 }	
 		
 echo " 	</select></td>
-<td><input type='radio' name='mit' value='1'>Alap</td>
-<td><input type='radio' name='mit' value='2'>Többlet</td>
-<td><input type='radio' name='mit' value='3'>Munkadíj</td>
-<td><input type='radio' name='mit' value='4'>Eszkoz</td>
+<td><input type='checkbox' name='alap' value='1'";if($_POST[alap]==1){echo "checked";}echo ">Alap</td>
+<td><input type='checkbox' name='tobblet' value='1'";if($_POST[tobblet]==1){echo "checked";}echo ">Többlet</td>
+<td><input type='checkbox' name='munkadij' value='1'";if($_POST[munkadij]==1){echo "checked";}echo ">Munkadíj</td>
+<td><input type='checkbox' name='eszkoz' value='1'";if($_POST[eszkoz]==1){echo "checked";}echo ">Eszkoz</td>
 <td><input type='submit' value='Szűrés'></td>
 <tr>
 </table>
