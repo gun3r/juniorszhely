@@ -16,7 +16,7 @@ header ("Location: $URL");
 
 if($_POST[mod]==1){
 
-$sql2="UPDATE portfolio SET  nev='$_POST[nev]',osszeg='$_POST[osszeg]' WHERE  id ='$_POST[id]'";
+$sql2="UPDATE portfolio SET  nev='$_POST[nev]',osszeg='$_POST[osszeg]', kiemelt='$_POST[kiemelt]' WHERE  id ='$_POST[id]'";
 
 if (!mysqli_query($con,$sql2))
   {
@@ -36,7 +36,6 @@ if (!mysqli_query($con,$sql))
   die('Error: ' . mysqli_error($con));
   }
   mysqli_close($con);
- header ("Location: $URL");
 }
 mysqli_close($con);
 ?>

@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<?php include 'fejlec.php';?>
+<?php// include 'fejlec.php';?>
 Új portfóliós termék felvétele:</br>
 <form action="portfolio_mod.php" method="post">
 Termék neve: <input type="text" name="nev">
@@ -15,6 +15,7 @@ Portfóliós Lista:</br>
 <tr>
 <td>Név</td>
 <td>Összeg</td>
+<td>Kiemelés</td>
 <td></td>
 <td></td>
 
@@ -31,6 +32,7 @@ echo "<form action='portfolio_mod.php' enctype='multipart/form-data' method='pos
 <tr>
 <td><INPUT type='text' name='nev' size='80' value='".$sor['nev']."'></td>
 <td><INPUT type='text' name='osszeg' size='10' value='".$sor['osszeg']."'></td>
+<td><INPUT type='checkbox' name='kiemelt' value='1' ";if($sor['kiemelt']=='1'){echo "checked";} echo"></td>
 <input type='hidden' name='id' value='".$sor['id']."'>
 <input type='hidden' name='mod' value='1'>
 <td><input id='Submit' name='submit' type='submit' value='Módosít' /></form></td>

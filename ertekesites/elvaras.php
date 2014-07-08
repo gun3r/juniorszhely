@@ -7,7 +7,9 @@ echo "</head>\n";
 echo "<body>\n";
 include 'cookies.php';
 include 'fejlec.php';
+if($nev=='Dancsecs András'){
 include 'feltolt.html';
+}
 include 'connection.php';
 $mod=1;
 $ev=date("2014-m-01");

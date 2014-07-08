@@ -93,15 +93,15 @@ echo " 	</select></td>
         <td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
 		<td><select name=\"eszkoz1\" size=\"1\">
-		<option value=\"".$eszkoz."\" selected>".$eszkoz."</option>";
+		<option value=\"".$eszkoz."\" width='30' selected>".$eszkoz."</option>";
 	
-		$sql = "SELECT nev,osszeg FROM portfolio WHERE 1 Order by nev";
+		$sql = "SELECT nev,osszeg,kiemelt FROM portfolio WHERE 1 Order by kiemelt desc, nev asc";
 
 		$res = mysqli_query($con, $sql);
 
 		while($sor = mysqli_fetch_array($res)) {
 
-		echo "  <option value=\"" . $sor['osszeg'] . "\" size=\"12\" >  " . $sor['nev'] . " - " . $sor['osszeg'] . "Ft</option>\n";
+		echo "  <option value=\"" . $sor['osszeg'] . "\" size=\"12\" >  " . $sor['nev'] . " - <font color='red'>This is some text!</font>" . $sor['osszeg'] . "Ft</option>\n";
 		}		
 echo " 	</select></td>
 		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
