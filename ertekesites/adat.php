@@ -53,7 +53,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>T-home</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
-		<td style='width:20'>Eszköz portfóliós</td>
+		<td>Eszköz portfóliós</td>
 		<td>Eszköz nem portfóliós</td>
 		<td>Dátum </td>
 		<td></td>
@@ -92,8 +92,12 @@ echo " 	</select></td>
 		<td><input type=\"text\" name=\"alap\" value=\"".$alap."\"size=\"3\"></td>
         <td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
+		";if($nev=='Edőcs János'){echo"
+		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz." \"size=\"6\"></td>";
+		}else{
+		echo"
 		<td><select name=\"eszkoz1\" size=\"1\">
-		<option value=\"".$eszkoz."\" width='30' selected>".$eszkoz."</option>";
+		<option value=\"".$eszkoz."\" selected>".$eszkoz."</option>";
 	
 		$sql = "SELECT nev,osszeg,kiemelt FROM portfolio WHERE 1 Order by kiemelt desc, nev asc";
 
@@ -101,10 +105,11 @@ echo " 	</select></td>
 
 		while($sor = mysqli_fetch_array($res)) {
 
-		echo "  <option value=\"" . $sor['osszeg'] . "\" size=\"12\" >  " . $sor['nev'] . " - <font color='red'>This is some text!</font>" . $sor['osszeg'] . "Ft</option>\n";
-		}		
-echo " 	</select></td>
-		<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
+		echo "  <option value=\"" . $sor['osszeg'] . "\" size=\"12\" >  " . $sor['nev'] . " - " . $sor['osszeg'] . "Ft</option>\n";
+		}
+		
+echo " 	</select></td>";}
+echo "	<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
 		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
 		<td>
 		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
