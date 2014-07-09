@@ -8,11 +8,44 @@ echo "<body>\n";
 include 'cookies.php';
 include 'connection.php';
 include 'fejlec.php';
+$formaction="adat.php?p=1";
+$datum1=$_COOKIE[dat11];
+$datum2=$_COOKIE[dat12];
+
+$h=date("m");
+$n=date("d");;
+$d1=mktime(0, 0, 0, $h, $n+1, 2014);
+
+if (isset($_COOKIE["dat11"]))
+{
+if($_POST[s]==1){
+$datum1=$_POST[dat11];
+$datum2=$_POST[dat12];
+}
+setcookie("dat11", $datum1, $d1);
+setcookie("dat12", $datum2, $d1);
+} else {
+$h=date("m");
+$n=date("d");
+$d=mktime(0, 0, 0, $h, $n-3, 2014);
+$datum1=date("Y-m-d", $d);
+$d=mktime(0, 0, 0, $h, $n, 2014);
+$datum2=date("Y-m-d", $d);
+setcookie("dat11", $datum1, $d1);
+setcookie("dat12", $datum2, $d1);
+}
+echo"
+<form action='".$formaction."' enctype='multipart/form-data' method='post'>
+<INPUT type='text' name='dat11' size='12' value='". $datum1. "'>
+<INPUT type='text' name='dat12' size='12' value='".$datum2."'>
+<input type='hidden' name='s' value='1'>
+<input id='Submit' name='submit' type='submit' size='3'value='OK' />
+</form>";
 include 'szur.php';
 $mod=$_POST[mod];
 
-if($mod==1){
 
+if($mod==1){
 $sql = "SELECT * FROM  `adat` WHERE  `id` =  '$_POST[id]'";
 $res = mysqli_query($con, $sql);
 
@@ -128,8 +161,8 @@ echo "	<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15
 		<td></td>
 		<td></td>
 	</tr>";
-		$mitol=$_COOKIE["dat2"];
-		$meddig=$_COOKIE["dat3"];
+		$mitol=$datum1;
+		$meddig=$datum2;
 		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by id desc";
 		
 		$res = mysqli_query($con, $sql);

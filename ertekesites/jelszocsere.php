@@ -24,8 +24,9 @@ break;
 $sql2 = "UPDATE user SET password= '$pw2' WHERE eventus='$sp'";
 if (!mysqli_query($con,$sql2))
   {
-  die('Error: ' . mysqli_error($con));
-  }
+    die('Error: ' . mysqli_error($con));
+    }
+echo "Jelszó módosult!";
  mysqli_close($con); 
 }
 }

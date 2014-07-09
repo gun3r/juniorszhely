@@ -36,6 +36,7 @@ if (!mysqli_query($con,$sql))
   die('Error: ' . mysqli_error($con));
   }
   mysqli_close($con);
+  header ("Location: $URL");
 }
 mysqli_close($con);
 ?>

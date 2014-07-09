@@ -84,9 +84,9 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td>Pontkalkulator</td>
 		<td>Név</td>
-	</tr>
+		<td>Megjegyzés</td>
+		</tr>
 	<tr>
-		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -105,6 +105,12 @@ while($sor = mysqli_fetch_array($res)) {
 $nevok=0;
 $a=$sor['azonosito'];
 $t=$sor['termek'];
+$gomb="
+<form name='input' action='note_be.php' method='post'>
+<input type='text' size='100' name='note' value='" . $sor['note'] . "'>
+<input type='hidden' name='id' value=" . $sor['id'] . ">
+<input type='submit' value='Küldés'>
+</form>";
 
  $sql2="SELECT * 
 FROM  `pontkalkulator` 
@@ -152,6 +158,7 @@ echo	"
  </form></td>";
 echo "<td>Rögzítve</td>";   
 echo "<td>Nem -". $nevek ."</td>";
+echo "<td>".$gomb."</td>";
 }
 
 }
@@ -174,6 +181,8 @@ echo	"
  <input type=\"submit\" value=\"Módosít\">
  </form></td>";
 echo "<td>Nincs rögzítve</td>";
+echo "<td></td>";
+echo "<td>".$gomb."</td>";
 }
 echo"</tr>";
 }

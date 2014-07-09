@@ -1,5 +1,17 @@
 <?php
 include 'fejlec.php';
+$datum1=$_COOKIE[dat2];
+$datum2=$_COOKIE[dat3];
+
+if($_POST[z]==1){
+$datum1=$_POST[dat11];
+$datum2=$_POST[dat12];
+}
+
+$i="
+<input type='hidden' name='z' value='1'>
+<INPUT type='text' name='dat11' size='12' value='".$datum1."'>
+<INPUT type='text' name='dat12' size='12' value='".$datum2."'>";
 include 'szur.php';
 //echo "$_POST[name] - ";
 $csa="";
@@ -15,9 +27,9 @@ if($_POST[munkadij]==1)
 {$csm="munkadij >= '1'";}
 if($_POST[eszkoz]==1)
 {$cse="(eszkoz >='1' or eszkoz2 >= '1')";}
-$mitol=$_COOKIE["dat2"];
-$meddig=$_COOKIE["dat3"];
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csa and datum >='$mitol' and datum <='$meddig' Order by id";
+$mitol=$_POST["dat11"];
+$meddig=$_POST["dat12"];
+$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csa and datum >='$datum1' and datum <='$datum2' Order by id";
 
 $res100 = mysqli_query($con, $sql100);
 echo "<table border='1' bordercolor=\"#FFCC00\">
@@ -55,7 +67,7 @@ echo"
  </form></td>
 ";
 }
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cst and datum >='$mitol' and datum <='$meddig' Order by id";
+$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cst and datum >='$datum1' and datum <='$datum2' Order by id";
 
 $res100 = mysqli_query($con, $sql100);
 while($sor100 = mysqli_fetch_array($res100)) {
@@ -77,7 +89,7 @@ echo"
  </form></td>
 ";
 }
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csm and datum >='$mitol' and datum <='$meddig' Order by id";
+$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csm and datum >='$datum1' and datum <='$datum2' Order by id";
 
 $res100 = mysqli_query($con, $sql100);
 while($sor100 = mysqli_fetch_array($res100)) {
@@ -99,7 +111,7 @@ echo"
  </form></td>
 ";
 }
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cse and datum >='$mitol' and datum <='$meddig' Order by id";
+$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cse and datum >='$datum1' and datum <='$datum2' Order by id";
 
 $res100 = mysqli_query($con, $sql100);
 while($sor100 = mysqli_fetch_array($res100)) {
