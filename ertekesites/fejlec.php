@@ -4,15 +4,17 @@ if (isset($_COOKIE["sp_code"]))
 {
 include 'connection.php';
 $sp=$_COOKIE['sp_code'];
-$sql10 = "SELECT name from `user` 
+$sql10 = "SELECT * from `user` 
 WHERE eventus='$sp'";
 $res10 = mysqli_query($con, $sql10);
 while($sor10 = mysqli_fetch_array($res10)) {
 $nev=$sor10['name'];
+$adat=$sor10['belep'];
+$tippmix=$sor10['tippmix'];
 }
-
 if($p==0){$colorf='magenta';}else{$colorf='black';}
 echo "<h4><a href=index.php?p=0 style='color:".$colorf."'>Összesítő</a>";
+if($adat=='1'){
 echo "   ";
 if($p==1){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=adat.php?p=1 style='color:".$colorf."'>Adatok</a>";
@@ -32,6 +34,12 @@ if($nev=='Dancsecs András'){
 echo "   ";
 if($p==6){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=ember.php?p=6 style='color:".$colorf."'>Kollégák</a>";
+}
+}
+echo "   ";
+if($tippmix=='1'){
+if($p==7){$colorf='magenta';}else{$colorf='black';}
+echo "<a href=tippmix.php?p=7 style='color:".$colorf."'>Tippmix</a>";
 }
 echo "<br>";
 
@@ -56,5 +64,6 @@ echo"  <form action='belep.php' method='post'>
   </tr>
   </table>
   </form>";
-}  
+}
+  
 ?>

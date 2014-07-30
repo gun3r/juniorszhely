@@ -19,9 +19,10 @@ $belep = $sor['belep'];
 $pass = $sor['password'];
 $pass1 = $_POST[password];
 $sp = $_POST[sp_code];
+$tippmix=$sor['tippmix'];
 mysqli_close($con);
 
- if ($pass == $pass1 and $belep=='1') {
+ if ($pass == $pass1 and $belep=='1' or $tippmix=='1') {
     
 	setcookie("sp_code", $sp, $d);
 	

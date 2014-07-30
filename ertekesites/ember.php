@@ -26,6 +26,7 @@ Kollégák:</br>
 <td>Munkacsoport</td>
 <td>Munkairányító</td>
 <td>Adat kezelő</td>
+<td>Verseny</td>
 <td></td>
 <td></td>
 <td></td>
@@ -34,7 +35,7 @@ Kollégák:</br>
 <tr>
 <?php
 include 'connection.php';
-$sql = "SELECT name, eventus,id,munkacsoport,iranyito,belep FROM `user` 
+$sql = "SELECT * FROM `user` 
 WHERE 1 order by munkacsoport asc, iranyito desc, name asc";
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
@@ -53,6 +54,7 @@ echo "<form action='insert.php' enctype='multipart/form-data' method='post'>
 	 </select></td>
 <td><input type='checkbox' name='iranyito' value='1'"; if($sor['iranyito']==1){echo " checked";}echo "></td>
 <td><input type='checkbox' name='belep' value='1'"; if($sor['belep']==1){echo " checked";}echo "></td>
+<td><input type='checkbox' name='tippmix' value='1'"; if($sor['tippmix']==1){echo " checked";}echo "></td>
 <input type='hidden' name='id' value='".$sor['id']."'>
 <input type='hidden' name='mod' value='1'>
 <td><input id='Submit' name='submit' type='submit' value='Módosít' /></form></td>
