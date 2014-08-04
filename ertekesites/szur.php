@@ -5,9 +5,9 @@ echo"<form action=\"szuro.php?p=1\" method=\"post\">
 <table>
 <tr>
 <td><select name=\"name\" size=\”1\”>
-	<option value=\"".$namev."\" selected>".$name."</option>";
+	<option value=\"LHO\" selected>-=LHO=-</option>";
 	
-$sql = "SELECT name FROM user WHERE munkacsoport<=99 Order by name";
+$sql = "SELECT name FROM user WHERE munkacsoport<=99 and iranyito=0 Order by name";
 
 $res = mysqli_query($con, $sql);
 

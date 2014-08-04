@@ -29,14 +29,20 @@ if($_POST[eszkoz]==1)
 {$cse="(eszkoz >='1' or eszkoz2 >= '1')";}
 $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
+
+if($_POST[name]=="LHO"){
+$sql100 = "SELECT * FROM adat WHERE $csa and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+}else{
 $sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csa and datum >='$datum1' and datum <='$datum2' Order by id";
+}
 
 $res100 = mysqli_query($con, $sql100);
 echo "<table border='1' bordercolor=\"#FFCC00\">
 <tr>
-<td colspan='9' style='text-align: center'>".$_POST[name]."</td>
+<td colspan='10' style='text-align: center'>".$_POST[name]."</td>
 </tr>
 <tr>
+<td>Kolléga</td>
 <td>Azonosító</td>
 <td>Termék</td>
 <td>T-home</td>
@@ -51,6 +57,7 @@ echo "<table border='1' bordercolor=\"#FFCC00\">
 while($sor100 = mysqli_fetch_array($res100)) {
 echo"
 <tr>
+		<td>" . $sor100['name'] . "</td>
 		<td>" . $sor100['azonosito'] . "</td>
 		<td>" . $sor100['termek'] . "</td>
 		<td>" . $sor100['alap'] . "</td>
@@ -67,12 +74,16 @@ echo"
  </form></td>
 ";
 }
+if($_POST[name]=="LHO"){
+$sql100 = "SELECT * FROM adat WHERE $cst and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+}else{
 $sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cst and datum >='$datum1' and datum <='$datum2' Order by id";
-
+}
 $res100 = mysqli_query($con, $sql100);
 while($sor100 = mysqli_fetch_array($res100)) {
 echo"
 <tr>
+		<td>" . $sor100['name'] . "</td>
 		<td>" . $sor100['azonosito'] . "</td>
 		<td>" . $sor100['termek'] . "</td>
 		<td>" . $sor100['alap'] . "</td>
@@ -89,12 +100,16 @@ echo"
  </form></td>
 ";
 }
+if($_POST[name]=="LHO"){
+$sql100 = "SELECT * FROM adat WHERE $csm and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+}else{
 $sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csm and datum >='$datum1' and datum <='$datum2' Order by id";
-
+}
 $res100 = mysqli_query($con, $sql100);
 while($sor100 = mysqli_fetch_array($res100)) {
 echo"
 <tr>
+		<td>" . $sor100['name'] . "</td>
 		<td>" . $sor100['azonosito'] . "</td>
 		<td>" . $sor100['termek'] . "</td>
 		<td>" . $sor100['alap'] . "</td>
@@ -111,12 +126,16 @@ echo"
  </form></td>
 ";
 }
+if($_POST[name]=="LHO"){
+$sql100 = "SELECT * FROM adat WHERE $cse and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+}else{
 $sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cse and datum >='$datum1' and datum <='$datum2' Order by id";
-
+}
 $res100 = mysqli_query($con, $sql100);
 while($sor100 = mysqli_fetch_array($res100)) {
 echo"
 <tr>
+		<td>" . $sor100['name'] . "</td>
 		<td>" . $sor100['azonosito'] . "</td>
 		<td>" . $sor100['termek'] . "</td>
 		<td>" . $sor100['alap'] . "</td>

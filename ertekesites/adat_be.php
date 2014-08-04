@@ -14,6 +14,10 @@ $alap=$sor['alap'];
 $tobblet=$sor['tobblet'];
 }
 }
+if($termek==''){
+$alap=0;
+$tobblet=0;
+}
 $sql = "SELECT munkacsoport FROM user WHERE name LIKE \"%$nev%\" ";
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
