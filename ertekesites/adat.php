@@ -86,8 +86,8 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>T-home</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
-		<td>Eszköz portfóliós</td>
-		<td>Eszköz nem portfóliós</td>
+		<td>Kis értékű portfólió</td>
+		<td>Nagy értékű portfólió</td>
 		<td>Dátum </td>
 		<td></td>
 	</tr>

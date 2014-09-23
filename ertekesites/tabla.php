@@ -20,15 +20,15 @@ echo "
 <table border=1>
 <tr>
 <th style='width:280'>Név</th>
-<th style='width:80'>T-Home<br>T-Mobile
+<th style='width:80'>Telekom
 </th>
 <th>Többlet szolgáltatás
 </th>
 <th>Munkadíj; SZSZSZK munkadíj
 </th>
-<th>Eszköz (portfóliós)
+<th>Kis értékű <br> portfóliós eszközök
 </th>
-<th>TV; táblagép; egyéb <br> portfóliós eszközök
+<th>Nagy értékű <br> portfóliós eszközök
 </th>";
 while($sor = mysqli_fetch_array($res)) {
 $nev=$sor['name'];

@@ -5,7 +5,7 @@ echo"<form action=\"szuro.php?p=1\" method=\"post\">
 <table>
 <tr>
 <td><select name=\"name\" size=\”1\”>
-	<option value=\"LHO\" selected>-=LHO=-</option>";
+	<option value=\"LHO\" selected>-=Régió=-</option>";
 	
 $sql = "SELECT name FROM user WHERE munkacsoport<=99 and iranyito=0 Order by name";
 

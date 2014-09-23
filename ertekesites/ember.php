@@ -13,7 +13,12 @@ Munkacsoport: <select name="munkacsoport" size=”1”>
       <option value="2">Sopron</option>
       <option value="3">Szombathely_SE</option>
 	  <option value="4">Szombathely_MA</option>
+	  <option value="6">Kaposvár</option>
+	  <option value="7">Zalaegerszeg_MI</option>
+	  <option value="8">Zalaegerszeg_MF</option>
 	  <option value="5">Vasi Full-TÁV KFT.</option>
+	  <option value="9">Mészáros és Társa Elektronikai Kft.</option>
+	  <option value="10">Kanizsatel Kft.</option>
 	  <option value="100"> </option>
 	 </select>
 <input type="submit">
@@ -50,6 +55,11 @@ echo "<form action='insert.php' enctype='multipart/form-data' method='post'>
       <option value='3'";if($sor['munkacsoport']==3){echo "selected";}echo ">Szombathely_SE</option>
 	  <option value='4'";if($sor['munkacsoport']==4){echo "selected";}echo ">Szombathely_MA</option>
 	  <option value='5'";if($sor['munkacsoport']==5){echo "selected";}echo ">Vasi Full-TÁV KFT.</option>
+	  <option value='6'";if($sor['munkacsoport']==6){echo "selected";}echo ">Kaposvár</option>
+	  <option value='7'";if($sor['munkacsoport']==7){echo "selected";}echo ">Zalaegerszeg_MI</option>
+	  <option value='8'";if($sor['munkacsoport']==8){echo "selected";}echo ">Zalaegerszeg_MF</option>
+	  <option value='9'";if($sor['munkacsoport']==9){echo "selected";}echo ">Mészáros és Társa Elektronikai Kft.</option>
+	  <option value='10'";if($sor['munkacsoport']==10){echo "selected";}echo ">Kanizsatel Kft.</option>
 	  <option value='100'";if($sor['munkacsoport']==100){echo "selected";}echo "> </option>
 	 </select></td>
 <td><input type='checkbox' name='iranyito' value='1'"; if($sor['iranyito']==1){echo " checked";}echo "></td>
