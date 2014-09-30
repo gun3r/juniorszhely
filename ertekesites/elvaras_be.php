@@ -33,7 +33,7 @@ if (!mysqli_query($con,$sql))
   die('Error: ' . mysqli_error($con));
   }
 }
-  $URL="elvaras.php?p=3"; header ("Location: $URL");
+  $URL="elvaras.php?p=2"; header ("Location: $URL");
 
 mysqli_close($con);
 ?>

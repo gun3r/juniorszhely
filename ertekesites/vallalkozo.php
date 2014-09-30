@@ -13,7 +13,7 @@ echo "
 <table border=1>
 <tr>
 <th style='width:280'>Név</th>
-<th style='width:80'>Telekom
+<th style='width:80'>Alap szolgáltatás
 </th>
 <th>Többlet szolgáltatás
 </th>

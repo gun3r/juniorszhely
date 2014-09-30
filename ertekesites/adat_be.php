@@ -48,7 +48,7 @@ $m=intval($munkacsop);
 
 if($mod==1){
 	 
-	 $besz = "UPDATE `erteksites`.`adat` 
+	 $besz = "UPDATE `ertekesites`.`adat` 
 	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum'	 WHERE	 `adat`.`id` = '$_POST[id]'";
 		  
 	 if (!mysqli_query($con,$besz))
