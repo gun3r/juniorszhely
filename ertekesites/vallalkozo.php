@@ -141,7 +141,7 @@ datum >='$datum2' and datum <='$datum3'";
 
 echo"
 <tr>
-<td>Szombathely LHO:</td>";
+<td>Nyugat-Magyarország Régió:</td>";
  
  $color='FF3333';
  $nevezo=$lhoa*$deltat;
@@ -203,7 +203,7 @@ echo"
  echo "<td colspan='2' style='background-color:".$color."; text-align: center'>".number_format($oe+$koe+$oe2+$koe2, 0, '.', ' ')."</td>
 </tr>
 <tr>
-<td>LHO elvárás:</td>
+<td>Régió elvárás:</td>
 <td style='text-align: right'>".number_format($lhoa*$deltat, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($lhot*$deltat, 0, '.', ' ')."</td>
 <td style='text-align: right'>".number_format($lhom*$deltat, 0, '.', ' ')."</td>

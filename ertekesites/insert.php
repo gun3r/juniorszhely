@@ -1,6 +1,12 @@
 <?php // Create connection
 
 include 'connection.php';
+if($_POST[kilepett]==''){
+$ki='2020-12-30';
+}else{
+$ki=$_POST[kilepett];
+}
+
 $URL="ember.php?p=6";
 if($_POST[mod]==0){
 $sql="INSERT INTO user (name, eventus, munkacsoport, password) VALUES
@@ -16,7 +22,7 @@ header ("Location: $URL");
 
 if($_POST[mod]==1){
 
-$sql2="UPDATE user SET  name='$_POST[name]',eventus='$_POST[eventus]',munkacsoport='$_POST[munkacsoport]',iranyito='$_POST[iranyito]',belep='$_POST[belep]',tippmix='$_POST[tippmix]' WHERE  id ='$_POST[id]'";
+$sql2="UPDATE user SET  name='$_POST[name]',eventus='$_POST[eventus]',munkacsoport='$_POST[munkacsoport]',iranyito='$_POST[iranyito]',belep='$_POST[belep]',tippmix='$_POST[tippmix]',kilepett='$ki',belepett='$_POST[belepett]' WHERE  id ='$_POST[id]'";
 
 if (!mysqli_query($con,$sql2))
   {

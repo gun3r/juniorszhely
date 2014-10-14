@@ -105,6 +105,8 @@ while($sor = mysqli_fetch_array($res)) {
 $nevok=0;
 $a=$sor['azonosito'];
 $t=$sor['termek'];
+$k=$sor['kizarva'];
+$i=$sor['id'];
 $gomb="
 <form name='input' action='note_be.php' method='post'>
 <input type='text' size='100' name='note' value='" . $sor['note'] . "'>
@@ -127,16 +129,25 @@ if($row_cnt!=0){
 
 while($sor2 = mysqli_fetch_array($res2)) {
 $nevek=$sor2['l'];
+$datumkiz=$sor2['b'];
 if($nevek=="Pájer Csaba"){
 $nevek="Pajer Csaba";
 }
+if($nevek=="Horváth Ottó"){
+$nevek="Horváth Ottó András";
+}
 if (strpos($sor['name'],$nevek) !== false) {
     $nevok=1;
+	
 }
 
 }
 if($nevok==1){
-//echo "<td>Rendben</td>";
+if($k==1){
+$URL="kizaraski.php?id=$i&datum=$datumkiz";
+echo "<a href="."$URL".">$URL</a>\n";
+
+	}
 }
 else{
 echo	"

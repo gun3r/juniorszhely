@@ -49,7 +49,7 @@ $m=intval($munkacsop);
 if($mod==1){
 	 
 	 $besz = "UPDATE `ertekesites`.`adat` 
-	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum'	 WHERE	 `adat`.`id` = '$_POST[id]'";
+	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]'	 WHERE	 `adat`.`id` = '$_POST[id]'";
 		  
 	 if (!mysqli_query($con,$besz))
 	   {
@@ -69,7 +69,6 @@ if (!mysqli_query($con,$sql))
   }
 }
 mysqli_close($con);
-  $URL="adat.php?p=1"; header ("Location: $URL");
-
+$URL="adat.php?p=1"; header ("Location: $URL");
 
 ?>

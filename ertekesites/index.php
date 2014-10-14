@@ -4,12 +4,13 @@
 <META HTTP-EQUIV="refresh" CONTENT="60">
   <link type="image/x-icon" rel="icon" href="favicon.ico">
   <link type="image/x-icon" rel="shortcut icon" href="favicon.ico">
-<title>Szombathely LHO</title>
+<title>Nyugat-Magyarország Régió</title>
 </head>
 <body>
 <?php
 //$datum=date("Y-m-01");
 include 'connection.php';
+ $nezet=$_COOKIE["nezet"];
  $datum2=date("Y-m-01");
  $datum3=date("Y-m-d");
  $koa=0;
@@ -49,8 +50,10 @@ echo"
 <INPUT type=\"text\" name=\"dat2\" size='12' value=\"".$datum2."\">
 <INPUT type=\"text\" name=\"dat3\" size='12' value=\"".$datum3."\">
 <INPUT type=\"submit\" value=\"Elküld\">
-</FORM></td>";
-
+</FORM>";
+if($datum2>=2014-10-01 and $nezet==0){
+echo "Nézet:<a href=nezetbeallit.php?n=1>Szombathely</a> <a href=nezetbeallit.php?n=2>Zalaegerszeg</a></td>";
+}
 $bgcolor="white";
 $color="black";
 $szoveg="";
@@ -82,6 +85,9 @@ echo "
 <?php
 //tapolca
 $csop=1;
+if($nezet==2){
+$csop=8;
+}
 include 'tabla.php';
  
 echo"</td>
@@ -92,6 +98,9 @@ echo"</td>
 
 //sopron
 $csop=2;
+if($nezet==2){
+$csop=7;
+}
 include 'tabla.php';
 
 echo "</td>
@@ -101,7 +110,11 @@ echo "</td>
 <tr>
 <td style='vertical-align:top'>";
 //szombathely_se
-$csop=3;
+if($datum2>='2014-10-01')
+{$csop=4;
+if($nezet==2){
+$csop=6;
+}}else{$csop=3;}
 include 'tabla.php';
 echo "
 </td>
@@ -110,7 +123,11 @@ echo "
 </td>
 <td style='vertical-align:top'>";
 //szombathely_ma
-$csop=4;
+if($datum2>='2014-10-01')
+{$csop=8;
+if($nezet==2){
+$csop=1;
+}}else{$csop=4;}
 include 'tabla.php';
 echo "</td>
 </tr>";
@@ -123,7 +140,11 @@ echo"
 <tr>
 <td style='vertical-align:top'>";
 //kaposvár
-$csop=6;
+if($datum2>='2014-10-01')
+{$csop=7;
+if($nezet==2){
+$csop=2;
+}}else{$csop=6;}
 include 'tabla.php';
 echo "
 </td>
@@ -132,7 +153,11 @@ echo "
 </td>
 <td style='vertical-align:top'>";
 //Zalaegerszeg_MF
-$csop=7;
+if($datum2>='2014-10-01')
+{$csop=6;
+if($nezet==2){
+$csop=4;
+}}else{$csop=7;}
 include 'tabla.php';
 echo "</td>
 </tr>
@@ -143,8 +168,11 @@ echo "</td>
 <tr>
 <td style='vertical-align:top'>";
 //Zalaegerszeg_MI
-$csop=8;
-include 'tabla.php';
+if($datum2>='2014-10-01')
+{}
+else{$csop=8;
+include 'tabla.php';}
+
 echo "
 </td>
 
@@ -167,6 +195,11 @@ $csop=5;
 include 'vallalkozo.php';
 
 echo "</td></tr>
-</table>
+</table>";
+if($datum2>=2014-10-01 and $nezet!=0){
+echo "<br><br><br><br>Nézet:<a href=nezetbeallit.php?n=1>Szombathely</a> <a href=nezetbeallit.php?n=2>Zalaegerszeg</a></td>";
+}
+echo"
 </html>";
+mysqli_close($con);
 ?>

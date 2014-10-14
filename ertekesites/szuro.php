@@ -51,6 +51,7 @@ echo "<table border='1' bordercolor=\"#FFCC00\">
 <td>Eszköz portfóliós</td>
 <td>Eszköz nem portfóliós</td>
 <td>Dátum </td>
+<td>Kizárva</td>
 <td></td>
 </tr>
 ";
@@ -66,6 +67,7 @@ echo"
 		<td>" . $sor100['eszkoz'] . "</td>
 		<td>" . $sor100['eszkoz2'] . "</td>
 		<td>" . $sor100['datum'] . "</td>
+		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
 		<td>
  <form action=\"adat.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
@@ -92,6 +94,7 @@ echo"
 		<td>" . $sor100['eszkoz'] . "</td>
 		<td>" . $sor100['eszkoz2'] . "</td>
 		<td>" . $sor100['datum'] . "</td>
+		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
 		<td>
  <form action=\"adat.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
@@ -118,6 +121,7 @@ echo"
 		<td>" . $sor100['eszkoz'] . "</td>
 		<td>" . $sor100['eszkoz2'] . "</td>
 		<td>" . $sor100['datum'] . "</td>
+		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
 		<td>
  <form action=\"adat.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
@@ -144,6 +148,7 @@ echo"
 		<td>" . $sor100['eszkoz'] . "</td>
 		<td>" . $sor100['eszkoz2'] . "</td>
 		<td>" . $sor100['datum'] . "</td>
+		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
 		<td>
  <form action=\"adat.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">

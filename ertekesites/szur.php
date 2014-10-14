@@ -7,7 +7,7 @@ echo"<form action=\"szuro.php?p=1\" method=\"post\">
 <td><select name=\"name\" size=\”1\”>
 	<option value=\"LHO\" selected>-=Régió=-</option>";
 	
-$sql = "SELECT name FROM user WHERE munkacsoport<=99 and iranyito=0 Order by name";
+$sql = "SELECT name FROM user WHERE munkacsoport<=99 and kilepett>='$datum2' Order by name";
 
 $res = mysqli_query($con, $sql);
 

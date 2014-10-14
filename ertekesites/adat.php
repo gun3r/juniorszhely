@@ -11,6 +11,7 @@ include 'fejlec.php';
 $formaction="adat.php?p=1";
 $datum1=$_COOKIE[dat11];
 $datum2=$_COOKIE[dat12];
+$idm=$_COOKIE[idm];
 
 $h=date("m");
 $n=date("d");;
@@ -60,6 +61,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$eszkoz=$sor['eszkoz'];
 		$eszkoz2=$sor['eszkoz2'];
 		$datum=$sor['datum'];
+		$kizarva=$sor['kizarva'];
 		$namev=$name;
 		$termekv=$termek;
 }
@@ -73,6 +75,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$eszkoz="";
 		$eszkoz2="";
 		$datum=date("Y-m-d");
+		$kizarva="0";
 		$namev="";
 		$termekv="";
 $mod=0;
@@ -88,14 +91,23 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Munkadíj</td>
 		<td>Kis értékű portfólió</td>
 		<td>Nagy értékű portfólió</td>
-		<td>Dátum </td>
+		<td>Dátum</td>
+		<td>Kizárva</td>
 		<td></td>
 	</tr>
 	<tr>
 	<td><select name=\"name\" size=\”1\”>
 	<option value=\"".$namev."\" selected>".$name."</option>";
 	
-$sql = "SELECT name FROM user WHERE munkacsoport<=99 Order by name";
+$sql = "SELECT name,kilepett FROM user WHERE munkacsoport<=99 and munkacsoport='$idm' and kilepett>='$datum' Order by name";
+
+$res = mysqli_query($con, $sql);
+
+while($sor = mysqli_fetch_array($res)) {
+
+echo "  <option value=\"" . $sor['name'] . "\">  " . $sor['name'] . "</option>\n";
+}
+$sql = "SELECT name,kilepett FROM user WHERE munkacsoport<=99 and munkacsoport!='$idm' and kilepett>='$datum' Order by name";
 
 $res = mysqli_query($con, $sql);
 
@@ -144,6 +156,7 @@ echo " 	</select></td>
 echo " 	</select></td>";}
 echo "	<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
 		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
+		<td><input type=\"checkbox\" name=\"kizarva\" value=\"1\" "; if($kizarva==1){echo " checked";}echo "></td>
 		<td>
 		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
 		<input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">
@@ -179,6 +192,7 @@ echo	"
 		<td>" . $sor['eszkoz'] . "</td>
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
+		<td><input type='checkbox'"; if($sor['kizarva']==1){echo " checked";}echo "></td>
 		<td>
  <form action=\"adat.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">

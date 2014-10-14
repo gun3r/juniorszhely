@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 include 'connection.php';
-  
-$sql="SELECT * FROM  `user` WHERE eventus = \"$_POST[sp_code]\" ";
+$datum1=date("Y-m-d");	 		
+$sql="SELECT * FROM  `user` WHERE eventus = \"$_POST[sp_code]\" and kilepett>='$datum1' ";
 	$h=date("m");
 	$n=date("d");
 	$d=mktime(0, 0, 0, $h, $n+1, 2014);
@@ -19,12 +19,14 @@ $belep = $sor['belep'];
 $pass = $sor['password'];
 $pass1 = $_POST[password];
 $sp = $_POST[sp_code];
+$munkacsoport=$sor['munkacsoport'];
 $tippmix=$sor['tippmix'];
 mysqli_close($con);
 
  if ($pass == $pass1 and $belep=='1' or $tippmix=='1') {
     
 	setcookie("sp_code", $sp, $d);
+	setcookie("idm", $munkacsoport, $d);
 	
 	}
  

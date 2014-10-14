@@ -12,8 +12,11 @@
  $ee2=0;
  
  $osszes=0;
-$sql = "SELECT name FROM `user` 
-WHERE munkacsoport=$csop order by munkacsoport asc, iranyito desc, name asc
+$sql = "SELECT * FROM `user` 
+WHERE munkacsoport=$csop and
+kilepett >= '$datum2' and
+belepett <= '$datum3'
+order by munkacsoport asc, iranyito desc, name asc
 limit 0, 50";
 $res = mysqli_query($con, $sql);
 echo "
@@ -32,26 +35,33 @@ echo "
 </th>";
 while($sor = mysqli_fetch_array($res)) {
 $nev=$sor['name'];
+$be=$sor['belepett'];
+$ki=$sor['kilepett'];
 echo "<tr>";
  echo "<td>" . $sor['name'] ."</td>";
 $sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM adat
 WHERE name  LIKE \"%$nev%\" and
+munkacsoport=$csop and
 termek !='Törölve' and
+kizarva !='1' and
 datum >='$datum2' and datum <='$datum3'";
 
 
  $res2 = mysqli_query($con, $sql2);
  
  while($sor2 = mysqli_fetch_array($res2)) {
-  
+  if($datum2<=$be){
+  $kezd=$be;}else{
+  $kezd=$datum2;
+  }
 
   $sql3 = 
 	"SELECT SUM( alap ) as alap, SUM( tobblet ) as tobblet, SUM( munkadij ) as munkadij, SUM( eszkoz ) as eszkoz, SUM( eszkoz2 ) as eszkoz2, SUM(IF(aktiv = 'Aktív',1,0)) as aktiv
 	FROM  `elvaras` 
-	WHERE name LIKE  \"%$nev%\"
-	AND ev >='$datum2' and ev <='$datum3'";
+	WHERE name LIKE  \"%$nev%\" 
+	AND ev >='$kezd' and ev <='$datum3'";
 	$res3 = mysqli_query($con, $sql3);
   $row_cnt = intval(mysqli_num_rows($res3));
 if($row_cnt==0){
