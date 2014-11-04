@@ -3,7 +3,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<?php include 'fejlec.php';?>
+<?php
+ $idi=$sp=$_COOKIE['idi'];
+if($idi==0){
+$URL="index.php?p=0"; header ("Location: $URL");
+}
+ include 'fejlec.php';?>
 Új ember felvétele:</br>
 <form action="insert.php" method="post">
 Evetus kód: <input type="text" name="eventus">

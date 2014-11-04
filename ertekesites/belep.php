@@ -20,13 +20,15 @@ $pass = $sor['password'];
 $pass1 = $_POST[password];
 $sp = $_POST[sp_code];
 $munkacsoport=$sor['munkacsoport'];
+$iranyito=$sor['belep'];
 $tippmix=$sor['tippmix'];
 mysqli_close($con);
 
- if ($pass == $pass1 and $belep=='1' or $tippmix=='1') {
+ if ($pass == $pass1) {
     
 	setcookie("sp_code", $sp, $d);
 	setcookie("idm", $munkacsoport, $d);
+	setcookie("idi", $iranyito, $d);
 	
 	}
  

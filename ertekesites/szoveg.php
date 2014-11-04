@@ -1,3 +1,9 @@
+<?php
+$idi=$sp=$_COOKIE['idi'];
+if($idi==0){
+$URL="index.php?p=0"; header ("Location: $URL");
+}
+?>
 <html lang="hu">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

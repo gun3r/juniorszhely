@@ -13,6 +13,9 @@ include 'feltolt.html';
 include 'connection.php';
 $mod=1;
 $ev=date("2014-m-01");
+$idi=$sp=$_COOKIE['idi'];
+
+
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
 		<td>Aktív</td>
@@ -26,15 +29,37 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 	</tr>";
 
+if($idi==0){
+$sql = "SELECT * FROM elvaras
+		WHERE name='$nev'
+		ORDER by ev desc";
+
+}else{
 $sql = "SELECT *, elvaras.id as ide FROM elvaras
 		INNER JOIN user
 		ON elvaras.name=user.name
 		ORDER by elvaras.ev desc, user.iranyito asc, user.munkacsoport asc, elvaras.name asc";
-		
+		}
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {
 
 /*elvaras_be*/
+if($idi==0){
+
+echo "
+	<tr>
+		<td>".$sor['aktiv']."</td>
+		<td>".$sor['name']."</td>
+		<td>".$sor['alap']."</td>
+		<td>".$sor['tobblet']."</td>
+		<td>".$sor['munkadij']."</td>
+		<td>".$sor['eszkoz']."</td>
+		<td>".$sor['eszkoz2']."</td>
+		<td>". $sor['ev'] ."</td>
+		<td></td>
+	</tr>";
+
+}else{
 echo "	
 		<form action=\"elvaras_be.php\" method=\"post\">
 	<tr>
@@ -57,6 +82,7 @@ echo "
 		<input type=\"hidden\" name=\"id\" value=\"".  $sor['ide']. "\">
 		<input type=\"submit\" value=\"Módosít\"></form></td>
 	</tr></form>";
+	}
 	}
 echo"</table>
 	</body> 

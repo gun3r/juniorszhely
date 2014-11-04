@@ -14,28 +14,37 @@ $tippmix=$sor10['tippmix'];
 }
 if($p==0){$colorf='magenta';}else{$colorf='black';}
 echo "<h4><a href=index.php?p=0 style='color:".$colorf."'>Összesítő</a>";
-if($adat=='1'){
+
+
 echo "   ";
 if($p==1){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=adat.php?p=1 style='color:".$colorf."'>Adatok</a>";
+
 echo "   ";
 if($p==2){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=elvaras.php?p=2 style='color:".$colorf."'>Elvárás</a>";
+
+if($adat=='1'){
 echo "   ";
 if($p==3){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=szoveg.php?p=3 style='color:".$colorf."'>Üzenet</a>";
+}
+if($adat=='1'){
 echo "   ";
 if($p==4){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=pontkalkulator.php?p=4 style='color:".$colorf."'>Korrekció</a>";
+}
+
 echo "   ";
 if($p==5){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=jelszocsere.php?p=5 style='color:".$colorf."'>Jelszócsere</a>";
+
 if($nev=='Dancsecs András'){
 echo "   ";
 if($p==6){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=ember.php?p=6 style='color:".$colorf."'>Kollégák</a>";
 }
-}
+
 echo "   ";
 if($tippmix=='1'){
 if($p==7){$colorf='magenta';}else{$colorf='black';}

@@ -1,5 +1,6 @@
 <?php
 include 'fejlec.php';
+
 $datum1=$_COOKIE[dat2];
 $datum2=$_COOKIE[dat3];
 
@@ -14,10 +15,10 @@ $i="
 <INPUT type='text' name='dat12' size='12' value='".$datum2."'>";
 include 'szur.php';
 //echo "$_POST[name] - ";
-$csa="";
-$cst="";
-$csm="";
-$cse="";
+$csa="alap = '10'";
+$cst="tobblet = '10'";
+$csm="munkadij = '1'";
+$cse="(eszkoz ='1' or eszkoz2 = '1')";
 
 if($_POST[alap]==1)
 {$csa="alap = '1'";}
@@ -31,11 +32,15 @@ $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
 if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE $csa and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by termek asc";
 }else{
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csa and datum >='$datum1' and datum <='$datum2' Order by id";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
 }
-
+/*echo"
+<form action=\"csvment.php\" method=\"post\">
+ <input type=\"hidden\" name=\"mod\" value=\"$sql100\">
+ <input type=\"submit\" value=\"CSV mentés\">
+</form>";*/
 $res100 = mysqli_query($con, $sql100);
 echo "<table border='1' bordercolor=\"#FFCC00\">
 <tr>
@@ -45,7 +50,7 @@ echo "<table border='1' bordercolor=\"#FFCC00\">
 <td>Kolléga</td>
 <td>Azonosító</td>
 <td>Termék</td>
-<td>T-home</td>
+<td>Alap</td>
 <td>Többlet</td>
 <td>Munkadíj</td>
 <td>Eszköz portfóliós</td>
@@ -69,95 +74,20 @@ echo"
 		<td>" . $sor100['datum'] . "</td>
 		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
 		<td>
- <form action=\"adat.php?p=1\" method=\"post\">
+ <form action=\"adat2.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
+  <input type=\"hidden\" name=\"honnan\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor100['id'] . ">
  <input type=\"submit\" value=\"Módosít\">
- </form></td>
+ </form></td></tr>
 ";
 }
-if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE $cst and datum >='$datum1' and datum <='$datum2' Order by termek asc";
-}else{
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cst and datum >='$datum1' and datum <='$datum2' Order by id";
-}
-$res100 = mysqli_query($con, $sql100);
-while($sor100 = mysqli_fetch_array($res100)) {
+
 echo"
-<tr>
-		<td>" . $sor100['name'] . "</td>
-		<td>" . $sor100['azonosito'] . "</td>
-		<td>" . $sor100['termek'] . "</td>
-		<td>" . $sor100['alap'] . "</td>
-		<td>" . $sor100['tobblet'] . "</td>
-		<td>" . $sor100['munkadij'] . "</td>
-		<td>" . $sor100['eszkoz'] . "</td>
-		<td>" . $sor100['eszkoz2'] . "</td>
-		<td>" . $sor100['datum'] . "</td>
-		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
-		<td>
- <form action=\"adat.php?p=1\" method=\"post\">
- <input type=\"hidden\" name=\"mod\" value=\"1\">
- <input type=\"hidden\" name=\"id\" value=" . $sor100['id'] . ">
- <input type=\"submit\" value=\"Módosít\">
- </form></td>
-";
-}
-if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE $csm and datum >='$datum1' and datum <='$datum2' Order by termek asc";
-}else{
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $csm and datum >='$datum1' and datum <='$datum2' Order by id";
-}
-$res100 = mysqli_query($con, $sql100);
-while($sor100 = mysqli_fetch_array($res100)) {
-echo"
-<tr>
-		<td>" . $sor100['name'] . "</td>
-		<td>" . $sor100['azonosito'] . "</td>
-		<td>" . $sor100['termek'] . "</td>
-		<td>" . $sor100['alap'] . "</td>
-		<td>" . $sor100['tobblet'] . "</td>
-		<td>" . $sor100['munkadij'] . "</td>
-		<td>" . $sor100['eszkoz'] . "</td>
-		<td>" . $sor100['eszkoz2'] . "</td>
-		<td>" . $sor100['datum'] . "</td>
-		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
-		<td>
- <form action=\"adat.php?p=1\" method=\"post\">
- <input type=\"hidden\" name=\"mod\" value=\"1\">
- <input type=\"hidden\" name=\"id\" value=" . $sor100['id'] . ">
- <input type=\"submit\" value=\"Módosít\">
- </form></td>
-";
-}
-if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE $cse and datum >='$datum1' and datum <='$datum2' Order by termek asc";
-}else{
-$sql100 = "SELECT * FROM adat WHERE name='$_POST[name]' and $cse and datum >='$datum1' and datum <='$datum2' Order by id";
-}
-$res100 = mysqli_query($con, $sql100);
-while($sor100 = mysqli_fetch_array($res100)) {
-echo"
-<tr>
-		<td>" . $sor100['name'] . "</td>
-		<td>" . $sor100['azonosito'] . "</td>
-		<td>" . $sor100['termek'] . "</td>
-		<td>" . $sor100['alap'] . "</td>
-		<td>" . $sor100['tobblet'] . "</td>
-		<td>" . $sor100['munkadij'] . "</td>
-		<td>" . $sor100['eszkoz'] . "</td>
-		<td>" . $sor100['eszkoz2'] . "</td>
-		<td>" . $sor100['datum'] . "</td>
-		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
-		<td>
- <form action=\"adat.php?p=1\" method=\"post\">
- <input type=\"hidden\" name=\"mod\" value=\"1\">
- <input type=\"hidden\" name=\"id\" value=" . $sor100['id'] . ">
- <input type=\"submit\" value=\"Módosít\">
- </form></td>
-";
-}
-echo"
-</tr>
 </table>";
+
+
+include 'csvment.php';
+
+
 ?>

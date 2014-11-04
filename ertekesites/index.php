@@ -38,9 +38,11 @@ $res5 = mysqli_query($con, $sql5);
 $i=0;
 while($sor5 = mysqli_fetch_array($res5)) {
 $maxnap=$maxnap+$sor5['max'];
+
 $i++;
 }
-$deltat = ((strtotime($datum3)-strtotime($datum2))/60/60/24+1)/$maxnap;
+$deltat = (intval((strtotime($datum3)-strtotime($datum2))/60/60/24+1))/$maxnap;
+//echo $deltat;
 include_once("analyticstracking.php");
 echo "<table style='border:0px; width:100%'>
 <tr><td style='width:390'>";

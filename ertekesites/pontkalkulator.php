@@ -1,4 +1,9 @@
 <?php
+$idi=$sp=$_COOKIE['idi'];
+if($idi==0){
+$URL="index.php?p=0"; header ("Location: $URL");
+}
+
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
@@ -47,10 +52,16 @@ echo"Korrekció dátum:
 <input type='radio' name='csop' value='0'"; if($csop==0){echo 'checked';}echo ">Összes
 <input type='radio' name='csop' value='1'"; if($csop==1){echo 'checked';}echo ">Biczó Éva
 <input type='radio' name='csop' value='2'"; if($csop==2){echo 'checked';}echo ">Edőcs János
+<input type='radio' name='csop' value='11'"; if($csop==11){echo 'checked';}echo ">Berta Ottilia
+<input type='radio' name='csop' value='12'"; if($csop==12){echo 'checked';}echo ">Pinczés Éva
+<br>
 <input type='radio' name='csop' value='3'"; if($csop==3){echo 'checked';}echo ">Háromi Gábor
 <input type='radio' name='csop' value='4'"; if($csop==4){echo 'checked';}echo ">Grund Lajos
-<input type='radio' name='csop' value='5'"; if($csop==5){echo 'checked';}echo ">Savanyó Ernő
 <input type='radio' name='csop' value='6'"; if($csop==6){echo 'checked';}echo ">Márfy Attila
+<br>
+<input type='radio' name='csop' value='7'"; if($csop==7){echo 'checked';}echo ">Feil Ferenc
+<input type='radio' name='csop' value='8'"; if($csop==8){echo 'checked';}echo ">Mihálka István
+<input type='radio' name='csop' value='9'"; if($csop==9){echo 'checked';}echo ">Molnár Ferenc
 <input type='hidden' name='s' value='1'>
 <input id='Submit' name='submit' type='submit' size='3'value='OK' />
 </form>";
@@ -59,6 +70,10 @@ if($csop==1)
 {$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
 if($csop==2)
 {$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
+if($csop==11)
+{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1')";}
+if($csop==12)
+{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1')";}
 if($csop==3)
 {$csoport="(munkacsoport='Háromi Gábor' or munkacsoport='1') and alap='0' and tobblet='0' ";}
 if($csop==4)
@@ -67,15 +82,22 @@ if($csop==5)
 {$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='3') and alap='0' and tobblet='0' ";}
 if($csop==6)
 {$csoport="(munkacsoport='Márfy Attila' or munkacsoport='4') and alap='0' and tobblet='0' ";}
+if($csop==7)
+{$csoport="(munkacsoport='6') and alap='0' and tobblet='0' ";}
+if($csop==8)
+{$csoport="(munkacsoport='7') and alap='0' and tobblet='0' ";}
+if($csop==9)
+{$csoport="(munkacsoport='8') and alap='0' and tobblet='0' ";}
+
 if($csop==0)
-{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='1' or munkacsoport='2' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-Táv Kft.' or munkacsoport='5'";}
+{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='1' or munkacsoport='6' or munkacsoport='7' or munkacsoport='8'  or munkacsoport='2' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-Táv Kft.' or munkacsoport='5'";}
 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
 		<td>Név</td>
-		<td>Azonosító</td>
+		<td>Azonosító/WF/Előfizető</td>
 		<td>Termék</td>
-		<td>T-home</td>
+		<td>Alap</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
 		<td>Eszköz portfóliós</td>
@@ -111,6 +133,7 @@ $gomb="
 <form name='input' action='note_be.php' method='post'>
 <input type='text' size='100' name='note' value='" . $sor['note'] . "'>
 <input type='hidden' name='id' value=" . $sor['id'] . ">
+
 <input type='submit' value='Küldés'>
 </form>";
 
@@ -153,7 +176,7 @@ else{
 echo	"
 		<tr>
 		<td>" . $sor['name'] . "</td>
-		<td>" . $sor['azonosito'] . "</td>
+		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
 		<td>" . $sor['alap'] . "</td>
 		<td>" . $sor['tobblet'] . "</td>
@@ -162,9 +185,10 @@ echo	"
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>
- <form action=\"adat.php\" method=\"post\">
+ <form action=\"adat2.php?p=4\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"2\">
  <input type=\"submit\" value=\"Módosít\">
  </form></td>";
 echo "<td>Rögzítve</td>";   
@@ -177,7 +201,7 @@ else{
 echo	"
 		<tr>
 		<td>" . $sor['name'] . "</td>
-		<td>" . $sor['azonosito'] . "</td>
+		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
 		<td>" . $sor['alap'] . "</td>
 		<td>" . $sor['tobblet'] . "</td>
@@ -186,9 +210,10 @@ echo	"
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>
- <form action=\"adat.php\" method=\"post\">
+ <form action=\"adat2.php?p=4\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"2\">
  <input type=\"submit\" value=\"Módosít\">
  </form></td>";
 echo "<td>Nincs rögzítve</td>";

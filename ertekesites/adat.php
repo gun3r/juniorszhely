@@ -1,4 +1,6 @@
 <?php
+$idi=$sp=$_COOKIE['idi'];
+
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
@@ -42,7 +44,14 @@ echo"
 <input type='hidden' name='s' value='1'>
 <input id='Submit' name='submit' type='submit' size='3'value='OK' />
 </form>";
+if($idi!=0){
 include 'szur.php';
+echo "
+ <form action='adat2.php?p=1' method='post'>
+ <input type=\"hidden\" name=\"honnan\" value=\"1\">
+ <input type=\"submit\" value=\"Új adat felvitele\">
+ </form>";
+} 
 $mod=$_POST[mod];
 
 
@@ -80,13 +89,12 @@ while($sor = mysqli_fetch_array($res)) {
 		$termekv="";
 $mod=0;
 }
-echo "<form action=\"adat_be.php\" method=\"post\">\n"; 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
 		<td>Név</td>
-		<td>Azonosító</td>
+		<td>Azonosítók/WF/Előfizető</td>
 		<td>Termék</td>
-		<td>T-home</td>
+		<td>Alap</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
 		<td>Kis értékű portfólió</td>
@@ -94,73 +102,6 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Dátum</td>
 		<td>Kizárva</td>
 		<td></td>
-	</tr>
-	<tr>
-	<td><select name=\"name\" size=\”1\”>
-	<option value=\"".$namev."\" selected>".$name."</option>";
-	
-$sql = "SELECT name,kilepett FROM user WHERE munkacsoport<=99 and munkacsoport='$idm' and kilepett>='$datum' Order by name";
-
-$res = mysqli_query($con, $sql);
-
-while($sor = mysqli_fetch_array($res)) {
-
-echo "  <option value=\"" . $sor['name'] . "\">  " . $sor['name'] . "</option>\n";
-}
-$sql = "SELECT name,kilepett FROM user WHERE munkacsoport<=99 and munkacsoport!='$idm' and kilepett>='$datum' Order by name";
-
-$res = mysqli_query($con, $sql);
-
-while($sor = mysqli_fetch_array($res)) {
-
-echo "  <option value=\"" . $sor['name'] . "\">  " . $sor['name'] . "</option>\n";
-}	
-		
-echo " 	</select></td>
-			
-		<td><input type=\"text\" name=\"azonosito\" value=\"".$azonosito."\"size=\"10\"></td>
-		
-		<td><select name=\"termek\" size=\”1\”>
-	<option value=\"".$termekv."\" selected>".$termek."</option>";
-	
-$sql = "SELECT nev FROM termek WHERE 1 Order by nev";
-
-$res = mysqli_query($con, $sql);
-
-while($sor = mysqli_fetch_array($res)) {
-
-echo "  <option value=\"" . $sor['nev'] . "\">  " . $sor['nev'] . "</option>\n";
-}	
-		
-echo " 	</select></td>
-		
-		<td><input type=\"text\" name=\"alap\" value=\"".$alap."\"size=\"3\"></td>
-        <td><input type=\"text\" name=\"tobblet\" value=\"".$tobblet."\"size=\"3\"></td>
-		<td><input type=\"text\" name=\"munkadij\" value=\"".$munkadij." \"size=\"6\"></td>
-		";if($nev=='Edőcs János'){echo"
-		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$eszkoz." \"size=\"6\"></td>";
-		}else{
-		echo"
-		<td><select name=\"eszkoz1\" size=\"1\">
-		<option value=\"".$eszkoz."\" selected>".$eszkoz."</option>";
-	
-		$sql = "SELECT nev,osszeg,kiemelt FROM portfolio WHERE 1 Order by kiemelt desc, nev asc";
-
-		$res = mysqli_query($con, $sql);
-
-		while($sor = mysqli_fetch_array($res)) {
-
-		echo "  <option value=\"" . $sor['osszeg'] . "\" size=\"12\" >  " . $sor['nev'] . " - " . $sor['osszeg'] . "Ft</option>\n";
-		}
-		
-echo " 	</select></td>";}
-echo "	<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td>
-		<td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td>
-		<td><input type=\"checkbox\" name=\"kizarva\" value=\"1\" "; if($kizarva==1){echo " checked";}echo "></td>
-		<td>
-		<input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
-		<input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">
-		<input type=\"submit\" value=\"OK\"></form></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -176,15 +117,21 @@ echo "	<td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15
 	</tr>";
 		$mitol=$datum1;
 		$meddig=$datum2;
+		//adatok lekérdezése
+		if($idi==0){
+$sql = "SELECT * FROM adat
+		WHERE name='$nev' and datum >='$mitol' and datum <='$meddig' Order by id desc";
+
+}else{
 		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by id desc";
-		
+		}
 		$res = mysqli_query($con, $sql);
 
 while($sor = mysqli_fetch_array($res)) {
 echo	"
 		<tr>
 		<td>" . $sor['name'] . "</td>
-		<td>" . $sor['azonosito'] . "</td>
+		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
 		<td>" . $sor['alap'] . "</td>
 		<td>" . $sor['tobblet'] . "</td>
@@ -193,15 +140,24 @@ echo	"
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td><input type='checkbox'"; if($sor['kizarva']==1){echo " checked";}echo "></td>
-		<td>
- <form action=\"adat.php?p=1\" method=\"post\">
+		<td>";
+		if($idi!=0){
+echo "
+ <form action=\"adat2.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"1\">
  <input type=\"submit\" value=\"Módosít\">
- </form></td>
+ </form>";}
+ echo"</td>
 		</tr>";}
 	
 echo "</table> 
 	</body> 
 	</html>";
+?>
+<?php
+    $file = iconv('utf-8','windows-1250',$file);
+    fclose($file);
+	
 ?>

@@ -49,7 +49,7 @@ $m=intval($munkacsop);
 if($mod==1){
 	 
 	 $besz = "UPDATE `ertekesites`.`adat` 
-	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]'	 WHERE	 `adat`.`id` = '$_POST[id]'";
+	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]',wf='$_POST[wf]',efinev='$_POST[efinev]'	 WHERE	 `adat`.`id` = '$_POST[id]'";
 		  
 	 if (!mysqli_query($con,$besz))
 	   {
@@ -60,8 +60,8 @@ if($mod==1){
 
 
 
-$sql="INSERT INTO adat (name,munkacsoport,azonosito,termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,datum2) VALUES
-('$_POST[name]','$m','$_POST[azonosito]','$_POST[termek]',$alap,$tobblet,'$munkadij','$eszkoz1','$eszkoz2','$_POST[datum]','$_POST[datum]')";
+$sql="INSERT INTO adat (name,munkacsoport,azonosito,termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,datum2,wf,efinev) VALUES
+('$_POST[name]','$m','$_POST[azonosito]','$_POST[termek]',$alap,$tobblet,'$munkadij','$eszkoz1','$eszkoz2','$_POST[datum]','$_POST[datum]','$_POST[wf]','$_POST[efinev]')";
 
 if (!mysqli_query($con,$sql))
   {
@@ -69,6 +69,10 @@ if (!mysqli_query($con,$sql))
   }
 }
 mysqli_close($con);
+$honnan=$_POST[honnan];
+if($honnan==1){
 $URL="adat.php?p=1"; header ("Location: $URL");
-
+}else{
+$URL="pontkalkulator.php?p=4"; header ("Location: $URL");
+}
 ?>
