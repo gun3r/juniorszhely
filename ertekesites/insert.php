@@ -22,7 +22,7 @@ header ("Location: $URL");
 
 if($_POST[mod]==1){
 
-$sql2="UPDATE user SET  name='$_POST[name]',eventus='$_POST[eventus]',munkacsoport='$_POST[munkacsoport]',iranyito='$_POST[iranyito]',belep='$_POST[belep]',tippmix='$_POST[tippmix]',kilepett='$ki',belepett='$_POST[belepett]' WHERE  id ='$_POST[id]'";
+$sql2="UPDATE user SET  name='$_POST[name]',eventus='$_POST[eventus]',munkacsoport='$_POST[munkacsoport]',iranyito='$_POST[iranyito]',belep='$_POST[belep]',portfolio='$_POST[portfolio]',tippmix='$_POST[tippmix]',kilepett='$ki',belepett='$_POST[belepett]' WHERE  id ='$_POST[id]'";
 
 if (!mysqli_query($con,$sql2))
   {

@@ -94,6 +94,14 @@ while($sor = mysqli_fetch_array($res)) {
 
 echo "  <option value=\"" . $sor['name'] . "\">  " . $sor['name'] . "</option>\n";
 }
+$sql = "SELECT name,kilepett FROM user WHERE munkacsoport<=99 and hol='$idm' and kilepett>='$datum' Order by name";
+
+$res = mysqli_query($con, $sql);
+
+while($sor = mysqli_fetch_array($res)) {
+
+echo "  <option value=\"" . $sor['name'] . "\">  " . $sor['name'] . "</option>\n";
+}
 $sql = "SELECT name,kilepett FROM user WHERE munkacsoport<=99 and munkacsoport!='$idm' and kilepett>='$datum' Order by name";
 
 $res = mysqli_query($con, $sql);

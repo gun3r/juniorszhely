@@ -38,7 +38,6 @@ $sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$_P
 }
 /*echo"
 <form action=\"csvment.php\" method=\"post\">
- <input type=\"hidden\" name=\"mod\" value=\"$sql100\">
  <input type=\"submit\" value=\"CSV mentés\">
 </form>";*/
 $res100 = mysqli_query($con, $sql100);
@@ -48,13 +47,13 @@ echo "<table border='1' bordercolor=\"#FFCC00\">
 </tr>
 <tr>
 <td>Kolléga</td>
-<td>Azonosító</td>
+<td>Azonosító/WF/Előfizető</td>
 <td>Termék</td>
 <td>Alap</td>
 <td>Többlet</td>
 <td>Munkadíj</td>
-<td>Eszköz portfóliós</td>
-<td>Eszköz nem portfóliós</td>
+<td>Kis értékű portfólió</td>
+<td>Nagy értékű portfólió</td>
 <td>Dátum </td>
 <td>Kizárva</td>
 <td></td>
@@ -64,7 +63,7 @@ while($sor100 = mysqli_fetch_array($res100)) {
 echo"
 <tr>
 		<td>" . $sor100['name'] . "</td>
-		<td>" . $sor100['azonosito'] . "</td>
+		<td>" . $sor100['azonosito'] . "<br>" . $sor100['wf'] . "<br>" . $sor100['efinev'] . "</td>
 		<td>" . $sor100['termek'] . "</td>
 		<td>" . $sor100['alap'] . "</td>
 		<td>" . $sor100['tobblet'] . "</td>
@@ -85,9 +84,6 @@ echo"
 
 echo"
 </table>";
-
-
-include 'csvment.php';
 
 
 ?>

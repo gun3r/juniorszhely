@@ -45,7 +45,7 @@ datum >='$datum2' and datum <='$datum3'";
 $sql2 =
 "SELECT SUM( alap ) as a, SUM( tobblet ) as t, SUM( munkadij ) as m, SUM( eszkoz ) as e, SUM( eszkoz2 ) as e2 
 FROM elvaras
-WHERE name='LHO' and
+WHERE (name='LHO' or name='Régió') and
 ev >='$datum2' and ev <='$datum3'";
 $res2 = mysqli_query($con, $sql2);
  

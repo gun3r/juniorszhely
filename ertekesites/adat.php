@@ -47,10 +47,15 @@ echo"
 if($idi!=0){
 include 'szur.php';
 echo "
- <form action='adat2.php?p=1' method='post'>
+ <table border=0><tr><td><form action='adat2.php?p=1' method='post'>
  <input type=\"hidden\" name=\"honnan\" value=\"1\">
  <input type=\"submit\" value=\"Új adat felvitele\">
- </form>";
+ </form></td>";
+ echo"
+<td><form action=\"csvment.php\" method=\"post\">
+ <input type=\"submit\" value=\"Adatok mentése(CSV)\">
+</form></td></tr></table>";
+ 
 } 
 $mod=$_POST[mod];
 
@@ -152,12 +157,13 @@ echo "
  echo"</td>
 		</tr>";}
 	
-echo "</table> 
-	</body> 
+echo "</table>";
+if($idi!=0){
+echo"<br>
+<form action=\"csvment.php\" method=\"post\">
+ <input type=\"submit\" value=\"Adatok mentése(CSV)\">
+</form>";
+} 
+echo "	</body> 
 	</html>";
-?>
-<?php
-    $file = iconv('utf-8','windows-1250',$file);
-    fclose($file);
-	
 ?>

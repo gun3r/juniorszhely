@@ -11,6 +11,7 @@ while($sor10 = mysqli_fetch_array($res10)) {
 $nev=$sor10['name'];
 $adat=$sor10['belep'];
 $tippmix=$sor10['tippmix'];
+$portfolio=$sor10['portfolio'];
 }
 if($p==0){$colorf='magenta';}else{$colorf='black';}
 echo "<h4><a href=index.php?p=0 style='color:".$colorf."'>Összesítő</a>";
@@ -33,6 +34,17 @@ if($adat=='1'){
 echo "   ";
 if($p==4){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=pontkalkulator.php?p=4 style='color:".$colorf."'>Korrekció</a>";
+}
+
+/*echo "   ";
+if($p==8){$colorf='magenta';}else{$colorf='black';}
+echo "<a href=mjr.php?p=8 style='color:".$colorf."'>MJR</a>";
+*/
+
+if($portfolio==1){
+echo "   ";
+if($p==9){$colorf='magenta';}else{$colorf='black';}
+echo "<a href=portfolio.php?p=9 style='color:".$colorf."'>Portfólió</a>";
 }
 
 echo "   ";

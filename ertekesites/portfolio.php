@@ -3,7 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<?php// include 'fejlec.php';?>
+<?php
+include 'fejlec.php';?>
 Új portfóliós termék felvétele:</br>
 <form action="portfolio_mod.php" method="post">
 Termék neve: <input type="text" name="nev">

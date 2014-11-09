@@ -3,14 +3,20 @@
 $conn = mysql_connect('localhost', 'root', 'laciferi') or die(mysql_error());
 $db=mysql_select_db('ertekesites', $conn) or die(mysql_error());
 
-$sql='$_POST[mod]';
-
 //header to give the order to the browser
 header('Content-Type: text/csv');
 header('Content-Disposition: attachment;filename=exported-data.csv');
-$sql='$_POST[mod]';
+
+$mitol=$_COOKIE[dat11];
+$meddig=$_COOKIE[dat12];
+
+
+$sql100 = "SELECT name,azonosito,wf,efinev,	termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,kizarva,note	
+ FROM adat WHERE datum >='$mitol' and datum <='$meddig' ORDER BY datum asc";
+
+
 //select table to export the data
-$select_table=mysql_query('$sql');
+$select_table=mysql_query("$sql100");
 $rows = mysql_fetch_assoc($select_table);
 
 if ($rows)
