@@ -84,7 +84,7 @@ echo"
 		<td>" . $sor100['eszkoz2'] . "</td>
 		<td>" . $sor100['datum'] . "</td>
 		<td>" . $sor100['status'] . "</td>
-		<td><input type='checkbox' disabled=\"disabled\""; if($sor100['eszkalacio']==1){echo " checked='checked'";}echo "></td>
+		<td><input type='checkbox' disabled=\"disabled\""; if($sor100['eszkalacio']==1){echo " checked='checked'";}echo "><br>".$sor100['note2']."</td>
 		<td><input type='checkbox' disabled=\"disabled\""; if($sor100['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
  <form action=\"adat2.php?p=1\" method=\"post\">

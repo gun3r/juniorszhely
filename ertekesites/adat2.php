@@ -64,6 +64,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$efinev=$sor['efinev'];
 		$status=$sor['status'];
 		$eszkalacio=$sor['eszkalacio'];
+		$note2=$sor['note2'];
 }
 }else{
 		$name="Válasz!";
@@ -82,6 +83,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$efinev="";
 		$status="";
 		$eszkalacio="0";
+		$note2="";
 $mod=0;
 }
 echo "<form action=\"adat_be.php\" method=\"post\">\n"; 
@@ -166,6 +168,7 @@ echo " 	</select></td></tr>
 		
 echo " 	</select></td></tr>
 		<tr><td>Eszkaláció</td><td><input type=\"checkbox\" name=\"eszkalacio\" value=\"1\" "; if($eszkalacio==1){echo " checked";}echo "></td></tr>
+		<tr><td>Eszkaláció megjegyzés</td><td><input type=\"text\" name=\"note2\" value=\"".$note2." \"size=\"50\"></td></tr>
 		<tr><td>Kizárva</td><td><input type=\"checkbox\" name=\"kizarva\" value=\"1\" "; if($kizarva==1){echo " checked";}echo "></td></tr>
 		<tr><td></td><td><input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
 		<input type=\"hidden\" name=\"honnan\" value=\"".$honnan."\">

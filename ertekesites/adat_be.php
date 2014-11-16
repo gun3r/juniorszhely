@@ -49,7 +49,7 @@ $m=intval($munkacsop);
 if($mod==1){
 	 
 	 $besz = "UPDATE `ertekesites`.`adat` 
-	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]',wf='$_POST[wf]',efinev='$_POST[efinev]',status='$_POST[status]',eszkalacio='$_POST[eszkalacio]'	 WHERE	 `adat`.`id` = '$_POST[id]'";
+	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]',wf='$_POST[wf]',efinev='$_POST[efinev]',status='$_POST[status]',eszkalacio='$_POST[eszkalacio]',note2='$_POST[note2]'	 WHERE	 `adat`.`id` = '$_POST[id]'";
 		  
 	 if (!mysqli_query($con,$besz))
 	   {
@@ -60,8 +60,8 @@ if($mod==1){
 
 
 
-$sql="INSERT INTO adat (name,munkacsoport,azonosito,termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,datum2,wf,efinev,status,eszkalacio) VALUES
-('$_POST[name]','$m','$_POST[azonosito]','$_POST[termek]',$alap,$tobblet,'$munkadij','$eszkoz1','$eszkoz2','$_POST[datum]','$_POST[datum]','$_POST[wf]','$_POST[efinev]','$_POST[status]','$_POST[eszkalacio]')";
+$sql="INSERT INTO adat (name,munkacsoport,azonosito,termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,datum2,wf,efinev,status,eszkalacio, note2) VALUES
+('$_POST[name]','$m','$_POST[azonosito]','$_POST[termek]',$alap,$tobblet,'$munkadij','$eszkoz1','$eszkoz2','$_POST[datum]','$_POST[datum]','$_POST[wf]','$_POST[efinev]','$_POST[status]','$_POST[eszkalacio]','$_POST[note2]')";
 
 if (!mysqli_query($con,$sql))
   {
