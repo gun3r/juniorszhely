@@ -19,6 +19,7 @@ $csa="alap = '10'";
 $cst="tobblet = '10'";
 $csm="munkadij = '1'";
 $cse="(eszkoz ='1' or eszkoz2 = '1')";
+$cseszk="eszkalacio='0' or eszkalacio='1'";
 
 if($_POST[alap]==1)
 {$csa="alap = '1'";}
@@ -28,13 +29,15 @@ if($_POST[munkadij]==1)
 {$csm="munkadij >= '1'";}
 if($_POST[eszkoz]==1)
 {$cse="(eszkoz >='1' or eszkoz2 >= '1')";}
+if($_POST[eszkalacio]==1)
+{$cseszk="eszkalacio='1'";}
 $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
 if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and $cseszk and datum >='$datum1' and datum <='$datum2' Order by termek asc";
 }else{
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and $cseszk and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
 }
 /*echo"
 <form action=\"csvment.php\" method=\"post\">
@@ -43,7 +46,7 @@ $sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$_P
 $res100 = mysqli_query($con, $sql100);
 echo "<table border='1' bordercolor=\"#FFCC00\">
 <tr>
-<td colspan='10' style='text-align: center'>".$_POST[name]."</td>
+<td colspan='13' style='text-align: center'>".$_POST[name]."</td>
 </tr>
 <tr>
 <td>Kolléga</td>
@@ -55,6 +58,8 @@ echo "<table border='1' bordercolor=\"#FFCC00\">
 <td>Kis értékű portfólió</td>
 <td>Nagy értékű portfólió</td>
 <td>Dátum </td>
+<td>Státusz</td>
+<td>Eszkaláció</td>
 <td>Kizárva</td>
 <td></td>
 </tr>
@@ -71,7 +76,9 @@ echo"
 		<td>" . $sor100['eszkoz'] . "</td>
 		<td>" . $sor100['eszkoz2'] . "</td>
 		<td>" . $sor100['datum'] . "</td>
-		<td><input type='checkbox'"; if($sor100['kizarva']==1){echo " checked";}echo "></td>
+		<td>" . $sor100['status'] . "</td>
+		<td><input type='checkbox' disabled=\"disabled\""; if($sor100['eszkalacio']==1){echo " checked='checked'";}echo "></td>
+		<td><input type='checkbox' disabled=\"disabled\""; if($sor100['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
  <form action=\"adat2.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">

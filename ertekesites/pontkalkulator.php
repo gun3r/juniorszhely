@@ -103,12 +103,18 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Eszköz portfóliós</td>
 		<td>Eszköz nem portfóliós</td>
 		<td>Dátum </td>
+		<td>Státusz</td>
+		<td>Eszkaláció</td>
+		<td>Kizárva</td>
 		<td></td>
 		<td>Pontkalkulator</td>
 		<td>Név</td>
 		<td>Megjegyzés</td>
 		</tr>
 	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -184,6 +190,9 @@ echo	"
 		<td>" . $sor['eszkoz'] . "</td>
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
+		<td>" . $sor['status'] . "</td>
+		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "disabled=\"disabled\"></td>
+		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
  <form action=\"adat2.php?p=4\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
@@ -209,6 +218,9 @@ echo	"
 		<td>" . $sor['eszkoz'] . "</td>
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
+		<td>" . $sor['status'] . "</td>
+		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "disabled=\"disabled\"></td>
+		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
  <form action=\"adat2.php?p=4\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">

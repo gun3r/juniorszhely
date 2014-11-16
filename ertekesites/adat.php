@@ -78,6 +78,8 @@ while($sor = mysqli_fetch_array($res)) {
 		$kizarva=$sor['kizarva'];
 		$namev=$name;
 		$termekv=$termek;
+		$status=$sor['status'];
+		$eszkalacio=$sor['eszkalacio'];
 }
 }else{
 		$name="Válasz!";
@@ -92,6 +94,8 @@ while($sor = mysqli_fetch_array($res)) {
 		$kizarva="0";
 		$namev="";
 		$termekv="";
+		$status="";
+		$eszkalacio="0";
 $mod=0;
 }
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
@@ -105,10 +109,14 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Kis értékű portfólió</td>
 		<td>Nagy értékű portfólió</td>
 		<td>Dátum</td>
+		<td>Státusz</td>
+		<td>Eszkaláció</td>
 		<td>Kizárva</td>
 		<td></td>
 	</tr>
 	<tr>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -144,7 +152,9 @@ echo	"
 		<td>" . $sor['eszkoz'] . "</td>
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
-		<td><input type='checkbox'"; if($sor['kizarva']==1){echo " checked";}echo "></td>
+		<td>" . $sor['status'] . "</td>
+		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "disabled=\"disabled\"></td>
+		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>";
 		if($idi!=0){
 echo "

@@ -22,6 +22,7 @@ echo " 	</select></td>
 ".$i."
 <td><input type='checkbox' name='munkadij' value='1'";if($_POST[munkadij]==1){echo "checked";}echo ">Munkadíj</td>
 <td><input type='checkbox' name='eszkoz' value='1'";if($_POST[eszkoz]==1){echo "checked";}echo ">Eszkoz</td>
+<td><input type='checkbox' name='eszkalacio' value='1'";if($_POST[eszkalacio]==1){echo "checked";}echo ">Eszkaláció</td>
 <td><input type='submit' value='Szűrés'></td>
 <tr>
 </table>
