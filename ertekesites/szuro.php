@@ -35,10 +35,17 @@ $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
 if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and $cseszk and datum >='$datum1' and datum <='$datum2' Order by termek asc";
-}else{
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and $cseszk and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+if($_POST[eszkalacio]==1){
+$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and datum >='$datum1' and datum <='$datum2' Order by termek asc";
 }
+}else{
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
+if($_POST[eszkalacio]==1){
+$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
+}
+}
+
 /*echo"
 <form action=\"csvment.php\" method=\"post\">
  <input type=\"submit\" value=\"CSV mentés\">
