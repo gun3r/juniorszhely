@@ -10,7 +10,75 @@ $sz3=$_COOKIE['sz3'];
 $sz4=$_COOKIE['sz4'];
 $sz5=$_COOKIE['sz5'];
 $sz6=$_COOKIE['sz6'];
+$ren=intval($_COOKIE['r']);
 
+$rendez="id asc";
+
+$rk=1;
+$rs=1;
+$rd=1;
+
+$nyilup="↓";
+$nyildown="↑";
+
+if($_GET['rk']==1){$ren=1;}
+if($_GET['rk']==2){$ren=2;}
+if($_GET['rs']==1){$ren=3;}
+if($_GET['rs']==2){$ren=4;}
+if($_GET['rd']==1){$ren=5;}
+if($_GET['rd']==2){$ren=6;}
+
+
+if($ren==1)
+{
+setcookie('r', 1,time() + (60*60*24 * 3650));
+$nyilk=$nyildown;
+$rs=1;$rd=1;
+$rk=2;
+$rendez="name asc";
+}
+if($ren==2)
+{
+setcookie('r', 2,time() + (60*60*24 * 3650));
+$nyilk=$nyilup;
+$rs=1;$rd=1;
+$rk=1;
+$rendez="name desc";
+}
+
+if($ren==3)
+{
+setcookie('r', 3,time() + (60*60*24 * 3650));
+$nyils=$nyildown;
+$rk=1;$rd=1;
+$rs=2;
+$rendez="status asc";
+}
+if($ren==4)
+{
+setcookie('r', 4,time() + (60*60*24 * 3650));
+$nyils=$nyilup;
+$rk=1;$rd=1;
+$rs=1;
+$rendez="status desc";
+}
+
+if($ren==5)
+{
+setcookie('r', 5,time() + (60*60*24 * 3650));
+$nyild=$nyildown;
+$rs=1;$rk=1;
+$rd=2;
+$rendez="datum asc";
+}
+if($ren==6)
+{
+setcookie('r', 6,time() + (60*60*24 * 3650));
+$nyild=$nyilup;
+$rs=1;$rk=1;
+$rd=1;
+$rendez="datum desc";
+}
 
 if($_POST[z]==1){
 $datum1=$_POST[dat11];
@@ -55,14 +123,14 @@ $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
 if($sz6=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by id asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by $rendez";
 if($sz5==1){
-$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and datum >='$datum1' and datum <='$datum2' Order by id asc";
+$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and datum >='$datum1' and datum <='$datum2' Order by $rendez";
 }
 }else{
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by id asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by $rendez";
 if($sz5==1){
-$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by id asc";
+$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by $rendez";
 }
 }
 
@@ -71,12 +139,14 @@ $sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$sz6' and  datum >=
  <input type=\"submit\" value=\"CSV mentés\">
 </form>";*/
 $res100 = mysqli_query($con, $sql100);
+
+
 echo "<table border='1' bordercolor=\"#FFCC00\">
 <tr>
 <td colspan='13' style='text-align: center'>".$sz6."</td>
 </tr>
 <tr>
-<td>Kolléga</td>
+<td><a href='szuro.php?p=1&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 <td>Azonosító/WF/Előfizető</td>
 <td>Termék</td>
 <td>Alap</td>
@@ -84,8 +154,8 @@ echo "<table border='1' bordercolor=\"#FFCC00\">
 <td>Munkadíj</td>
 <td>Kis értékű portfólió</td>
 <td>Nagy értékű portfólió</td>
-<td>Dátum </td>
-<td>Státusz</td>
+<td><a href='szuro.php?p=1&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
+<td><a href='szuro.php?p=1&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
 <td>Eszkaláció</td>
 <td>Kizárva</td>
 <td></td>

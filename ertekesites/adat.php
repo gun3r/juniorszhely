@@ -98,6 +98,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$eszkalacio="0";
 $mod=0;
 }
+
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
 		<td>Név</td>
