@@ -4,9 +4,31 @@ include 'fejlec.php';
 $datum1=$_COOKIE[dat2];
 $datum2=$_COOKIE[dat3];
 
+$sz1=$_COOKIE['sz1'];
+$sz2=$_COOKIE['sz2'];
+$sz3=$_COOKIE['sz3'];
+$sz4=$_COOKIE['sz4'];
+$sz5=$_COOKIE['sz5'];
+$sz6=$_COOKIE['sz6'];
+
+
 if($_POST[z]==1){
 $datum1=$_POST[dat11];
 $datum2=$_POST[dat12];
+}
+if($_POST[sz]==1){
+setcookie('sz1', intval($_POST[alap]),time() + (60*60*24 * 3650));
+setcookie('sz2', intval($_POST[tobblet]),time() + (60*60*24 * 3650));
+setcookie('sz3', intval($_POST[munkadij]),time() + (60*60*24 * 3650));
+setcookie('sz4', intval($_POST[eszkoz]),time() + (60*60*24 * 3650));
+setcookie('sz5', intval($_POST[eszkalacio]),time() + (60*60*24 * 3650));
+setcookie('sz6', $_POST[name],time() + (60*60*24 * 3650));
+$sz1=$_POST[alap];
+$sz2=$_POST[tobblet];
+$sz3=$_POST[munkadij];
+$sz4=$_POST[eszkoz];
+$sz5=$_POST[eszkalacio];
+$sz6=$_POST[name];
 }
 
 $i="
@@ -21,28 +43,26 @@ $csm="munkadij = '1'";
 $cse="(eszkoz ='1' or eszkoz2 = '1')";
 $cseszk="eszkalacio='0' or eszkalacio='1'";
 
-if($_POST[alap]==1)
+if($sz1==1)
 {$csa="alap = '1'";}
-if($_POST[tobblet]==1)
+if($sz2==1)
 {$cst="tobblet = '1'";}
-if($_POST[munkadij]==1)
+if($sz3==1)
 {$csm="munkadij >= '1'";}
-if($_POST[eszkoz]==1)
+if($sz4==1)
 {$cse="(eszkoz >='1' or eszkoz2 >= '1')";}
-if($_POST[eszkalacio]==1)
-{$cseszk="eszkalacio='1'";}
 $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
-if($_POST[name]=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by termek asc";
-if($_POST[eszkalacio]==1){
-$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and datum >='$datum1' and datum <='$datum2' Order by termek asc";
+if($sz6=="LHO"){
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by id asc";
+if($sz5==1){
+$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and datum >='$datum1' and datum <='$datum2' Order by id asc";
 }
 }else{
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
-if($_POST[eszkalacio]==1){
-$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$_POST[name]' and  datum >='$datum1' and datum <='$datum2' Order by termek asc";
+$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by id asc";
+if($sz5==1){
+$sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by id asc";
 }
 }
 
@@ -53,7 +73,7 @@ $sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$_POST[name]' and  
 $res100 = mysqli_query($con, $sql100);
 echo "<table border='1' bordercolor=\"#FFCC00\">
 <tr>
-<td colspan='13' style='text-align: center'>".$_POST[name]."</td>
+<td colspan='13' style='text-align: center'>".$sz6."</td>
 </tr>
 <tr>
 <td>Kolléga</td>
@@ -89,7 +109,7 @@ echo"
 		<td>
  <form action=\"adat2.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
-  <input type=\"hidden\" name=\"honnan\" value=\"1\">
+  <input type=\"hidden\" name=\"honnan\" value=\"3\">
  <input type=\"hidden\" name=\"id\" value=" . $sor100['id'] . ">
  <input type=\"submit\" value=\"Módosít\">
  </form></td></tr>

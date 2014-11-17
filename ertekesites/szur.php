@@ -13,16 +13,17 @@ $res = mysqli_query($con, $sql);
 
 while($sor = mysqli_fetch_array($res)) {
 
-echo "  <option value=\"" . $sor['name'] . "\""; if($sor[name]==$_POST[name]){echo "selected";} echo ">  " . $sor['name'] . "</option>\n";
+echo "  <option value=\"" . $sor['name'] . "\""; if($sor[name]==$sz6){echo "selected";} echo ">  " . $sor['name'] . "</option>\n";
 }	
 		
 echo " 	</select></td>
-<td><input type='checkbox' name='alap' value='1'";if($_POST[alap]==1){echo "checked";}echo ">Alap</td>
-<td><input type='checkbox' name='tobblet' value='1'";if($_POST[tobblet]==1){echo "checked";}echo ">Többlet</td>
+<td><input type='checkbox' name='alap' value='1'";if($sz1==1){echo "checked";}echo ">Alap</td>
+<td><input type='checkbox' name='tobblet' value='1'";if($sz2==1){echo "checked";}echo ">Többlet</td>
 ".$i."
-<td><input type='checkbox' name='munkadij' value='1'";if($_POST[munkadij]==1){echo "checked";}echo ">Munkadíj</td>
-<td><input type='checkbox' name='eszkoz' value='1'";if($_POST[eszkoz]==1){echo "checked";}echo ">Eszkoz</td>
-<td><input type='checkbox' name='eszkalacio' value='1'";if($_POST[eszkalacio]==1){echo "checked";}echo ">Eszkaláció</td>
+<input type='hidden' name='sz' value='1'>
+<td><input type='checkbox' name='munkadij' value='1'";if($sz3==1){echo "checked";}echo ">Munkadíj</td>
+<td><input type='checkbox' name='eszkoz' value='1'";if($sz4==1){echo "checked";}echo ">Eszkoz</td>
+<td><input type='checkbox' name='eszkalacio' value='1'";if($sz5==1){echo "checked";}echo ">Eszkaláció</td>
 <td><input type='submit' value='Szűrés'></td>
 <tr>
 </table>

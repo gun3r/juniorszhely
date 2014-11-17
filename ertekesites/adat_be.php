@@ -72,7 +72,12 @@ mysqli_close($con);
 $honnan=$_POST[honnan];
 if($honnan==1){
 $URL="adat.php?p=1"; header ("Location: $URL");
-}else{
+}
+if($honnan==2){
 $URL="pontkalkulator.php?p=4"; header ("Location: $URL");
 }
+if($honnan==3){
+$URL="szuro.php?p=1"; header ("Location: $URL");
+}
+
 ?>
