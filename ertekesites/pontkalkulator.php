@@ -44,24 +44,26 @@ include 'connection.php';
 include 'fejlec.php';
 if($nev=='Dancsecs András'){
 include 'feltoltp.php';
+echo "<a href=korrekcio.txt>Korrekcio letöltés</a>(jobb gomb mentés másként:)<br><br>";
 }
 echo"Korrekció dátum:
 <form action='pontkalkulator.php?p=4' enctype='multipart/form-data' method='post'>
 <INPUT type='text' name='dat4' size='12' value='". $datum4. "'>
-<INPUT type='text' name='dat5' size='12' value='".$datum5."'><br>
-<input type='radio' name='csop' value='0'"; if($csop==0){echo 'checked';}echo ">Összes
-<input type='radio' name='csop' value='1'"; if($csop==1){echo 'checked';}echo ">Biczó Éva
-<input type='radio' name='csop' value='2'"; if($csop==2){echo 'checked';}echo ">Edőcs János
-<input type='radio' name='csop' value='11'"; if($csop==11){echo 'checked';}echo ">Berta Ottilia
-<input type='radio' name='csop' value='12'"; if($csop==12){echo 'checked';}echo ">Pinczés Éva
-<br>
-<input type='radio' name='csop' value='3'"; if($csop==3){echo 'checked';}echo ">Háromi Gábor
-<input type='radio' name='csop' value='4'"; if($csop==4){echo 'checked';}echo ">Grund Lajos
-<input type='radio' name='csop' value='6'"; if($csop==6){echo 'checked';}echo ">Márfy Attila
-<br>
-<input type='radio' name='csop' value='7'"; if($csop==7){echo 'checked';}echo ">Feil Ferenc
-<input type='radio' name='csop' value='8'"; if($csop==8){echo 'checked';}echo ">Mihálka István
-<input type='radio' name='csop' value='9'"; if($csop==9){echo 'checked';}echo ">Molnár Ferenc
+<INPUT type='text' name='dat5' size='12' value='".$datum5."'><br><br>
+<select name='csop' size=”1”>
+      <option value='0'";if($csop==0){echo "selected";}echo ">Összes</option>
+      <option value='1'";if($csop==1){echo "selected";}echo ">Biczó Éva</option>
+      <option value='2'";if($csop==2){echo "selected";}echo ">Edőcs János</option>
+	  <option value='11'";if($csop==11){echo "selected";}echo ">Berta Ottilia</option>
+	  <option value='12'";if($csop==12){echo "selected";}echo ">Pinczés Éva</option>
+	  <option value='13'";if($csop==13){echo "selected";}echo ">Csuka Jennifer Inez</option>
+	  <option value='3'";if($csop==3){echo "selected";}echo ">Háromi Gábor</option>
+	  <option value='4'";if($csop==4){echo "selected";}echo ">Grund Lajos</option>
+	  <option value='5'";if($csop==5){echo "selected";}echo ">Márfy Attila</option>
+	  <option value='7'";if($csop==7){echo "selected";}echo ">Feil Ferenc</option>
+	  <option value='8'";if($csop==8){echo "selected";}echo ">Mihálka István</option>
+	  <option value='9'";if($csop==9){echo "selected";}echo ">Molnár Ferenc</option>
+	 </select>
 <input type='hidden' name='s' value='1'>
 <input id='Submit' name='submit' type='submit' size='3'value='OK' />
 </form>";
@@ -70,7 +72,7 @@ if($csop==1)
 {$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
 if($csop==2)
 {$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
-if($csop==11)
+if($csop==11 or $csop==13)
 {$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1')";}
 if($csop==12)
 {$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1')";}
@@ -129,6 +131,12 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		
 		$res = mysqli_query($con, $sql);
 
+$myfile = fopen("korrekcio.txt", "w") or die("Unable to open file!");
+
+fwrite($myfile, "name;azonosito;wf;efinev;termek;alap;tobblet;munkadij;eszkoz;eszkoz2;datum;status;eszkalacio;eszkalacio megjegszes;kizarva;korrekcio megjegyzes\r\n");
+
+
+
 while($sor = mysqli_fetch_array($res)) {
 $nevok=0;
 $a=$sor['azonosito'];
@@ -174,7 +182,7 @@ if (strpos($sor['name'],$nevek) !== false) {
 if($nevok==1){
 if($k==1){
 $URL="kizaraski.php?id=$i&datum=$datumkiz";
-echo "<a href="."$URL".">$URL</a>\n";
+echo "<a href="."$URL".">Kizárt és szerepel a statisztikába</a>\n";
 
 	}
 }
@@ -231,10 +239,11 @@ echo	"
 echo "<td>Nincs rögzítve</td>";
 echo "<td></td>";
 echo "<td>".$gomb."</td>";
+fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
 }
 echo"</tr>";
 }
-	
+fclose($myfile);	
 echo "</table> 
 	</body> 
 	</html>";

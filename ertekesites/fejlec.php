@@ -10,6 +10,7 @@ $res10 = mysqli_query($con, $sql10);
 while($sor10 = mysqli_fetch_array($res10)) {
 $nev=$sor10['name'];
 $adat=$sor10['belep'];
+$stat=$sor10['status'];
 $tippmix=$sor10['tippmix'];
 $portfolio=$sor10['portfolio'];
 }

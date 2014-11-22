@@ -99,9 +99,79 @@ while($sor = mysqli_fetch_array($res)) {
 $mod=0;
 }
 
+$ren=intval($_COOKIE['r2']);
+
+$rendez="id desc";
+
+$rk=1;
+$rs=1;
+$rd=1;
+
+$nyilup="↓";
+$nyildown="↑";
+
+if($_GET['rk']==1){$ren=1;}
+if($_GET['rk']==2){$ren=2;}
+if($_GET['rs']==1){$ren=3;}
+if($_GET['rs']==2){$ren=4;}
+if($_GET['rd']==1){$ren=5;}
+if($_GET['rd']==2){$ren=6;}
+
+
+if($ren==1)
+{
+setcookie('r2', 1,time() + (60*60*24 * 3650));
+$nyilk=$nyildown;
+$rs=1;$rd=1;
+$rk=2;
+$rendez="name asc";
+}
+if($ren==2)
+{
+setcookie('r2', 2,time() + (60*60*24 * 3650));
+$nyilk=$nyilup;
+$rs=1;$rd=1;
+$rk=1;
+$rendez="name desc";
+}
+
+if($ren==3)
+{
+setcookie('r2', 3,time() + (60*60*24 * 3650));
+$nyils=$nyildown;
+$rk=1;$rd=1;
+$rs=2;
+$rendez="status asc";
+}
+if($ren==4)
+{
+setcookie('r2', 4,time() + (60*60*24 * 3650));
+$nyils=$nyilup;
+$rk=1;$rd=1;
+$rs=1;
+$rendez="status desc";
+}
+
+if($ren==5)
+{
+setcookie('r2', 5,time() + (60*60*24 * 3650));
+$nyild=$nyildown;
+$rs=1;$rk=1;
+$rd=2;
+$rendez="datum asc";
+}
+if($ren==6)
+{
+setcookie('r2', 6,time() + (60*60*24 * 3650));
+$nyild=$nyilup;
+$rs=1;$rk=1;
+$rd=1;
+$rendez="datum desc";
+}
+
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
-		<td>Név</td>
+		<td><a href='adat.php?p=1&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 		<td>Azonosítók/WF/Előfizető</td>
 		<td>Termék</td>
 		<td>Alap</td>
@@ -109,8 +179,8 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Munkadíj</td>
 		<td>Kis értékű portfólió</td>
 		<td>Nagy értékű portfólió</td>
-		<td>Dátum</td>
-		<td>Státusz</td>
+		<td><a href='adat.php?p=1&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
+		<td><a href='adat.php?p=1&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
 		<td>Eszkaláció</td>
 		<td>Kizárva</td>
 		<td></td>
@@ -134,10 +204,10 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		//adatok lekérdezése
 		if($idi==0){
 $sql = "SELECT * FROM adat
-		WHERE name='$nev' and datum >='$mitol' and datum <='$meddig' Order by id desc";
+		WHERE name='$nev' and datum >='$mitol' and datum <='$meddig' Order by $rendez";
 
 }else{
-		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by id desc";
+		$sql = "SELECT * FROM adat WHERE datum >='$mitol' and datum <='$meddig' Order by $rendez";
 		}
 		$res = mysqli_query($con, $sql);
 

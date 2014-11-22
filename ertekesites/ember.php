@@ -38,6 +38,7 @@ Kollégák:</br>
 <td>Adat kezelő</td>
 <td>Portfólió kezelő</td>
 <td>Verseny</td>
+<td>Státusz kezelő</td>
 <td>Belépés dátuma</td>
 <td>Kilépés dátuma</td>
 <td></td>
@@ -74,6 +75,7 @@ echo "<form action='insert.php' enctype='multipart/form-data' method='post'>
 <td><input type='checkbox' name='belep' value='1'"; if($sor['belep']==1){echo " checked";}echo "></td>
 <td><input type='checkbox' name='portfolio' value='1'"; if($sor['portfolio']==1){echo " checked";}echo "></td>
 <td><input type='checkbox' name='tippmix' value='1'"; if($sor['tippmix']==1){echo " checked";}echo "></td>
+<td><input type='checkbox' name='status' value='1'"; if($sor['status']==1){echo " checked";}echo "></td>
 <td><INPUT type='text' name='belepett' value='".$sor['belepett']."'></td>
 <td><input type='text' name='kilepett' value='";if($sor['kilepett']!='2020-12-30' and $sor['kilepett']!='0000-00-00'){echo $sor['kilepett'];} echo"'></td>
 <input type='hidden' name='id' value='".$sor['id']."'>
