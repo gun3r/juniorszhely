@@ -104,7 +104,20 @@ $i="
 <INPUT type='text' name='dat11' size='12' value='".$datum1."'>
 <INPUT type='text' name='dat12' size='12' value='".$datum2."'>";
 include 'szur.php';
-//echo "$_POST[name] - ";
+
+echo "
+ <table border=0><tr><td><form action='adat2.php?p=1' method='post'>
+ <input type=\"hidden\" name=\"honnan\" value=\"1\">
+ <input type=\"submit\" value=\"Új adat felvitele\">
+ </form></td>";
+ echo"
+ <td><form action=\"csvment2.php\" method=\"post\">
+ <INPUT type='hidden' name='dat11' value='".$datum1."'>
+<INPUT type='hidden' name='dat12' value='".$datum2."'>
+ <input type=\"submit\" value=\"Adatok mentése(CSV)\">
+ </form></td></tr></table>";
+
+
 $csa="alap = '10'";
 $cst="tobblet = '10'";
 $csm="munkadij = '1'";
@@ -142,9 +155,6 @@ $res100 = mysqli_query($con, $sql100);
 
 
 echo "<table border='1' bordercolor=\"#FFCC00\">
-<tr>
-<td colspan='13' style='text-align: center'>".$sz6."</td>
-</tr>
 <tr>
 <td><a href='szuro.php?p=1&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 <td>Azonosító/WF/Előfizető</td>

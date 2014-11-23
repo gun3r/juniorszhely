@@ -59,7 +59,7 @@ echo"Korrekció dátum:
 	  <option value='13'";if($csop==13){echo "selected";}echo ">Csuka Jennifer Inez</option>
 	  <option value='3'";if($csop==3){echo "selected";}echo ">Háromi Gábor</option>
 	  <option value='4'";if($csop==4){echo "selected";}echo ">Grund Lajos</option>
-	  <option value='5'";if($csop==5){echo "selected";}echo ">Márfy Attila</option>
+	  <option value='6'";if($csop==6){echo "selected";}echo ">Márfy Attila</option>
 	  <option value='7'";if($csop==7){echo "selected";}echo ">Feil Ferenc</option>
 	  <option value='8'";if($csop==8){echo "selected";}echo ">Mihálka István</option>
 	  <option value='9'";if($csop==9){echo "selected";}echo ">Molnár Ferenc</option>
@@ -152,12 +152,12 @@ $gomb="
 </form>";
 
  $sql2="SELECT * 
-FROM  `pontkalkulator` 
-WHERE 
-	a =  '$a' AND e =  '$t'
- OR c =  '$a' AND e =  '$t'
- OR h = '$a' AND e =  '$t'
- OR y =  '$a' AND e =  '$t'";
+		FROM  `pontkalkulator` 
+		WHERE 
+				a =  '$a' AND e =  '$t'
+		OR 		c =  '$a' AND e =  '$t'
+		OR 		h = '$a' AND e =  '$t'
+		OR 		y =  '$a' AND e =  '$t'";
 $res2 = mysqli_query($con, $sql2);
 
 $row_cnt = intval(mysqli_num_rows($res2));
@@ -180,10 +180,21 @@ if (strpos($sor['name'],$nevek) !== false) {
 
 }
 if($nevok==1){
-if($k==1){
-$URL="kizaraski.php?id=$i&datum=$datumkiz";
-echo "<a href="."$URL".">Kizárt és szerepel a statisztikába</a>\n";
 
+$sql5="UPDATE adat SET  status='Teljesített (Completed)' WHERE  id ='$i'";
+
+if (!mysqli_query($con,$sql5))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
+if($k==1){
+
+$sql5="UPDATE adat SET  kizarva='0', datum='$datumkiz' WHERE  id ='$i'";
+
+if (!mysqli_query($con,$sql5))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
 	}
 }
 else{
@@ -211,6 +222,7 @@ echo	"
 echo "<td>Rögzítve</td>";   
 echo "<td>Nem -". $nevek ."</td>";
 echo "<td>".$gomb."</td>";
+fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
 }
 
 }

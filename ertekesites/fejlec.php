@@ -63,9 +63,10 @@ if($tippmix=='1'){
 if($p==7){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=tippmix.php?p=7 style='color:".$colorf."'>Tippmix</a>";
 }
+echo "<a href=logout.php style='color:black'>Kilépés</a>";
 echo "<br>";
 
-echo "Beléptél mint: ".$nev."  ";
+echo "Beléptél mint: ".$nev." ";
 
 echo "</h4>";
 }  

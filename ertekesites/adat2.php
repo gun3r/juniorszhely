@@ -152,7 +152,7 @@ echo " 	</select></td></tr>
 		}
 		
 echo " 	</select></td></tr>
-		<tr><td>Nagy értékű portfólió</td><td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"></td></tr>
+		<tr><td>Nagy értékű portfólió</td><td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"> Nettó számítása:<input type='checkbox' name='netto' value='1'></td></tr>
 		<tr><td>Dátum</td><td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td></tr>";
 if($stat==1){
 		echo "	<tr><td>Státusz</td><td><select name=\"status\" size=\"1\">
@@ -169,10 +169,11 @@ if($stat==1){
 		
 echo " 	</select></td></tr>
 		<tr><td>Eszkaláció</td><td><input type=\"checkbox\" name=\"eszkalacio\" value=\"1\" "; if($eszkalacio==1){echo " checked";}echo "></td></tr>";}
-echo "	<tr><td>Eszkaláció megjegyzés</td><td><input type=\"text\" name=\"note2\" value=\"".$note2." \"size=\"50\"></td></tr>
+echo "	<tr><td>Eszkaláció megjegyzés</td><td><input type=\"text\" name=\"note2\" value=\"".$note2."\"size=\"50\"></td></tr>
 		<tr><td>Kizárva</td><td><input type=\"checkbox\" name=\"kizarva\" value=\"1\" "; if($kizarva==1){echo " checked";}echo "></td></tr>
-		<tr><td></td><td><input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">
-		<input type=\"hidden\" name=\"honnan\" value=\"".$honnan."\">
+		<tr><td></td><td><input type=\"hidden\" name=\"mod\" value=\"". $mod ."\">";
+		if($stat!=1){echo "<input type=\"hidden\" name=\"status\" value=\"".$status."\">";}
+echo "	<input type=\"hidden\" name=\"honnan\" value=\"".$honnan."\">
 		<input type=\"hidden\" name=\"id\" value=\"". $_POST[id]. "\">
 		<input type=\"submit\" value=\"Adatok küldése\"></form></td></tr>";
 ?>

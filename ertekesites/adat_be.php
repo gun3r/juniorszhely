@@ -7,7 +7,11 @@ $termek=$_POST[termek];
 $munkadij=$_POST[munkadij];
 $eszkoz1=$_POST[eszkoz1];
 $eszkoz2=$_POST[eszkoz2];
+$netto=$_POST[netto];
 $datum=date("Y-m-d");
+if($netto==1){
+$eszkoz2=$eszkoz2/1.27;
+}
 if($termek!='Törölve'){
 $sql = "SELECT alap, tobblet FROM termek WHERE nev LIKE \"%$termek%\" ";
 $res = mysqli_query($con, $sql);
