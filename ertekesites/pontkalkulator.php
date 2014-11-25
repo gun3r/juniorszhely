@@ -11,9 +11,81 @@ echo "<title>Korrekció</title>\n";
 echo "</head>\n"; 
 echo "<body>\n";
 
+$ren=intval($_COOKIE['rp']);
+
+$rendez="id asc";
+
+$rk=1;
+$rs=1;
+$rd=1;
+
+$nyilup="↓";
+$nyildown="↑";
+
+if($_GET['rk']==1){$ren=1;}
+if($_GET['rk']==2){$ren=2;}
+if($_GET['rs']==1){$ren=3;}
+if($_GET['rs']==2){$ren=4;}
+if($_GET['rd']==1){$ren=5;}
+if($_GET['rd']==2){$ren=6;}
+
+
+if($ren==1)
+{
+setcookie('rp', 1,time() + (60*60*24 * 3650));
+$nyilk=$nyildown;
+$rs=1;$rd=1;
+$rk=2;
+$rendez="name asc";
+}
+if($ren==2)
+{
+setcookie('rp', 2,time() + (60*60*24 * 3650));
+$nyilk=$nyilup;
+$rs=1;$rd=1;
+$rk=1;
+$rendez="name desc";
+}
+
+if($ren==3)
+{
+setcookie('rp', 3,time() + (60*60*24 * 3650));
+$nyils=$nyildown;
+$rk=1;$rd=1;
+$rs=2;
+$rendez="status asc";
+}
+if($ren==4)
+{
+setcookie('rp', 4,time() + (60*60*24 * 3650));
+$nyils=$nyilup;
+$rk=1;$rd=1;
+$rs=1;
+$rendez="status desc";
+}
+
+if($ren==5)
+{
+setcookie('rp', 5,time() + (60*60*24 * 3650));
+$nyild=$nyildown;
+$rs=1;$rk=1;
+$rd=2;
+$rendez="datum asc";
+}
+if($ren==6)
+{
+setcookie('rp', 6,time() + (60*60*24 * 3650));
+$nyild=$nyilup;
+$rs=1;$rk=1;
+$rd=1;
+$rendez="datum desc";
+}
+
+
 $datum4=$_COOKIE[dat4];
 $datum5=$_COOKIE[dat5];
 $csop=$_COOKIE[csop];
+$bo=$_COOKIE[bo];
 
 $h=date("m")+1;
 $n=01;
@@ -25,10 +97,12 @@ if($_POST[s]==1){
 $datum4=$_POST[dat4];
 $datum5=$_POST[dat5];
 $csop=$_POST[csop];
+$bo=$_POST[bo];
 }
 setcookie("dat4", $datum4, $d1);
 setcookie("dat5", $datum5, $d1);
 setcookie("csop", $csop, $d1);
+setcookie("bo", $bo, $d1);
 } else {
 $h=date("m")-1;
 $n=01;
@@ -38,6 +112,7 @@ $datum5=date("Y-m-t", $d);
 setcookie("dat4", $datum4, $d1);
 setcookie("dat5", $datum5, $d1);
 setcookie("csop", $csop, $d1);
+setcookie("bo", $bo, $d1);
 }
 include 'cookies.php';
 include 'connection.php';
@@ -63,9 +138,12 @@ echo"Korrekció dátum:
 	  <option value='7'";if($csop==7){echo "selected";}echo ">Feil Ferenc</option>
 	  <option value='8'";if($csop==8){echo "selected";}echo ">Mihálka István</option>
 	  <option value='9'";if($csop==9){echo "selected";}echo ">Molnár Ferenc</option>
+	  <option value='20'";if($csop==20){echo "selected";}echo ">Összes:alap-többlet</option>
+      <option value='21'";if($csop==21){echo "selected";}echo ">Összes:alap</option>
 	 </select>
 <input type='hidden' name='s' value='1'>
-<input id='Submit' name='submit' type='submit' size='3'value='OK' />
+<input id='Submit' name='submit' type='submit' size='3'value='OK' /></br>
+BO-nak elküdve látható:<input type=\"checkbox\" name=\"bo\" value=\"1\" "; if($bo==1){echo " checked";}echo ">
 </form>";
 
 if($csop==1)
@@ -90,13 +168,23 @@ if($csop==8)
 {$csoport="(munkacsoport='7') and alap='0' and tobblet='0' ";}
 if($csop==9)
 {$csoport="(munkacsoport='8') and alap='0' and tobblet='0' ";}
+if($csop==20)
+{$csoport="alap='1' or tobblet='1' ";}
+if($csop==21)
+{$csoport="alap='1' and tobblet='0' ";}
+
+if($bo==1){
+$boel=" bo>=0 and ";
+}else{
+$boel=" bo=0 and ";
+}
 
 if($csop==0)
 {$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='1' or munkacsoport='6' or munkacsoport='7' or munkacsoport='8'  or munkacsoport='2' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-Táv Kft.' or munkacsoport='5'";}
 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
-		<td>Név</td>
+		<td><a href='pontkalkulator.php?p=4&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 		<td>Azonosító/WF/Előfizető</td>
 		<td>Termék</td>
 		<td>Alap</td>
@@ -104,12 +192,13 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Munkadíj</td>
 		<td>Eszköz portfóliós</td>
 		<td>Eszköz nem portfóliós</td>
-		<td>Dátum </td>
-		<td>Státusz</td>
+		<td><a href='pontkalkulator.php?p=4&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
+		<td><a href='pontkalkulator.php?p=4&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
 		<td>Eszkaláció</td>
 		<td>Kizárva</td>
-		<td></td>
-		<td>Pontkalkulator</td>
+		<td></td>";
+if($stat==1){echo "<td>Back Office</td>";}
+echo"	<td>Pontkalkulator</td>
 		<td>Név</td>
 		<td>Megjegyzés</td>
 		</tr>
@@ -125,24 +214,43 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td></td>
 		<td></td>
-		<td></td>
-	</tr>";
-		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and datum >='$datum4' and datum <='$datum5' Order by id asc";
+		<td></td>";
+if($stat==1){echo "<td></td>";}
+echo"	</tr>";
+		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' Order by $rendez";
 		
 		$res = mysqli_query($con, $sql);
 
-$myfile = fopen("korrekcio.txt", "w") or die("Unable to open file!");
+$myfile = fopen("korrekcio.txt", "w");
 
 fwrite($myfile, "name;azonosito;wf;efinev;termek;alap;tobblet;munkadij;eszkoz;eszkoz2;datum;status;eszkalacio;eszkalacio megjegszes;kizarva;korrekcio megjegyzes\r\n");
 
 
 
 while($sor = mysqli_fetch_array($res)) {
+$kinek="";
 $nevok=0;
+$m=$sor['munkacsoport'];
+if($m==1 or $m==2){
+$kinek=",%20biczo.eva@telekom.hu";
+}
+if($m==3 or $m==4){
+$kinek=",%20edocs.janos@telekom.hu";
+}
+if($m==5) {
+$kinek=",%20edocs.janos@telekom.hu,%20biczo.eva@telekom.hu";
+}
+if($m>=6 and $m<=20) {
+$kinek=",%20pinczes.eva@telekom.hu,%20csuka.jennifer.inez@telekom.hu";
+}
+
 $a=$sor['azonosito'];
 $t=$sor['termek'];
 $k=$sor['kizarva'];
 $i=$sor['id'];
+$allapot=$sor['status'];
+$br="%0D%0A";//mailto sortörés
+
 $gomb="
 <form name='input' action='note_be.php' method='post'>
 <input type='text' size='100' name='note' value='" . $sor['note'] . "'>
@@ -180,12 +288,13 @@ if (strpos($sor['name'],$nevek) !== false) {
 
 }
 if($nevok==1){
-
+if($allapot!='Teljesített (Completed)'){
 $sql5="UPDATE adat SET  status='Teljesített (Completed)' WHERE  id ='$i'";
 
 if (!mysqli_query($con,$sql5))
   {
   die('Error: ' . mysqli_error($con));
+  }
   }
 if($k==1){
 
@@ -198,6 +307,7 @@ if (!mysqli_query($con,$sql5))
 	}
 }
 else{
+
 echo	"
 		<tr>
 		<td>" . $sor['name'] . "</td>
@@ -217,8 +327,25 @@ echo	"
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"honnan\" value=\"2\">
- <input type=\"submit\" value=\"Módosít\">
- </form></td>";
+ <input type=\"submit\" value=\"Módosít\"></form>";
+ if($stat==1){
+echo "</td><td>
+ <form action=\"MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor['wf'] . "&Body=
+ Tisztelt munkairányítók!".$br."
+ ".$br."
+ Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor['wf'] . " – " . $sor['status'] . ".".$br."
+ ".$br."
+ Köszönettel,".$br."
+ ".$nev."".$br."
+ \" method=\"post\" enctype=\"text/plain\">
+ <input type='submit' value='BO-nak küldés'>
+ </form>
+ 
+ <form action=\"bo.php\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"2\">
+ <input type=\"submit\" value=\"BO-nak email küldve\"></form></td>";
+ }
 echo "<td>Rögzítve</td>";   
 echo "<td>Nem -". $nevek ."</td>";
 echo "<td>".$gomb."</td>";
@@ -247,7 +374,24 @@ echo	"
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"honnan\" value=\"2\">
  <input type=\"submit\" value=\"Módosít\">
- </form></td>";
+ </form>";
+ if($stat==1){
+echo "</td><td><form action=\"MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor['wf'] . "&Body=
+ Tisztelt munkairányítók!".$br."
+ ".$br."
+ Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor['wf'] . " – " . $sor['status'] . ".".$br."
+ ".$br."
+ Köszönettel,".$br."
+ ".$nev."
+ \" method=\"post\" enctype=\"text/plain\">
+  <input type='submit' value='BO-nak küldés'>
+ </form>
+ 
+ <form action=\"bo.php\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"2\">
+ <input type=\"submit\" value=\"BO-nak email küldve\"></form></td>";
+ }
 echo "<td>Nincs rögzítve</td>";
 echo "<td></td>";
 echo "<td>".$gomb."</td>";
