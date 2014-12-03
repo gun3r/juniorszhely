@@ -1,6 +1,14 @@
 <?php // Create connection
 
 include 'connection.php';
+$sp=$_COOKIE['sp_code'];
+$sql10 = 	"SELECT name from `user` 
+			WHERE eventus='$sp'";
+$res10 = mysqli_query($con, $sql10);
+while($sor10 = mysqli_fetch_array($res10)) {
+$kezelo=$sor10['name'];
+}
+
 $nev=$_POST[name];
 $mod=$_POST[mod];
 $termek=$_POST[termek];
@@ -8,7 +16,7 @@ $munkadij=$_POST[munkadij];
 $eszkoz1=$_POST[eszkoz1];
 $eszkoz2=$_POST[eszkoz2];
 $netto=$_POST[netto];
-$datum=date("Y-m-d");
+$datum=date("Y-m-d H:i:s");
 if($netto==1){
 $eszkoz2=$eszkoz2/1.27;
 }
@@ -53,7 +61,7 @@ $m=intval($munkacsop);
 if($mod==1){
 	 
 	 $besz = "UPDATE `ertekesites`.`adat` 
-	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]',wf='$_POST[wf]',efinev='$_POST[efinev]',status='$_POST[status]',eszkalacio='$_POST[eszkalacio]',note2='$_POST[note2]'	 WHERE	 `adat`.`id` = '$_POST[id]'";
+	 SET  name='$_POST[name]',munkacsoport='$m',azonosito='$_POST[azonosito]',termek='$_POST[termek]',alap='$alap',tobblet='$tobblet',munkadij='$munkadij',eszkoz='$eszkoz1',eszkoz2='$eszkoz2',datum='$_POST[datum]',datum2='$datum',kizarva='$_POST[kizarva]',wf='$_POST[wf]',efinev='$_POST[efinev]',status='$_POST[status]',eszkalacio='$_POST[eszkalacio]',note2='$_POST[note2]',kezelo='$kezelo'	 WHERE	 `adat`.`id` = '$_POST[id]'";
 		  
 	 if (!mysqli_query($con,$besz))
 	   {
@@ -64,8 +72,8 @@ if($mod==1){
 
 
 
-$sql="INSERT INTO adat (name,munkacsoport,azonosito,termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,datum2,wf,efinev,status,eszkalacio, note2) VALUES
-('$_POST[name]','$m','$_POST[azonosito]','$_POST[termek]',$alap,$tobblet,'$munkadij','$eszkoz1','$eszkoz2','$_POST[datum]','$_POST[datum]','$_POST[wf]','$_POST[efinev]','$_POST[status]','$_POST[eszkalacio]','$_POST[note2]')";
+$sql="INSERT INTO adat (name,munkacsoport,azonosito,termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,datum2,wf,efinev,status,eszkalacio, note2,kezelo) VALUES
+('$_POST[name]','$m','$_POST[azonosito]','$_POST[termek]',$alap,$tobblet,'$munkadij','$eszkoz1','$eszkoz2','$_POST[datum]','$datum','$_POST[wf]','$_POST[efinev]','$_POST[status]','$_POST[eszkalacio]','$_POST[note2]','$kezelo')";
 
 if (!mysqli_query($con,$sql))
   {
@@ -83,5 +91,7 @@ $URL="pontkalkulator.php?p=4"; header ("Location: $URL");
 if($honnan==3){
 $URL="szuro.php?p=1"; header ("Location: $URL");
 }
-
+if($honnan==10){
+$URL="backoffice.php?p=10"; header ("Location: $URL");
+}
 ?>

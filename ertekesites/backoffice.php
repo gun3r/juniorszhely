@@ -3,11 +3,14 @@ $idi=$sp=$_COOKIE['idi'];
 if($idi==0){
 $URL="index.php?p=0"; header ("Location: $URL");
 }
-
+if($_POST['mod']==1){
+$azonosito=$_POST['id'];
+include "email.php";
+}
 echo "<html lang=\"hu\">\n"; 
 echo "<head>\n"; 
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"utf-8\">\n"; 
-echo "<title>Korrekció</title>\n"; 
+echo "<title>Back Office</title>\n"; 
 echo "</head>\n"; 
 echo "<body>\n";
 
@@ -118,11 +121,10 @@ include 'cookies.php';
 include 'connection.php';
 include 'fejlec.php';
 if($nev=='Dancsecs András'){
-include 'feltoltp.php';
 echo "<a href=korrekcio.txt>Korrekcio letöltés</a>(jobb gomb mentés másként:)<br><br>";
 }
 echo"Korrekció dátum:
-<form action='pontkalkulator.php?p=4' enctype='multipart/form-data' method='post'>
+<form action='backoffice.php?p=10' enctype='multipart/form-data' method='post'>
 <INPUT type='text' name='dat4' size='12' value='". $datum4. "'>
 <INPUT type='text' name='dat5' size='12' value='".$datum5."'><br><br>
 <select name='csop' size=”1”>
@@ -140,6 +142,8 @@ echo"Korrekció dátum:
 	  <option value='9'";if($csop==9){echo "selected";}echo ">Molnár Ferenc</option>
 	  <option value='20'";if($csop==20){echo "selected";}echo ">Összes:alap-többlet</option>
       <option value='21'";if($csop==21){echo "selected";}echo ">Összes:alap</option>
+	  <option value='22'";if($csop==22){echo "selected";}echo ">Partner:alap</option>
+      <option value='23'";if($csop==23){echo "selected";}echo ">Kollegák:alap</option>
 	 </select>
 <input type='hidden' name='s' value='1'>
 <input id='Submit' name='submit' type='submit' size='3'value='OK' /></br>
@@ -172,6 +176,11 @@ if($csop==20)
 {$csoport="alap='1' or tobblet='1' ";}
 if($csop==21)
 {$csoport="alap='1' and tobblet='0' ";}
+if($csop==22)
+{$csoport="(munkacsoport='9' or munkacsoport='10' or munkacsoport='5') and alap='1' and tobblet='0' ";}
+if($csop==23)
+{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='1' or munkacsoport='2' or munkacsoport='4') and alap='1' and tobblet='0' ";}
+
 
 if($bo==1){
 $boel=" bo>=0 and ";
@@ -184,29 +193,19 @@ if($csop==0)
 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>
-		<td><a href='pontkalkulator.php?p=4&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
+		<td><a href='backoffice.php?p=10&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 		<td>Azonosító/WF/Előfizető</td>
 		<td>Termék</td>
-		<td>Alap</td>
-		<td>Többlet</td>
-		<td>Munkadíj</td>
-		<td>Eszköz portfóliós</td>
-		<td>Eszköz nem portfóliós</td>
-		<td><a href='pontkalkulator.php?p=4&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
-		<td><a href='pontkalkulator.php?p=4&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
+		<td><a href='backoffice.php?p=10&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
+		<td><a href='backoffice.php?p=10&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
 		<td>Eszkaláció</td>
 		<td>Kizárva</td>
 		<td></td>";
 if($stat==1){echo "<td>Back Office</td>";}
-echo"	<td>Pontkalkulator</td>
-		<td>Név</td>
+echo"	
 		<td>Megjegyzés</td>
 		</tr>
 	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -254,11 +253,9 @@ $br="%0D%0A";//mailto sortörés
 $gomb="
 <form name='input' action='note_be.php' method='post'>
 <input type='text' size='100' name='note' value='" . $sor['note'] . "'>
-<input type=\"hidden\" name=\"honnan\" value=\"2\">
 <input type='hidden' name='id' value=" . $sor['id'] . ">
-
-<input type='submit' value='Küldés'>
-</form>";
+<input type=\"hidden\" name=\"honnan\" value=\"10\">
+<input type='submit' value='Küldés'><br>Utolsó módosítás:".$sor['datum2']." ".$sor['kezelo']."</form>";
 
  $sql2="SELECT * 
 		FROM  `pontkalkulator` 
@@ -314,11 +311,6 @@ echo	"
 		<td>" . $sor['name'] . "</td>
 		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
-		<td>" . $sor['alap'] . "</td>
-		<td>" . $sor['tobblet'] . "</td>
-		<td>" . $sor['munkadij'] . "</td>
-		<td>" . $sor['eszkoz'] . "</td>
-		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>" . $sor['status'] . "</td>
 		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "><br>".$sor['note2']."</td>
@@ -327,23 +319,22 @@ echo	"
  <form action=\"adat2.php?p=4\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
- <input type=\"hidden\" name=\"honnan\" value=\"2\">
+ <input type=\"hidden\" name=\"honnan\" value=\"10\">
  <input type=\"submit\" value=\"Módosít\"></form>";
  if($stat==1){
 echo "</td><td>
- <form action=\"MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor['wf'] . "&Body=
- Tisztelt munkairányítók!".$br."
- ".$br."
- Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor['wf'] . " – " . $sor['status'] . ".".$br."
- ".$br."
- Köszönettel,".$br."
- ".$nev."".$br."
- \" method=\"post\" enctype=\"text/plain\">
+<form action=\"backoffice.php?p=10\" method=\"post\">
+ <input type=\"hidden\" name=\"mod\" value=\"1\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type='submit' value='BO-nak küldés'>
- </form></td>";
+ </form>";
+ /*
+ <form action=\"bo.php\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"10\">
+ <input type=\"submit\" value=\"BO-nak email küldve\"></form>*/
+ echo "</td>";
  }
-echo "<td>Rögzítve</td>";   
-echo "<td>Nem -". $nevek ."</td>";
 echo "<td>".$gomb."</td>";
 fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
 }
@@ -355,36 +346,31 @@ echo	"
 		<td>" . $sor['name'] . "</td>
 		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
-		<td>" . $sor['alap'] . "</td>
-		<td>" . $sor['tobblet'] . "</td>
-		<td>" . $sor['munkadij'] . "</td>
-		<td>" . $sor['eszkoz'] . "</td>
-		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>" . $sor['status'] . "</td>
 		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "><br>".$sor['note2']."</td>
 		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
- <form action=\"adat2.php?p=4\" method=\"post\">
+ <form action=\"adat2.php?p=10\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
- <input type=\"hidden\" name=\"honnan\" value=\"2\">
+ <input type=\"hidden\" name=\"honnan\" value=\"10\">
  <input type=\"submit\" value=\"Módosít\">
  </form>";
  if($stat==1){
-echo "</td><td><form action=\"MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor['wf'] . "&Body=
- Tisztelt munkairányítók!".$br."
- ".$br."
- Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor['wf'] . " – " . $sor['status'] . ".".$br."
- ".$br."
- Köszönettel,".$br."
- ".$nev."
- \" method=\"post\" enctype=\"text/plain\">
-  <input type='submit' value='BO-nak küldés'>
- </form></td>";
+echo "</td><td>
+ <form action=\"backoffice.php?p=10\" method=\"post\">
+ <input type=\"hidden\" name=\"mod\" value=\"1\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type='submit' value='BO-nak küldés'>
+ </form>";
+ 
+/* <form action=\"bo.php\" method=\"post\">
+ <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
+ <input type=\"hidden\" name=\"honnan\" value=\"2\">
+ <input type=\"submit\" value=\"BO-nak email küldve\"></form>*/
+ echo "</td>";
  }
-echo "<td>Nincs rögzítve</td>";
-echo "<td></td>";
 echo "<td>".$gomb."</td>";
 fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
 }

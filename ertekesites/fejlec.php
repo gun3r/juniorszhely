@@ -36,6 +36,11 @@ echo "   ";
 if($p==4){$colorf='magenta';}else{$colorf='black';}
 echo "<a href=pontkalkulator.php?p=4 style='color:".$colorf."'>Korrekció</a>";
 }
+if($stat=='1'){
+echo "   ";
+if($p==10){$colorf='magenta';}else{$colorf='black';}
+echo "<a href=backoffice.php?p=10 style='color:".$colorf."'>BO</a>";
+}
 
 /*echo "   ";
 if($p==8){$colorf='magenta';}else{$colorf='black';}
