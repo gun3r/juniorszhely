@@ -14,9 +14,10 @@ $sql11 = "SELECT note from `adat`
 WHERE WHERE id='$azonosito'";
 $res11 = mysqli_query($con, $sql11);
 while($sor11 = mysqli_fetch_array($res11)) {
-$note=$sor11['note'];}
+$note=$sor11['note'];
+}
 
-$sql="UPDATE adat SET  note='BO-nak továbbítva ".date("Y-m-d H:i:s").". ". $note."',bo='1' WHERE  id ='$_POST[id]'";
+$sql="UPDATE adat SET  note='BO-nak továbbítva " . date("Y-m-d H:i:s ")."', bo='1' , kezelo='$nev' ,  datum2='".date("Y-m-d H:i:s")."' WHERE  id ='$_POST[id]'";
 
 if (!mysqli_query($con,$sql))
   {
@@ -42,14 +43,13 @@ $kinek=";%20edocs.janos@telekom.hu;%20biczo.eva@telekom.hu";
 if($m>=6 and $m<=20) {
 $kinek=";%20pinczes.eva@telekom.hu;%20csuka.jennifer.inez@telekom.hu";
 }
-$email_address = utf8_decode("MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor1['wf'] . "&Body=
+$email_address = utf8_decode("MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject= ". $sor1['wf'] . "&Body=
  Tisztelt munkairányítók!".$br."
  ".$br."
  Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor1['wf'] . "  " . $sor1['status'] . ".".$br."
  ".$br."
  Köszönettel,".$br."
  ".$nev."".$br."");
-header("location: $HTTP_REFERER");
 header("Refresh: 0; url=$email_address");
 }
 ?>

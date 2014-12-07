@@ -196,9 +196,8 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td><a href='pontkalkulator.php?p=4&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
 		<td>Eszkaláció</td>
 		<td>Kizárva</td>
-		<td></td>";
-if($stat==1){echo "<td>Back Office</td>";}
-echo"	<td>Pontkalkulator</td>
+		<td></td>
+		<td>Pontkalkulator</td>
 		<td>Név</td>
 		<td>Megjegyzés</td>
 		</tr>
@@ -214,9 +213,8 @@ echo"	<td>Pontkalkulator</td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td></td>";
-if($stat==1){echo "<td></td>";}
-echo"	</tr>";
+		<td></td>
+	</tr>";
 		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' Order by $rendez";
 		
 		$res = mysqli_query($con, $sql);
@@ -329,19 +327,8 @@ echo	"
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"honnan\" value=\"2\">
  <input type=\"submit\" value=\"Módosít\"></form>";
- if($stat==1){
-echo "</td><td>
- <form action=\"MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor['wf'] . "&Body=
- Tisztelt munkairányítók!".$br."
- ".$br."
- Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor['wf'] . " – " . $sor['status'] . ".".$br."
- ".$br."
- Köszönettel,".$br."
- ".$nev."".$br."
- \" method=\"post\" enctype=\"text/plain\">
- <input type='submit' value='BO-nak küldés'>
- </form></td>";
- }
+ echo "</td>";
+ 
 echo "<td>Rögzítve</td>";   
 echo "<td>Nem -". $nevek ."</td>";
 echo "<td>".$gomb."</td>";
@@ -371,18 +358,7 @@ echo	"
  <input type=\"hidden\" name=\"honnan\" value=\"2\">
  <input type=\"submit\" value=\"Módosít\">
  </form>";
- if($stat==1){
-echo "</td><td><form action=\"MAILTO:munkairanyitok.backoffice.eszkalacio@telekom.hu?cc=dancsecs.andras@telekom.hu" . $kinek . "&Subject=" . $sor['wf'] . "&Body=
- Tisztelt munkairányítók!".$br."
- ".$br."
- Kérem a segítségeteket az alábbi igény rendezésében: kérelem azonosító: " . $sor['wf'] . " – " . $sor['status'] . ".".$br."
- ".$br."
- Köszönettel,".$br."
- ".$nev."
- \" method=\"post\" enctype=\"text/plain\">
-  <input type='submit' value='BO-nak küldés'>
- </form></td>";
- }
+ echo "</td>";
 echo "<td>Nincs rögzítve</td>";
 echo "<td></td>";
 echo "<td>".$gomb."</td>";
