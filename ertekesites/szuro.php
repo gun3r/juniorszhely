@@ -4,6 +4,7 @@ include 'fejlec.php';
 $datum1=$_COOKIE[dat2];
 $datum2=$_COOKIE[dat3];
 
+$sz10=$_COOKIE['sz10'];
 $sz1=$_COOKIE['sz1'];
 $sz2=$_COOKIE['sz2'];
 $sz3=$_COOKIE['sz3'];
@@ -85,12 +86,14 @@ $datum1=$_POST[dat11];
 $datum2=$_POST[dat12];
 }
 if($_POST[sz]==1){
+setcookie('sz10', intval($_POST[mobil]),time() + (60*60*24 * 3650));
 setcookie('sz1', intval($_POST[alap]),time() + (60*60*24 * 3650));
 setcookie('sz2', intval($_POST[tobblet]),time() + (60*60*24 * 3650));
 setcookie('sz3', intval($_POST[munkadij]),time() + (60*60*24 * 3650));
 setcookie('sz4', intval($_POST[eszkoz]),time() + (60*60*24 * 3650));
 setcookie('sz5', intval($_POST[eszkalacio]),time() + (60*60*24 * 3650));
 setcookie('sz6', $_POST[name],time() + (60*60*24 * 3650));
+$sz10=$_POST[mobil];
 $sz1=$_POST[alap];
 $sz2=$_POST[tobblet];
 $sz3=$_POST[munkadij];
@@ -117,13 +120,15 @@ echo "
  <input type=\"submit\" value=\"Adatok mentése(CSV)\">
  </form></td></tr></table>";
 
-
+$csmo="mobil = '10'";
 $csa="alap = '10'";
 $cst="tobblet = '10'";
 $csm="munkadij = '1'";
 $cse="(eszkoz ='1' or eszkoz2 = '1')";
 $cseszk="eszkalacio='0' or eszkalacio='1'";
 
+if($sz10==1)
+{$csmo="mobil = '1'";}
 if($sz1==1)
 {$csa="alap = '1'";}
 if($sz2==1)
@@ -136,12 +141,12 @@ $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
 if($sz6=="LHO"){
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by $rendez";
+$sql100 = "SELECT * FROM adat WHERE ($csmo or $csa or $cst or $csm or $cse) and datum >='$datum1' and datum <='$datum2' Order by $rendez";
 if($sz5==1){
 $sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and datum >='$datum1' and datum <='$datum2' Order by $rendez";
 }
 }else{
-$sql100 = "SELECT * FROM adat WHERE ($csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by $rendez";
+$sql100 = "SELECT * FROM adat WHERE ($csmo or $csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by $rendez";
 if($sz5==1){
 $sql100 = "SELECT * FROM adat WHERE eszkalacio='1' and name='$sz6' and  datum >='$datum1' and datum <='$datum2' Order by $rendez";
 }

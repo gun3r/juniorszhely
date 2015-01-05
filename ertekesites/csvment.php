@@ -11,7 +11,7 @@ $mitol=$_COOKIE[dat11];
 $meddig=$_COOKIE[dat12];
 
 
-$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
+$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note,datum2 as 'utolso modositas',kezelo as 'utolso modosito'	
  FROM adat WHERE datum >='$mitol' and datum <='$meddig' ORDER BY id asc";
 
 

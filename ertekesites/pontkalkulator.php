@@ -14,6 +14,7 @@ echo "<body>\n";
 $ren=intval($_COOKIE['rp']);
 
 $rendez="id asc";
+$szamlalo=0;;
 
 $rk=1;
 $rs=1;
@@ -89,7 +90,7 @@ $bo=$_COOKIE[bo];
 
 $h=date("m")+1;
 $n=01;
-$d1=mktime(0, 0, 0, $h, $n, 2014);
+$d1=mktime(0, 0, 0, $h, $n, 2015);
 
 if (isset($_COOKIE["dat4"]))
 {
@@ -106,7 +107,7 @@ setcookie("bo", $bo, $d1);
 } else {
 $h=date("m")-1;
 $n=01;
-$d=mktime(0, 0, 0, $h, $n, 2014);
+$d=mktime(0, 0, 0, $h, $n, 2015);
 $datum4=date("Y-m-01", $d);
 $datum5=date("Y-m-t", $d);
 setcookie("dat4", $datum4, $d1);
@@ -117,9 +118,10 @@ setcookie("bo", $bo, $d1);
 include 'cookies.php';
 include 'connection.php';
 include 'fejlec.php';
+echo "<table border=0><tr><td>";
 if($nev=='Dancsecs András'){
 include 'feltoltp.php';
-echo "<a href=korrekcio.txt>Korrekcio letöltés</a>(jobb gomb mentés másként:)<br><br>";
+echo "<a href=korrekcio.txt>Korrekcio letöltés</a>(jobb gomb mentés másként:)<br><br></td><td style='width:80'></td><td>";
 }
 echo"Korrekció dátum:
 <form action='pontkalkulator.php?p=4' enctype='multipart/form-data' method='post'>
@@ -144,7 +146,7 @@ echo"Korrekció dátum:
 <input type='hidden' name='s' value='1'>
 <input id='Submit' name='submit' type='submit' size='3'value='OK' /></br>
 BO-nak elküdve látható:<input type=\"checkbox\" name=\"bo\" value=\"1\" "; if($bo==1){echo " checked";}echo ">
-</form>";
+</form></td><tr></table>";
 
 if($csop==1)
 {$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
@@ -187,7 +189,9 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td><a href='pontkalkulator.php?p=4&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 		<td>Azonosító/WF/Előfizető</td>
 		<td>Termék</td>
+		<td>Mobil</td>
 		<td>Alap</td>
+		<td>Megtartó</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
 		<td>Eszköz portfóliós</td>
@@ -207,6 +211,8 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td></td>
 		<td></td>
+		<td></td
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -215,7 +221,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td></td>
 	</tr>";
-		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' Order by $rendez";
+		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' and status2!='MJR-ben van' Order by $rendez";
 		
 		$res = mysqli_query($con, $sql);
 
@@ -295,6 +301,14 @@ if (!mysqli_query($con,$sql5))
   die('Error: ' . mysqli_error($con));
   }
   }
+if($status2!='MJR-ben van'){
+$sql5="UPDATE adat SET  status2='MJR-ben van' WHERE  id ='$i'";
+
+if (!mysqli_query($con,$sql5))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
+  }
 if($k==1){
 
 $sql5="UPDATE adat SET  kizarva='0', datum='$datumkiz' WHERE  id ='$i'";
@@ -312,7 +326,9 @@ echo	"
 		<td>" . $sor['name'] . "</td>
 		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
+		<td>" . $sor['mobil'] . "</td>
 		<td>" . $sor['alap'] . "</td>
+		<td>" . $sor['megtarto'] . "</td>
 		<td>" . $sor['tobblet'] . "</td>
 		<td>" . $sor['munkadij'] . "</td>
 		<td>" . $sor['eszkoz'] . "</td>
@@ -333,6 +349,7 @@ echo "<td>Rögzítve</td>";
 echo "<td>Nem -". $nevek ."</td>";
 echo "<td>".$gomb."</td>";
 fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
+$szamlalo=$szamlalo+1;
 }
 
 }
@@ -342,7 +359,9 @@ echo	"
 		<td>" . $sor['name'] . "</td>
 		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
+		<td>" . $sor['mobil'] . "</td>
 		<td>" . $sor['alap'] . "</td>
+		<td>" . $sor['megtarto'] . "</td>
 		<td>" . $sor['tobblet'] . "</td>
 		<td>" . $sor['munkadij'] . "</td>
 		<td>" . $sor['eszkoz'] . "</td>
@@ -363,10 +382,12 @@ echo "<td>Nincs rögzítve</td>";
 echo "<td></td>";
 echo "<td>".$gomb."</td>";
 fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
+$szamlalo=$szamlalo+1;
 }
 echo"</tr>";
 }
-fclose($myfile);	
+fclose($myfile);
+echo $szamlalo." adat szerepel a listában!";
 echo "</table> 
 	</body> 
 	</html>";

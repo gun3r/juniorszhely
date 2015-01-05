@@ -65,6 +65,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$status=$sor['status'];
 		$eszkalacio=$sor['eszkalacio'];
 		$note2=$sor['note2'];
+		$status2=$sor['status2'];
 }
 }else{
 		$name="Válasz!";
@@ -84,6 +85,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$status="";
 		$eszkalacio="0";
 		$note2="";
+		$status2="";
 $mod=0;
 }
 echo "<form action=\"adat_be.php\" method=\"post\">\n"; 
@@ -154,8 +156,23 @@ echo " 	</select></td></tr>
 echo " 	</select></td></tr>
 		<tr><td>Nagy értékű portfólió</td><td><input type=\"text\" name=\"eszkoz2\" value=\"".$eszkoz2."\"size=\"15\"> Nettó számítása:<input type='checkbox' name='netto' value='1'></td></tr>
 		<tr><td>Dátum</td><td><input type=\"text\" name=\"datum\" value=\"". $datum ."\" size=\"10\"></td></tr>";
+		echo "	
+		<tr><td>Eventus/MJR</td><td><select name=\"status2\" size=\"1\">
+		<option value=\"".$status2."\" selected>".$status2."</option>";
+	
+		$sql = "SELECT * FROM status2 WHERE 1 Order by status asc";
+
+		$res = mysqli_query($con, $sql);
+
+		while($sor = mysqli_fetch_array($res)) {
+
+		echo "  <option value=\"" . $sor['status'] . "\">".$sor['status']."</option>\n";
+		}
+		
+echo " 	</select></td></tr>";
 if($stat==1){
-		echo "	<tr><td>Státusz</td><td><select name=\"status\" size=\"1\">
+		echo "	
+		<tr><td>Státusz</td><td><select name=\"status\" size=\"1\">
 		<option value=\"".$status."\" selected>".$status."</option>";
 	
 		$sql = "SELECT * FROM status WHERE 1 Order by status asc";

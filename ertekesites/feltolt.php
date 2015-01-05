@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_POST['submit'])) { //ha megnyomtuk a feltöltés gombot
 $target= ""; //célmappa
 $file_name = $_FILES['file']['name']; //a célfájlt nevezze el a $_FILES superglobal változóban lévo fájlnévre (a fájl eredeti nevére)
@@ -14,6 +15,16 @@ move_uploaded_file($tmp_dir, $target . "a.csv" ); //az ideiglenes mappából át
 $feltoltve = true; //a feltoltve változó true értéket kap
 }
 }
+include 'connection.php';
+$ev=date("Y-m-01");
+
+$sql5="DELETE FROM `elvaras` WHERE ev='$ev'";
+
+if (!mysqli_query($con,$sql5))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
+
 
 $URL="simplecsvimport.php"; 
 header ("Location: $URL");

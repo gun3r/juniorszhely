@@ -14,9 +14,11 @@ echo "<title>Back Office</title>\n";
 echo "</head>\n"; 
 echo "<body>\n";
 
+if (isset($_COOKIE["rp"])){
 $ren=intval($_COOKIE['rp']);
-
+}
 $rendez="id asc";
+$szamlalo=0;
 
 $rk=1;
 $rs=1;
@@ -92,7 +94,7 @@ $bo=$_COOKIE[bo];
 
 $h=date("m")+1;
 $n=01;
-$d1=mktime(0, 0, 0, $h, $n, 2014);
+$d1=mktime(0, 0, 0, $h, $n, 2015);
 
 if (isset($_COOKIE["dat4"]))
 {
@@ -109,7 +111,7 @@ setcookie("bo", $bo, $d1);
 } else {
 $h=date("m")-1;
 $n=01;
-$d=mktime(0, 0, 0, $h, $n, 2014);
+$d=mktime(0, 0, 0, $h, $n, 2015);
 $datum4=date("Y-m-01", $d);
 $datum5=date("Y-m-t", $d);
 setcookie("dat4", $datum4, $d1);
@@ -198,6 +200,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Termék</td>
 		<td><a href='backoffice.php?p=10&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
 		<td><a href='backoffice.php?p=10&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
+		<td>Eventus/MJR</td>
 		<td>Eszkaláció</td>
 		<td>Kizárva</td>
 		<td></td>";
@@ -213,10 +216,11 @@ echo"
 		<td></td>
 		<td></td>
 		<td></td>
+		<td></td>
 		<td></td>";
 if($stat==1){echo "<td></td>";}
 echo"	</tr>";
-		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' Order by $rendez";
+		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' status2!='MJR-ben van' Order by $rendez";
 		
 		$res = mysqli_query($con, $sql);
 
@@ -249,7 +253,6 @@ $k=$sor['kizarva'];
 $i=$sor['id'];
 $allapot=$sor['status'];
 $br="%0D%0A";//mailto sortörés
-
 $gomb="
 <form name='input' action='note_be.php' method='post'>
 <input type='text' size='100' name='note' value='" . $sor['note'] . "'>
@@ -259,8 +262,7 @@ $gomb="
 
  $sql2="SELECT * 
 		FROM  `pontkalkulator` 
-		WHERE 
-				a =  '$a' AND e =  '$t'
+		WHERE   a =  '$a' AND e =  '$t'
 		OR 		c =  '$a' AND e =  '$t'
 		OR 		h = '$a' AND e =  '$t'
 		OR 		y =  '$a' AND e =  '$t'";
@@ -287,14 +289,23 @@ if (strpos($sor['name'],$nevek) !== false) {
 }
 if($nevok==1){
 if($allapot!='Teljesített (Completed)'){
-$sql5="UPDATE adat SET  status='Teljesített (Completed)' WHERE  id ='$i'";
+$sql5="UPDATE adat SET  status='Teljesített (Completed)', kezelo='Automata' WHERE  id ='$i'";
 
 if (!mysqli_query($con,$sql5))
   {
   die('Error: ' . mysqli_error($con));
   }
   }
-if($k==1){
+if($status2!='MJR-ben van'){
+$sql5="UPDATE adat SET  status2='MJR-ben van', kezelo='Automata' WHERE  id ='$i'";
+
+if (!mysqli_query($con,$sql5))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
+  }
+
+  if($k==1){
 
 $sql5="UPDATE adat SET  kizarva='0', datum='$datumkiz' WHERE  id ='$i'";
 
@@ -313,6 +324,7 @@ echo	"
 		<td>" . $sor['termek'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>" . $sor['status'] . "</td>
+		<td>" . $sor['status2'] . "</td>
 		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "><br>".$sor['note2']."</td>
 		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
@@ -328,6 +340,7 @@ echo "</td><td>
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type='submit' value='BO-nak küldés'>
  </form>";
+
  /*
  <form action=\"bo.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
@@ -337,6 +350,7 @@ echo "</td><td>
  }
 echo "<td>".$gomb."</td>";
 fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
+$szamlalo=$szamlalo+1;
 }
 
 }
@@ -348,6 +362,7 @@ echo	"
 		<td>" . $sor['termek'] . "</td>
 		<td>" . $sor['datum'] . "</td>
 		<td>" . $sor['status'] . "</td>
+		<td>" . $sor['status2'] . "</td>
 		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "><br>".$sor['note2']."</td>
 		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>
@@ -365,6 +380,7 @@ echo "</td><td>
  <input type='submit' value='BO-nak küldés'>
  </form>";
  
+ 
 /* <form action=\"bo.php\" method=\"post\">
  <input type=\"hidden\" name=\"id\" value=" . $sor['id'] . ">
  <input type=\"hidden\" name=\"honnan\" value=\"2\">
@@ -373,10 +389,12 @@ echo "</td><td>
  }
 echo "<td>".$gomb."</td>";
 fwrite($myfile, $sor['name'].";".$sor['azonosito'] . ";" . $sor['wf'] . ";" . $sor['efinev'] . ";" . $sor['termek'] . ";" . $sor['alap'] . ";" . $sor['tobblet'] . ";" . $sor['munkadij'] . ";" . $sor['eszkoz'] . ";" . $sor['eszkoz2'] . ";" . $sor['datum'] . ";" . $sor['status'] . ";".$sor['eszkalacio'].";".$sor['note2'].";".$sor['kizarva'].";".$sor['note']."\r\n");
+$szamlalo=$szamlalo+1;
 }
 echo"</tr>";
 }
-fclose($myfile);	
+fclose($myfile);
+echo $szamlalo." adat szerepel a listában!";
 echo "</table> 
 	</body> 
 	</html>";

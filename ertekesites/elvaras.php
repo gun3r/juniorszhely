@@ -20,7 +20,9 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 	<tr>
 		<td>Aktív</td>
 		<td>Név</td>
-		<td>Alap</td>
+		<td>Mobil</td>
+		<td>Otthoni</td>
+		<td>Megtartó</td>
 		<td>Többlet</td>
 		<td>Munkadíj</td>
 		<td>Eszköz portfóliós</td>
@@ -50,7 +52,9 @@ echo "
 	<tr>
 		<td>".$sor['aktiv']."</td>
 		<td>".$sor['name']."</td>
+		<td>".$sor['mobil']."</td>
 		<td>".$sor['alap']."</td>
+		<td>".$sor['megtarto']."</td>
 		<td>".$sor['tobblet']."</td>
 		<td>".$sor['munkadij']."</td>
 		<td>".$sor['eszkoz']."</td>
@@ -69,7 +73,9 @@ echo "
 	  <option value=\"Beteg\"";if($sor['aktiv']=='Beteg'){echo "selected";}echo ">Beteg</option>
 	  <option value=\"Kilépő\"";if($sor['aktiv']=='Kilépő'){echo "selected";}echo ">Kilépő</option> </td>
 		<td>".$sor['name']."</td>
+		<td><input type=\"text\" name=\"mobil\" value=\"".$sor['mobil']."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"alap\" value=\"".$sor['alap']."\"size=\"3\"></td>
+		<td><input type=\"text\" name=\"megtarto\" value=\"".$sor['megtarto']."\"size=\"4\"></td>
 		<td><input type=\"text\" name=\"tobblet\" value=\"".$sor['tobblet']."\"size=\"3\"></td>
 		<td><input type=\"text\" name=\"munkadij\" value=\"".$sor['munkadij']." \"size=\"6\"></td>
 		<td><input type=\"text\" name=\"eszkoz1\" value=\"".$sor['eszkoz']."\"></td>

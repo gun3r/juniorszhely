@@ -17,7 +17,7 @@ $idm=$_COOKIE[idm];
 
 $h=date("m");
 $n=date("d");;
-$d1=mktime(0, 0, 0, $h, $n+1, 2014);
+$d1=mktime(0, 0, 0, $h, $n+1, 2015);
 
 if (isset($_COOKIE["dat11"]))
 {
@@ -30,9 +30,13 @@ setcookie("dat12", $datum2, $d1);
 } else {
 $h=date("m");
 $n=date("d");
-$d=mktime(0, 0, 0, $h, $n-3, 2014);
+$d=mktime(0, 0, 0, $h, $n-3, 2015);
+if($idi==0){
+$datum1=date("Y-m-01", $d);
+}else{
 $datum1=date("Y-m-d", $d);
-$d=mktime(0, 0, 0, $h, $n, 2014);
+}
+$d=mktime(0, 0, 0, $h, $n, 2015);
 $datum2=date("Y-m-d", $d);
 setcookie("dat11", $datum1, $d1);
 setcookie("dat12", $datum2, $d1);
@@ -69,7 +73,9 @@ while($sor = mysqli_fetch_array($res)) {
 		$name=$sor['name'];
 		$azonosito=$sor['azonosito'];
 		$termek=$sor['termek'];
+		$mobil=$sor['mobil'];
 		$alap=$sor['alap'];
+		$megtarto=$sor['magtarto'];
 		$tobblet=$sor['tobblet'];
 		$munkadij=$sor['munkadij'];
 		$eszkoz=$sor['eszkoz'];
@@ -85,6 +91,7 @@ while($sor = mysqli_fetch_array($res)) {
 		$name="Válasz!";
 		$azonosito="";
 		$termek="Válasz!";
+		$mobil=$sor['mobil'];
 		$alap="";
 		$tobblet="";
 		$munkadij="";
@@ -174,16 +181,20 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td><a href='adat.php?p=1&rk=".$rk."'>Kolléga</a>  ".$nyilk."</td>
 		<td>Azonosítók/WF/Előfizető</td>
 		<td>Termék</td>
-		<td>Alap</td>
-		<td>Többlet</td>
-		<td>Munkadíj</td>
-		<td>Kis értékű portfólió</td>
-		<td>Nagy értékű portfólió</td>
+		<td>Mobil új postpaid SIM</td>
+		<td>Vezetékes új BB és TV</td>
+		<td>Mobil postpaid SIM és fix <br> TV, BB, hang megtartás</td>
+		<td>Non-Core szolgáltatás</td>
+		<td colspan=2>Tartozék és munkadíj</td>
+		<td>Eszköz értékesítés</td>
 		<td><a href='adat.php?p=1&rd=".$rd."'>Dátum</a>  ".$nyild."</td>
+		<td>Eventus/MJR</td>";
+		if($idi!=0){echo"
 		<td><a href='adat.php?p=1&rs=".$rs."'>Státusz</a>  ".$nyils."</td>
 		<td>Eszkaláció</td>
 		<td>Kizárva</td>
-		<td></td>
+		<td></td>";};
+echo"	
 	</tr>
 	<tr>
 		<td></td>
@@ -198,7 +209,13 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td></td>
 		<td></td>
 		<td></td>
-	</tr>";
+		";
+		if($idi!=0){echo"
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>";}
+echo"	</tr>";
 		$mitol=$datum1;
 		$meddig=$datum2;
 		//adatok lekérdezése
@@ -217,17 +234,20 @@ echo	"
 		<td>" . $sor['name'] . "</td>
 		<td>" . $sor['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
 		<td>" . $sor['termek'] . "</td>
+		<td>" . $sor['mobil'] . "</td>
 		<td>" . $sor['alap'] . "</td>
+		<td>" . $sor['megtarto'] . "</td>
 		<td>" . $sor['tobblet'] . "</td>
 		<td>" . $sor['munkadij'] . "</td>
 		<td>" . $sor['eszkoz'] . "</td>
 		<td>" . $sor['eszkoz2'] . "</td>
 		<td>" . $sor['datum'] . "</td>
-		<td>" . $sor['status'] . "</td>
+		<td>" . $sor['status2'] . "</td>";
+		if($idi!=0){
+echo"	<td>" . $sor['status'] . "</td>
 		<td><input type='checkbox'disabled=\"disabled\""; if($sor['eszkalacio']==1){echo " checked='checked'";}echo "disabled=\"disabled\"><br>".$sor['note2']."</td>
 		<td><input type='checkbox' disabled=\"disabled\""; if($sor['kizarva']==1){echo " checked='checked'";}echo "></td>
 		<td>";
-		if($idi!=0){
 echo "
  <form action=\"adat2.php?p=1\" method=\"post\">
  <input type=\"hidden\" name=\"mod\" value=\"1\">
