@@ -220,7 +220,7 @@ echo"
 		<td></td>";
 if($stat==1){echo "<td></td>";}
 echo"	</tr>";
-		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' status2!='MJR-ben van' Order by $rendez";
+		$sql = "SELECT * FROM adat WHERE ($csoport) and termek!='Törölve' and ".$boel." datum >='$datum4' and datum <='$datum5' and status2!='MJR-ben van' Order by $rendez";
 		
 		$res = mysqli_query($con, $sql);
 
