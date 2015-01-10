@@ -19,6 +19,7 @@ echo "  <option value=\"" . $sor['name'] . "\""; if($sor[name]==$sz6){echo "sele
 echo " 	</select></td>
 <td><input type='checkbox' name='mobil' value='1'";if($sz10==1){echo "checked";}echo ">Mobil</td>
 <td><input type='checkbox' name='alap' value='1'";if($sz1==1){echo "checked";}echo ">Alap</td>
+<td><input type='checkbox' name='megtarto' value='1'";if($sz11==1){echo "checked";}echo ">Megtartó</td>
 <td><input type='checkbox' name='tobblet' value='1'";if($sz2==1){echo "checked";}echo ">Többlet</td>
 ".$i."
 <input type='hidden' name='sz' value='1'>

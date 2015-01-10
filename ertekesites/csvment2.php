@@ -14,7 +14,9 @@ $sz4=$_COOKIE['sz4'];
 $sz5=$_COOKIE['sz5'];
 $sz6=$_COOKIE['sz6'];
 $sz10=$_COOKIE['sz10'];
+$sz11=$_COOKIE['sz11'];
 
+$csme="megtarto = '10'";
 $csmo="mobil = '10'";
 $csa="alap = '10'";
 $cst="tobblet = '10'";
@@ -22,6 +24,9 @@ $csm="munkadij = '1'";
 $cse="(eszkoz ='1' or eszkoz2 = '1')";
 $cseszk="eszkalacio='0' or eszkalacio='1'";
 
+
+if($sz11==1)
+{$csme="megtarto = '1'";}
 if($sz10==1)
 {$csmo="mobil = '1'";}
 if($sz1==1)
@@ -36,17 +41,17 @@ $mitol=$_POST["dat11"];
 $meddig=$_POST["dat12"];
 
 if($sz6=="LHO"){
-$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
- FROM adat WHERE ($csmo or $csa or $cst or $csm or $cse) and datum >='$mitol' and datum <='$meddig' Order by id";
+$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,megtarto,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
+ FROM adat WHERE ($csme or $csmo or $csa or $cst or $csm or $cse) and datum >='$mitol' and datum <='$meddig' Order by id";
 if($sz5==1){
-$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
+$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,megtarto,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
  FROM adat WHERE eszkalacio='1' and datum >='$mitol' and datum <='$meddig' Order by id";
 }
 }else{
-$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
- FROM adat WHERE ($csmo or $csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$mitol' and datum <='$meddig' Order by id";
+$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,megtarto,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
+ FROM adat WHERE ($csme or $csmo or $csa or $cst or $csm or $cse) and name='$sz6' and  datum >='$mitol' and datum <='$meddig' Order by id";
 if($sz5==1){
-$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
+$sql100 = "SELECT id,name,azonosito,wf,efinev,	termek,mobil,alap,megtarto,tobblet,munkadij,eszkoz,eszkoz2,datum,status,eszkalacio,note2 as 'eszkalacio megjegyzes',kizarva,note	
  FROM adat WHERE eszkalacio='1' and name='$sz6' and  datum >='$mitol' and datum <='$meddig' Order by id";
 }
 }

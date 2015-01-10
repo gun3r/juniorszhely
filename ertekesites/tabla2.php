@@ -214,7 +214,9 @@ if(($oe/$osszes)>=($ee/$osszes*$deltat)){echo"<td style='background-color:66C266
 if(($oe2/$osszes)>=($ee2/$osszes*$deltat)){echo"<td style='background-color:66C266'>Igen</td>";}else{echo"<td style='background-color:FF3333'>Nem</td>";}
 echo "
 </tr>
-</table>";
+</table><tr>
+<td style='heigth:10px'> </td>
+</tr>";
  $koa=$koa+$oa;
  $kot=$kot+$ot;
  $kom=$kom+$om;

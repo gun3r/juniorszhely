@@ -1,41 +1,39 @@
-Név:;Állapot(Aktív beteg kilépõ);Alap;Többlet;Munkadíj;Eszköz;Portfóliós eszköz
-Bedics Mihály;Aktív;7;2;13846;22000;
-Erdõs Csaba;Aktív;7;2;13846;22000;
-Fülöp Roland;Aktív;6;2;13846;22000;
-Hildesheim Levente;Aktív;7;2;13846;22000;
-Horváth Attila;Aktív;5;2;13846;22000;
-Koltai Péter;Aktív;7;3;13847;22000;
-Pálmai Zsolt;Aktív;7;2;13846;22000;
-Tóth Gyula;Aktív;7;2;13846;22000;
-Takács Péter;Aktív;7;2;13846;22000;
-Tüske László;Aktív;7;2;13846;22000;
-Balogh Attila;Beteg;0;0;0;0;
-Csigó Róbert;Aktív;4;1;12000;27000;
-Horváth Ferenc;Aktív;10;3;15000;30000;
-Horváth Ottó András;Aktív;7;2;14000;24000;
-ifj. Szabó Imre;Aktív;6;1;11000;0;
-Pajer Csaba;Aktív;7;3;14227;25000;
-Rácz Tamás;Aktív;7;2;15000;20000;
-Szabó Tamás;Aktív;6;3;15000;20000;
-Szilágyi Csaba;Beteg;0;0;0;0;
-Dóra Zsolt;Aktív;7;3;13747;19000;
-Horváth Tamás;Aktív;6;2;13747;12000;
-Kiss Gábor;Aktív;7;2;13747;12000;
-Molnár Gábor;Aktív;7;2;13747;24000;
-Prisznyák Balázs;Aktív;6;2;13747;12000;
-Rátkai János;Aktív;7;2;13747;16000;
-Szép Csaba;Aktív;7;2;13747;12000;
-Tóth Mihály;Aktív;7;2;13747;20000;
-Balikó Zsolt;Aktív;7;2;14000;18000;
-Bolfán Balázs;Aktív;7;2;12792;16000;
-Kiskós Tibor;Aktív;6;2;12600;12000;
-Nagy Gábor;Aktív;7;2;14000;20000;
-Pantali Tibor;Aktív;7;2;14000;19000;
-Pethõ Attila;Aktív;7;2;14582;20000;
-Tóth Péter;Aktív;7;3;14000;10000;
-Varga István László;Aktív;6;2;14000;20000;
-Háromi Gábor;;0;0;0;0;404849
-Savanyó Ernõ;;0;0;0;0;372879
-Márfy Attila;;0;0;0;0;364879
-Grund Lajos;;0;0;0;0;291394
-LHO;;222;70;454638;2062000;
+Név:;Állapot(Aktív beteg kilépõ);Mobil;Alap;Többlet;Megtartó;ebbe az oszlopba semmit!!!;Munkadíj+eszköz;Eszköz
+Bedics Mihály;Aktív;1;6;1;0;;13827;
+Erdõs Csaba;Aktív;1;6;1;0;;13827;
+Fülöp Roland;Aktív;1;6;1;0;;13827;
+Hildesheim Levente;Aktív;1;6;2;0;;13827;
+Horváth Attila;Aktív;1;7;2;0;;13827;
+Koltai Péter;Aktív;1;7;2;0;;13827;
+Pálmai Zsolt;Aktív;1;7;2;0;;13827;
+Tóth Gyula;Aktív;1;7;2;0;;13826;
+Takács Péter;Aktív;1;7;2;0;;13826;
+Tüske László;Aktív;1;6;2;0;;13826;
+Balogh Attila;Aktív;1;0;0;0;;0;
+Csigó Róbert;Aktív;1;5;1;0;;12000;
+Horváth Ferenc;Aktív;1;9;2;0;;13000;
+Horváth Ottó András;Aktív;1;6;2;0;;14000;
+ifj. Szabó Imre;Aktív;1;0;0;0;;0;
+Pajer Csaba;Aktív;1;7;2;0;;15000;
+Rácz Tamás;Aktív;1;6;2;0;;14000;
+Szabó Tamás;Aktív;1;6;1;0;;14960;
+Szilágyi Csaba;Aktív;1;0;0;0;;0;
+Dóra Zsolt;Aktív;1;7;2;0;;14126;
+Kiss Gábor;Aktív;1;6;2;0;;13126;
+Molnár Gábor;Aktív;1;6;2;0;;14126;
+Rátkai János;Aktív;1;7;2;0;;14126;
+Szép Csaba;Aktív;1;6;2;0;;13330;
+Tóth Mihály;Aktív;1;7;2;0;;14126;
+Balikó Zsolt;Aktív;1;6;1;0;;12600;
+Bolfán Balázs;Aktív;1;6;2;0;;12600;
+Kiskós Tibor Károly;Aktív;1;7;2;0;;12600;
+Nagy Gábor;Aktív;1;7;2;0;;14000;
+Pantali Tibor;Aktív;1;6;1;0;;12600;
+Pethõ Attila;Aktív;1;7;2;0;;18214;
+Tóth Péter;Aktív;1;6;2;0;;14000;
+Varga István László;Aktív;1;7;2;0;;14000;
+Háromi Gábor;;;0;0;;;0;471167
+Savanyó Ernõ;;;0;0;;;0;307700
+Márfy Attila;;;0;0;;;0;417934
+Grund Lajos;;;0;0;;;0;268700
+regio;;10;10;0;10;10;0;10000000

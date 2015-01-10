@@ -36,9 +36,7 @@ $munkadij=0;
 $eszkoz1=0;
 $eszkoz2=0;
 }
-if($alap<$tobblet){
-$status2="Eventusban van";
-}
+
 if($termek=='munkadij' or $termek=='szsz_munkadij'){
 $eszkoz1=0;
 $eszkoz2=0;
@@ -62,13 +60,20 @@ $mobil=0;
 $megtarto=0;
 }
 
-if($termek=='VOCA ALAP szolgáltatás' or $termek=='VOIP' or $termek=='Vonali termék'){
+if($termek=='VOCA ALAP szolgáltatás' or $termek=='VOIP'){
 if($_POST[datum]>='2015-01-01'){
 $alap=0;
 $megtarto=1;
 }
 }
 
+if($termek=='Vonali termék'){
+if($_POST[datum]>='2015-01-01'){
+$alap=0;
+$megtarto=0;
+}
+}
+ 
 $sql = "SELECT munkacsoport FROM user WHERE name LIKE \"%$nev%\" ";
 $res = mysqli_query($con, $sql);
 while($sor = mysqli_fetch_array($res)) {

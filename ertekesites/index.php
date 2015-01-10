@@ -53,9 +53,22 @@ echo"
 <INPUT type=\"text\" name=\"dat3\" size='12' value=\"".$datum3."\">
 <INPUT type=\"submit\" value=\"Elküld\">
 </FORM>";
+
 if($datum2>=2014-10-01 and $nezet==0){
-echo "Nézet:<a href=nezetbeallit.php?n=1>Szombathely</a> <a href=nezetbeallit.php?n=2>Zalaegerszeg</a></td>";
+echo"Nézet:
+<FORM name=\"input\" action=\"nezetbeallit.php\" method=\"post\">
+<select name='n' size=”1”>
+	  <option value='1'";if($nezet==1){echo "selected";}echo ">Háromi Gábor</option>
+	  <option value='2'";if($nezet==2){echo "selected";}echo ">Grund Lajos</option>
+	  <option value='4'";if($nezet==4){echo "selected";}echo ">Márfy Attila</option>
+	  <option value='6'";if($nezet==6){echo "selected";}echo ">Feil Ferenc</option>
+	  <option value='7'";if($nezet==7){echo "selected";}echo ">Mihálka István</option>
+	  <option value='8'";if($nezet==8){echo "selected";}echo ">Molnár Ferenc</option>
+	 </select>
+<INPUT type=\"submit\" value=\"Beállít\">
+</FORM>";
 }
+echo "</td>";
 $bgcolor="white";
 $color="black";
 $szoveg="";
@@ -86,9 +99,9 @@ echo "
 <td style='vertical-align:top'>
 <?php
 //tapolca
+$csop=$nezet;
+if($nezet==0){
 $csop=1;
-if($nezet==2){
-$csop=8;
 }
 if ($datum2<'2015-01-01'){
 include 'tabla.php';
@@ -97,14 +110,13 @@ include 'tabla2.php';
 }
 echo"</td>
 
-<td style='width:20'>
-</td>
+</tr><tr>
 <td style='vertical-align:top'>";
 
 //sopron
 $csop=2;
 if($nezet==2){
-$csop=7;
+$csop=1;
 }
 if ($datum2<'2015-01-01'){
 include 'tabla.php';
@@ -115,14 +127,14 @@ include 'tabla2.php';
 echo "</td>
 </tr>
 
-<tr><td style='heigth:10px'></td></tr>
+
 <tr>
 <td style='vertical-align:top'>";
 //szombathely_se
 if($datum2>='2014-10-01')
 {$csop=4;
-if($nezet==2){
-$csop=6;
+if($nezet==4){
+$csop=1;
 }}else{$csop=3;}
 if ($datum2<'2015-01-01'){
 include 'tabla.php';
@@ -132,13 +144,12 @@ include 'tabla2.php';
 echo "
 </td>
 
-<td style='width:20'>
-</td>
+</tr><tr>
 <td style='vertical-align:top'>";
 //szombathely_ma
 if($datum2>='2014-10-01')
 {$csop=8;
-if($nezet==2){
+if($nezet==8){
 $csop=1;
 }}else{$csop=4;}
 if ($datum2<'2015-01-01'){
@@ -150,17 +161,14 @@ echo "</td>
 </tr>";
 if($datum3>='2014-10-01'){
 echo"
-<tr>
-<td style='heigth:10px'> </td>
-</tr>
 
 <tr>
 <td style='vertical-align:top'>";
 //kaposvár
 if($datum2>='2014-10-01')
 {$csop=7;
-if($nezet==2){
-$csop=2;
+if($nezet==7){
+$csop=1;
 }}else{$csop=6;}
 if ($datum2<'2015-01-01'){
 include 'tabla.php';
@@ -170,14 +178,13 @@ include 'tabla2.php';
 echo "
 </td>
 
-<td style='width:20'>
-</td>
+</tr><tr>
 <td style='vertical-align:top'>";
 //Zalaegerszeg_MF
 if($datum2>='2014-10-01')
 {$csop=6;
-if($nezet==2){
-$csop=4;
+if($nezet==6){
+$csop=1;
 }}else{$csop=7;}
 if ($datum2<'2015-01-01'){
 include 'tabla.php';
@@ -187,15 +194,13 @@ include 'tabla2.php';
 echo "</td>
 </tr>
 <tr>
-<td style='heigth:10px'> </td>
-</tr>
-
-<tr>
 <td style='vertical-align:top'>";
 //Zalaegerszeg_MI
 if($datum2>='2014-10-01')
 {}
 else{$csop=8;
+if($nezet==8){
+$csop=1;}
 if ($datum2<'2015-01-01'){
 include 'tabla.php';
 }else{
@@ -205,17 +210,14 @@ include 'tabla2.php';
 echo "
 </td>
 
-<td style='width:20'>
-</td>
+</tr><tr>
 <td style='vertical-align:top'>";
 //
 $csop=7;
 //include 'tabla.php';
 echo "</td>
 </tr>
-<tr>
-<td style='heigth:10px'> </td>
-</tr>";
+";
 }
 echo"
 <tr><td>";
@@ -230,7 +232,18 @@ include 'vallalkozo2.php';
 echo "</td></tr>
 </table>";
 if($datum2>=2014-10-01 and $nezet!=0){
-echo "<br><br><br><br>Nézet:<a href=nezetbeallit.php?n=1>Szombathely</a> <a href=nezetbeallit.php?n=2>Zalaegerszeg</a></td>";
+echo "<br><br><br><br>Nézet:
+<FORM name=\"input\" action=\"nezetbeallit.php\" method=\"post\">
+<select name='n' size=”1”>
+	  <option value='1'";if($nezet==1){echo "selected";}echo ">Háromi Gábor</option>
+	  <option value='2'";if($nezet==2){echo "selected";}echo ">Grund Lajos</option>
+	  <option value='4'";if($nezet==4){echo "selected";}echo ">Márfy Attila</option>
+	  <option value='6'";if($nezet==6){echo "selected";}echo ">Feil Ferenc</option>
+	  <option value='7'";if($nezet==7){echo "selected";}echo ">Mihálka István</option>
+	  <option value='8'";if($nezet==8){echo "selected";}echo ">Molnár Ferenc</option>
+	 </select>
+<INPUT type=\"submit\" value=\"Beállít\">
+</FORM>";
 }
 echo"
 </html>";
