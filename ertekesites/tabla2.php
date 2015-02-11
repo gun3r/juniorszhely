@@ -72,7 +72,7 @@ if($row_cnt==0){
 echo " 
  <td style='text-align: right'>".intval($sor2['m'])."</td>
  <td style='text-align: right'>".intval($sor2['a'])."</td>
- <td style='text-align: right'>".intval($sor2['mt']).$sor3['megtarto']."</td>
+ <td style='text-align: right'>".intval($sor2['mt'])."</td>
  <td style='text-align: right'>".intval($sor2['t'])."</td>
  <td style='text-align: right'>".intval($sor2['e'])."</td>
  <td style='text-align: right'>".intval($sor2['e2'])."</td>";
@@ -141,6 +141,7 @@ echo "
  
  $color='FF3333';
  $nevezo=floatval($sor3['tobblet'])*$deltat;
+
  $szamlalo=floatval($sor2['t']);
  
  if ($nevezo=='0'){

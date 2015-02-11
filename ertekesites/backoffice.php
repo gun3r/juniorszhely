@@ -153,27 +153,27 @@ BO-nak elküdve látható:<input type=\"checkbox\" name=\"bo\" value=\"1\" "; if
 </form>";
 
 if($csop==1)
-{$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
+{$csoport="(munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='1' or munkacsoport='2' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1' or mobil='1')";}
 if($csop==2)
-{$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1')";}
+{$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-táv KFT.' or munkacsoport='5') and (alap='1' or tobblet='1' or mobil='1')";}
 if($csop==11 or $csop==13)
-{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1')";}
+{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1' or mobil='1')";}
 if($csop==12)
-{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1')";}
+{$csoport="(munkacsoport='6' or munkacsoport='7' or munkacsoport='8' or munkacsoport='9' or munkacsoport='10') and (alap='1' or tobblet='1' or mobil='1')";}
 if($csop==3)
-{$csoport="(munkacsoport='Háromi Gábor' or munkacsoport='1') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='Háromi Gábor' or munkacsoport='1') and alap='0' and tobblet='0'  and mobil='0' and megtarto='0'";}
 if($csop==4)
-{$csoport="(munkacsoport='Grund Lajos' or munkacsoport='2') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='Grund Lajos' or munkacsoport='2') and alap='0' and tobblet='0'  and mobil='0' and megtarto='0'";}
 if($csop==5)
-{$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='3') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='Savanyó Ernõ' or munkacsoport='3') and alap='0' and tobblet='0'  and mobil='0' and megtarto='0'";}
 if($csop==6)
-{$csoport="(munkacsoport='Márfy Attila' or munkacsoport='4') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='Márfy Attila' or munkacsoport='4') and alap='0' and tobblet='0' and mobil='0' and megtarto='0'";}
 if($csop==7)
-{$csoport="(munkacsoport='6') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='6') and alap='0' and tobblet='0'  and mobil='0' and megtarto='0'";}
 if($csop==8)
-{$csoport="(munkacsoport='7') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='7') and alap='0' and tobblet='0'  and mobil='0' and megtarto='0'";}
 if($csop==9)
-{$csoport="(munkacsoport='8') and alap='0' and tobblet='0' ";}
+{$csoport="(munkacsoport='8') and alap='0' and tobblet='0'  and mobil='0' and megtarto='0'";}
 if($csop==20)
 {$csoport="alap='1' or tobblet='1' ";}
 if($csop==21)
@@ -191,7 +191,7 @@ $boel=" bo=0 and ";
 }
 
 if($csop==0)
-{$csoport="munkacsoport='Grund Lajos' or munkacsoport='Háromi Gábor' or munkacsoport='Savanyó Ernõ' or munkacsoport='Márfy Attila' or munkacsoport='1' or munkacsoport='6' or munkacsoport='7' or munkacsoport='8'  or munkacsoport='2' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-Táv Kft.' or munkacsoport='5'";}
+{$csoport="(munkacsoport='1' or munkacsoport='6' or munkacsoport='7' or munkacsoport='8'  or munkacsoport='2' or munkacsoport='3' or munkacsoport='4' or munkacsoport='Vasi Full-Táv Kft.' or munkacsoport='5' or munkacsoport='9' or munkacsoport='10') and (megtarto='0')";}
 
 echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFFFF\">
 	<tr>

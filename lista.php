@@ -7,10 +7,23 @@ include 'fejlec.php';
 include_once("analyticstracking.php");
 $jog = intval($_COOKIE["sp_codej"]);
 $sp_code = strval($_COOKIE["sp_code"]);
+$mcsop = intval($_COOKIE["mcsop"]);
 
 if($jog==2){
+if($mcsop<=6){
+$sql = "Select members.name as name, members.email,members.*,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE members.mcsop='$mcsop' and `closed` =  '0'";
+}
 
-$sql = "Select members.name as name, members.email,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE  `closed` =  '0'";
+if($mcsop==100){
+$sql = "Select members.name as name, members.email,members.*,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE  (members.mcsop='5' or members.mcsop='4' or members.mcsop='3') and `closed` =  '0'";
+}
+
+if($mcsop==101){
+$sql = "Select members.name as name, members.email,members.*,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE  (members.mcsop='2' or members.mcsop='6' or members.mcsop='1') and `closed` =  '0'";
+}
+if($mcsop==1000){
+$sql = "Select members.name as name, members.email,members.*,data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE  `closed` =  '0'";
+}
 
 $sql2 = "Select members.name as name, data.* from  members inner join data on (data.sp_code=members.sp_code) WHERE `closed` =  '1' ORDER BY `date` DESC LIMIT 10";
 $szin1="\"#000000\"";

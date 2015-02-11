@@ -24,8 +24,7 @@ echo "<table border=\"1\" bordercolor=\"#FFCC00\" style=\"background-color:#FFFF
 		<td>Otthoni</td>
 		<td>Megtartó</td>
 		<td>Többlet</td>
-		<td>Munkadíj</td>
-		<td>Eszköz portfóliós</td>
+		<td colspan=2>Munkadíj,Eszköz portfóliós</td>
 		<td>Eszköz nem portfóliós</td>
 		<td>Hónap</td>
 		<td></td>

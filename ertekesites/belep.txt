@@ -1,12 +1,287 @@
-Molnár Gábor;sp4108;2015-01-05
-Edőcs János;sp8125;2015-01-05
-Hildesheim Levente;ta4133;2015-01-05
-Grund Lajos;sb4481;2015-01-05
-Csuka Jennifer Inez;Jenni;2015-01-05
-Márfy Attila;sp8132;2015-01-05
-Dancsecs András;dancsecsa;2015-01-05
-Biczó Éva;biczoe;2015-01-05
-Háromi Gábor;ta4444;2015-01-05
-Feil Ferenc;kv2358;2015-01-05
-Horváth Ferenc;sb8507;2015-01-05
-
+Molnár Gábor;sp4108;2015-01-06
+Molnár Gábor;sp4108;2015-01-06
+Edőcs János;sp8125;2015-01-06
+Biczó Éva;biczoe;2015-01-06
+Dancsecs András;dancsecsa;2015-01-06
+Dologh Otília;mirrty;2015-01-06
+Pinczés Éva;za4800;2015-01-06
+Csuka Jennifer Inez;Jenni;2015-01-06
+Szabó János András;ma4780;2015-01-06
+Márfy Attila;sp8132;2015-01-06
+Horváth Ferenc;sb8507;2015-01-06
+Edőcs János;sp8125;2015-01-07
+Biczó Éva;biczoe;2015-01-07
+Feil Ferenc;kv2358;2015-01-07
+Grund Lajos;sb4481;2015-01-07
+Molnár Gábor;sp4108;2015-01-07
+Csuka Jennifer Inez;Jenni;2015-01-07
+Pinczés Éva;za4800;2015-01-07
+Molnár Ferenc;za4808;2015-01-07
+Dancsecs András;dancsecsa;2015-01-07
+Mihálka István;za4805;2015-01-07
+Molnár Gábor;sp4108;2015-01-07
+Horváth Ferenc;sb8507;2015-01-07
+Kelemen Péter;sb4480;2015-01-07
+Feil Ferenc;kv2358;2015-01-08
+Edőcs János;sp8125;2015-01-08
+Csuka Jennifer Inez;Jenni;2015-01-08
+Grund Lajos;sb4481;2015-01-08
+Molnár Ferenc;za4808;2015-01-08
+Dancsecs András;dancsecsa;2015-01-08
+Molnár Gábor;sp4108;2015-01-08
+Edőcs János;sp8125;2015-01-08
+Biczó Éva;biczoe;2015-01-08
+Molnár Gábor;sp4108;2015-01-08
+Mihálka István;za4805;2015-01-08
+Molnár Gábor;sp4108;2015-01-08
+Márfy Attila;sp8132;2015-01-08
+Márfy Attila;sp8132;2015-01-09
+Feil Ferenc;kv2358;2015-01-09
+Edőcs János;sp8125;2015-01-09
+Pinczés Éva;za4800;2015-01-09
+Molnár Gábor;sp4108;2015-01-09
+Biczó Éva;biczoe;2015-01-09
+Csuka Jennifer Inez;Jenni;2015-01-09
+Csuka Jennifer Inez;Jenni;2015-01-09
+Pinczés Éva;za4800;2015-01-09
+Dancsecs András;dancsecsa;2015-01-09
+Grund Lajos;sb4481;2015-01-09
+Molnár Ferenc;za4808;2015-01-09
+Horváth Ferenc;sb8507;2015-01-09
+Molnár Gábor;sp4108;2015-01-09
+Csuka Jennifer Inez;Jenni;2015-01-10
+Dancsecs András;dancsecsa;2015-01-10
+Pinczés Éva;za4800;2015-01-10
+Koltai Péter;ta4774;2015-01-10
+Molnár Gábor;sp4108;2015-01-10
+Dancsecs András;dancsecsa;2015-01-10
+Molnár Gábor;sp4108;2015-01-10
+Márfy Attila;sp8132;2015-01-10
+Edőcs János;sp8125;2015-01-10
+Szabó János András;ma4780;2015-01-10
+Horváth Ferenc;sb8507;2015-01-10
+Horváth Ferenc;sb8507;2015-01-10
+Kelemen Péter;sb4480;2015-01-10
+Bedics Mihály;ta4135;2015-01-11
+Csuka Jennifer Inez;Jenni;2015-01-11
+Edőcs János;sp8125;2015-01-12
+Csuka Jennifer Inez;Jenni;2015-01-12
+Grund Lajos;sb4481;2015-01-12
+Csuka Jennifer Inez;Jenni;2015-01-12
+Feil Ferenc;kv2358;2015-01-12
+Biczó Éva;biczoe;2015-01-12
+Márfy Attila;sp8132;2015-01-12
+Pinczés Éva;za4800;2015-01-12
+Molnár Gábor;sp4108;2015-01-12
+Háromi Gábor;ta4444;2015-01-12
+Horváth Tamás;sb8484;2015-01-12
+Molnár Gábor;sp4108;2015-01-12
+Molnár Gábor;sp4108;2015-01-12
+Horváth Tamás;sb8484;2015-01-12
+Rátkai János;sp4087;2015-01-12
+Edőcs János;sp8125;2015-01-13
+Grund Lajos;sb4481;2015-01-13
+Molnár Ferenc;za4808;2015-01-13
+Biczó Éva;biczoe;2015-01-13
+Csuka Jennifer Inez;Jenni;2015-01-13
+Feil Ferenc;kv2358;2015-01-13
+Pinczés Éva;za4800;2015-01-13
+Dancsecs András;dancsecsa;2015-01-13
+Molnár Gábor;sp4108;2015-01-13
+Grund Lajos;sb4481;2015-01-14
+Feil Ferenc;kv2358;2015-01-14
+Csuka Jennifer Inez;Jenni;2015-01-14
+Pinczés Éva;za4800;2015-01-14
+Biczó Éva;biczoe;2015-01-14
+Márfy Attila;sp8132;2015-01-14
+Molnár Ferenc;za4808;2015-01-14
+Mihálka István;za4805;2015-01-14
+Savanyó Ernõ;sp8083;2015-01-15
+Pinczés Éva;za4800;2015-01-15
+Grund Lajos;sb4481;2015-01-15
+Edőcs János;sp8125;2015-01-15
+Kelemen Péter;sb4480;2015-01-15
+Márfy Attila;sp8132;2015-01-15
+Nagy Gábor;sb8518;2015-01-15
+Nagy Gábor;sb8518;2015-01-15
+Feil Ferenc;kv2358;2015-01-16
+Molnár Ferenc;za4808;2015-01-16
+Edőcs János;sp8125;2015-01-16
+Molnár Gábor;sp4108;2015-01-16
+Grund Lajos;sb4481;2015-01-16
+Molnár Gábor;sp4108;2015-01-16
+Grund Lajos;sb4481;2015-01-17
+Bedics Mihály;ta4135;2015-01-17
+Háromi Gábor;ta4444;2015-01-17
+Molnár Gábor;sp4108;2015-01-17
+Dancsecs András;dancsecsa;2015-01-18
+Márfy Attila;sp8132;2015-01-18
+Molnár Gábor;sp4108;2015-01-18
+Háromi Gábor;ta4444;2015-01-19
+Grund Lajos;sb4481;2015-01-19
+Csuka Jennifer Inez;Jenni;2015-01-19
+Molnár Gábor;sp4108;2015-01-19
+Márfy Attila;sp8132;2015-01-19
+Edőcs János;sp8125;2015-01-19
+Mihálka István;za4805;2015-01-19
+Molnár Ferenc;za4808;2015-01-19
+Edőcs János;sp8125;2015-01-20
+Márfy Attila;sp8132;2015-01-20
+Csuka Jennifer Inez;Jenni;2015-01-20
+Pinczés Éva;za4800;2015-01-20
+Kelemen Péter;sb4480;2015-01-20
+Molnár Gábor;sp4108;2015-01-20
+Csuka Jennifer Inez;Jenni;2015-01-21
+Szabó János András;ma4780;2015-01-21
+Márfy Attila;sp8132;2015-01-21
+Kelemen Péter;sb4480;2015-01-21
+Bedics Mihály;ta4135;2015-01-22
+Kelemen Péter;sb4480;2015-01-22
+Szilágyi Csaba;sb4484;2015-01-22
+Kelemen Péter;sb4480;2015-01-22
+ifj. Szabó Imre;sb8482;2015-01-22
+Szabó Tamás;sp4107;2015-01-22
+Kelemen Péter;sb4480;2015-01-22
+Szilágyi Csaba;sb4484;2015-01-22
+Czuring Norbert;ma4778;2015-01-22
+Márfy Attila;sp8132;2015-01-22
+Mihálka István;za4805;2015-01-22
+Edőcs János;sp8125;2015-01-23
+Feil Ferenc;kv2358;2015-01-23
+Horváth Ottó András;sb8510;2015-01-23
+Csuka Jennifer Inez;Jenni;2015-01-23
+Márfy Attila;sp8132;2015-01-23
+Dancsecs András;dancsecsa;2015-01-23
+Grund Lajos;sb4481;2015-01-23
+Hildesheim Levente;ta4133;2015-01-25
+Biczó Éva;biczoe;2015-01-26
+Edőcs János;sp8125;2015-01-26
+Csuka Jennifer Inez;Jenni;2015-01-26
+Edőcs János;sp8125;2015-01-26
+Márfy Attila;sp8132;2015-01-26
+Mihálka István;za4805;2015-01-26
+Grund Lajos;sb4481;2015-01-26
+Dancsecs András;dancsecsa;2015-01-26
+Kelemen Péter;sb4480;2015-01-26
+Molnár Gábor;sp4108;2015-01-26
+Edőcs János;sp8125;2015-01-27
+Grund Lajos;sb4481;2015-01-27
+Csuka Jennifer Inez;Jenni;2015-01-27
+ifj. Szabó Imre;sb8482;2015-01-27
+Biczó Éva;biczoe;2015-01-27
+Pinczés Éva;za4800;2015-01-27
+Mihálka István;za4805;2015-01-27
+Molnár Gábor;sp4108;2015-01-27
+Molnár Ferenc;za4808;2015-01-27
+ifj. Szabó Imre;sb8482;2015-01-27
+Háromi Gábor;ta4444;2015-01-27
+Háromi Gábor;ta4444;2015-01-28
+Edőcs János;sp8125;2015-01-28
+Molnár Ferenc;za4808;2015-01-28
+Csuka Jennifer Inez;Jenni;2015-01-28
+Pinczés Éva;za4800;2015-01-28
+Márfy Attila;sp8132;2015-01-28
+Biczó Éva;biczoe;2015-01-28
+Mihálka István;za4805;2015-01-28
+Hildesheim Levente;ta4133;2015-01-28
+Grund Lajos;sb4481;2015-01-28
+Bedics Mihály;ta4135;2015-01-28
+Kelemen Péter;sb4480;2015-01-28
+Molnár Gábor;sp4108;2015-01-28
+Savanyó Ernõ;sp8083;2015-01-28
+Edőcs János;sp8125;2015-01-29
+Hildesheim Levente;ta4133;2015-01-29
+Márfy Attila;sp8132;2015-01-29
+Mihálka István;za4805;2015-01-29
+ifj. Szabó Imre;sb8482;2015-01-29
+Molnár Gábor;sp4108;2015-01-29
+ifj. Szabó Imre;sb8482;2015-01-30
+Csuka Jennifer Inez;Jenni;2015-01-30
+Mihálka István;za4805;2015-01-30
+Feil Ferenc;kv2358;2015-01-30
+Molnár Ferenc;za4808;2015-01-30
+Kelemen Péter;sb4480;2015-01-30
+Edőcs János;sp8125;2015-01-30
+Dancsecs András;dancsecsa;2015-01-30
+Háromi Gábor;ta4444;2015-01-30
+Szabó János András;ma4780;2015-01-30
+Kelemen Péter;sb4480;2015-02-01
+Csuka Jennifer Inez;Jenni;2015-02-02
+Grund Lajos;sb4481;2015-02-02
+Edőcs János;sp8125;2015-02-02
+Feil Ferenc;kv2358;2015-02-02
+Mihálka István;za4805;2015-02-02
+Edőcs János;sp8125;2015-02-03
+ifj. Szabó Imre;sb8482;2015-02-03
+Balogh Attila;sb4486;2015-02-03
+ifj. Szabó Imre;sb8482;2015-02-03
+Márfy Attila;sp8132;2015-02-03
+Dologh Otília;mirrty;2015-02-03
+Pinczés Éva;za4800;2015-02-03
+Csuka Jennifer Inez;Jenni;2015-02-03
+Balogh Attila;sb4486;2015-02-03
+Edőcs János;sp8125;2015-02-04
+Biczó Éva;biczoe;2015-02-04
+Márfy Attila;sp8132;2015-02-04
+Dologh Otília;mirrty;2015-02-04
+Pinczés Éva;za4800;2015-02-04
+ifj. Szabó Imre;sb8482;2015-02-05
+Edőcs János;sp8125;2015-02-05
+Feil Ferenc;kv2358;2015-02-05
+Pinczés Éva;za4800;2015-02-05
+Dologh Otília;mirrty;2015-02-05
+Márfy Attila;sp8132;2015-02-05
+Pinczés Éva;za4800;2015-02-06
+Nagy Gábor;sb8518;2015-02-06
+Csuka Jennifer Inez;Jenni;2015-02-06
+Szép Csaba;sp4163;2015-02-06
+Feil Ferenc;kv2358;2015-02-06
+Dologh Otília;mirrty;2015-02-06
+Márfy Attila;sp8132;2015-02-06
+Grund Lajos;sb4481;2015-02-06
+Mihálka István;za4805;2015-02-06
+Edőcs János;sp8125;2015-02-06
+Dancsecs András;dancsecsa;2015-02-06
+Pethõ Attila;sp8111;2015-02-06
+Szép Csaba;sp4163;2015-02-06
+Savanyó Ernõ;sp8083;2015-02-06
+Pethõ Attila;sp8111;2015-02-06
+Dologh Otília;mirrty;2015-02-06
+Molnár Ferenc;za4808;2015-02-06
+Nagy Gábor;sb8518;2015-02-07
+Márfy Attila;sp8132;2015-02-08
+Molnár Ferenc;za4808;2015-02-08
+Edőcs János;sp8125;2015-02-09
+Grund Lajos;sb4481;2015-02-09
+Csuka Jennifer Inez;Jenni;2015-02-09
+Feil Ferenc;kv2358;2015-02-09
+Dologh Otília;mirrty;2015-02-09
+Pinczés Éva;za4800;2015-02-09
+Márfy Attila;sp8132;2015-02-09
+Márfy Attila;sp8132;2015-02-09
+Mihálka István;za4805;2015-02-09
+ifj. Szabó Imre;sb8482;2015-02-09
+Dologh Otília;mirrty;2015-02-09
+Molnár Gábor;sp4108;2015-02-09
+Dancsecs András;dancsecsa;2015-02-09
+Kelemen Péter;sb4480;2015-02-09
+Biczó Éva;biczoe;2015-02-09
+Márfy Attila;sp8132;2015-02-09
+Edőcs János;sp8125;2015-02-10
+ifj. Szabó Imre;sb8482;2015-02-10
+ifj. Szabó Imre;sb8482;2015-02-10
+Csuka Jennifer Inez;Jenni;2015-02-10
+Hildesheim Levente;ta4133;2015-02-10
+Pinczés Éva;za4800;2015-02-10
+Mihálka István;za4805;2015-02-10
+Dologh Otília;mirrty;2015-02-10
+Pinczés Éva;za4800;2015-02-10
+Mihálka István;za4805;2015-02-10
+Biczó Éva;biczoe;2015-02-10
+Dologh Otília;mirrty;2015-02-10
+Savanyó Ernõ;sp8083;2015-02-10
+Edőcs János;sp8125;2015-02-10
+Márfy Attila;sp8132;2015-02-10
+Molnár Gábor;sp4108;2015-02-10
+Dancsecs András;dancsecsa;2015-02-10
+Molnár Gábor;sp4108;2015-02-10

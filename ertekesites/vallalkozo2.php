@@ -191,10 +191,10 @@ echo"
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($oa+$koa),0, '.', ' ')."</td>";
 
-$color='FF3333';
+ $color='FF3333';
  $nevezo=$lhomt*$deltat;
  $szamlalo=$omt+$komt;
- 
+
  if ($nevezo=='0'){
  $color=grey;
  }else{
@@ -203,6 +203,7 @@ $color='FF3333';
  if($szamlalo >= $nevezo){
  $color='66C266';}
  }
+
  echo "
 <td style='background-color:".$color."; text-align: right'>".number_format(($omt+$komt),0, '.', ' ')."</td>";
 
@@ -224,7 +225,7 @@ $color='FF3333';
 
  $color='FF3333';
  $nevezo=$lhoe*$deltat;
- $szamlalo=$oe+$koe+$oe2+$koe2;
+ $szamlalo=$oe+$koe;
  
  if ($nevezo=='0'){
  $color=grey;
@@ -277,7 +278,7 @@ $color='FF3333';
  $color='66C266';}
  }
  echo "
-<td style='background-color:".$color."; text-align: right'>".number_format(($om+$kom),0, '.', ' ')."</td>";
+<td style='background-color:".$color."; text-align: right'>".number_format(($om+$kom)/($lhom*$deltat)*100, 2, '.', ' ')." %"."</td>";
  
  $color='FF3333';
  $nevezo=$lhoa*$deltat;

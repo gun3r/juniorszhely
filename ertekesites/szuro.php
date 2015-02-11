@@ -188,7 +188,7 @@ while($sor100 = mysqli_fetch_array($res100)) {
 echo"
 <tr>
 		<td>" . $sor100['name'] . "</td>
-		<td>" . $sor100['azonosito'] . "<br>" . $sor['wf'] . "<br>" . $sor['efinev'] . "</td>
+		<td>" . $sor100['azonosito'] . "<br>" . $sor100['wf'] . "<br>" . $sor100['efinev'] . "</td>
 		<td>" . $sor100['termek'] . "</td>
 		<td>" . $sor100['mobil'] . "</td>
 		<td>" . $sor100['alap'] . "</td>
